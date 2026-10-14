@@ -45,7 +45,7 @@ var ConfigJSON []byte
 ```
 
 <a name="NewProvider"></a>
-## func [NewProvider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/kling.go#L49>)
+## func [NewProvider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/kling.go#L49>)
 
 ```go
 func NewProvider(providerDescription *catalog.Provider) (generation.Generator, error)

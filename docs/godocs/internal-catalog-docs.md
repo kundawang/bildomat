@@ -110,7 +110,7 @@ const KeySeparator = "/"
 ```
 
 <a name="CompareProviders"></a>
-## func [CompareProviders](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/catalog.go#L110>)
+## func [CompareProviders](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/catalog.go#L110>)
 
 ```go
 func CompareProviders(firstProvider, secondProvider Provider) int
@@ -119,7 +119,7 @@ func CompareProviders(firstProvider, secondProvider Provider) int
 CompareProviders sorts first\-party providers before aggregators, then by display name without regard to case.
 
 <a name="AdapterAPI"></a>
-## type [AdapterAPI](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/provconfig.go#L73-L84>)
+## type [AdapterAPI](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/provconfig.go#L73-L84>)
 
 AdapterAPI contains endpoints, polling settings, status values, and fallback extensions for an adapter.
 
@@ -150,7 +150,7 @@ type AdapterAPI struct {
 ```
 
 <a name="Catalog"></a>
-## type [Catalog](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/catalog.go#L24-L29>)
+## type [Catalog](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/catalog.go#L24-L29>)
 
 Catalog contains validated providers, their flag definitions, and individual loading failures.
 
@@ -166,7 +166,7 @@ type Catalog struct {
 ```
 
 <a name="LoadCatalog"></a>
-### func [LoadCatalog](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/catalog.go#L34>)
+### func [LoadCatalog](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/catalog.go#L34>)
 
 ```go
 func LoadCatalog(flags []params.Flag, sources ...Source) (*Catalog, error)
@@ -175,7 +175,7 @@ func LoadCatalog(flags []params.Flag, sources ...Source) (*Catalog, error)
 LoadCatalog loads provider descriptions in source order and validates them against flags. Individual configuration failures are retained in the catalog and exclude that provider; a source identity mismatch or a conflicting provider/model identifier or alias fails the load.
 
 <a name="Catalog.ConfigError"></a>
-### func \(\*Catalog\) [ConfigError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/catalog.go#L71>)
+### func \(\*Catalog\) [ConfigError](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/catalog.go#L71>)
 
 ```go
 func (catalog *Catalog) ConfigError(providerID string) error
@@ -184,7 +184,7 @@ func (catalog *Catalog) ConfigError(providerID string) error
 ConfigError returns a provider's stored loading failure, or nil when none was recorded.
 
 <a name="Catalog.DefaultModelKey"></a>
-### func \(\*Catalog\) [DefaultModelKey](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/catalog.go#L124>)
+### func \(\*Catalog\) [DefaultModelKey](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/catalog.go#L124>)
 
 ```go
 func (catalog *Catalog) DefaultModelKey(availableProviders map[string]bool) (string, bool)
@@ -193,7 +193,7 @@ func (catalog *Catalog) DefaultModelKey(availableProviders map[string]bool) (str
 DefaultModelKey returns the declared default of the first available provider in listing order. It reports false when no available provider declares a default.
 
 <a name="Catalog.ModelDirectory"></a>
-### func \(\*Catalog\) [ModelDirectory](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/catalog.go#L146>)
+### func \(\*Catalog\) [ModelDirectory](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/catalog.go#L146>)
 
 ```go
 func (catalog *Catalog) ModelDirectory() []ProvModelPair
@@ -202,7 +202,7 @@ func (catalog *Catalog) ModelDirectory() []ProvModelPair
 ModelDirectory returns the provider and model pairs of every loaded provider in load order, each carrying the provider's identity and a deep copy of the model.
 
 <a name="Catalog.Provider"></a>
-### func \(\*Catalog\) [Provider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/catalog.go#L76>)
+### func \(\*Catalog\) [Provider](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/catalog.go#L76>)
 
 ```go
 func (catalog *Catalog) Provider(providerID string) (Provider, bool)
@@ -211,7 +211,7 @@ func (catalog *Catalog) Provider(providerID string) (Provider, bool)
 Provider returns a deep copy of the named provider and whether it was loaded.
 
 <a name="Catalog.ResolveModelInput"></a>
-### func \(\*Catalog\) [ResolveModelInput](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/catalog.go#L87>)
+### func \(\*Catalog\) [ResolveModelInput](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/catalog.go#L87>)
 
 ```go
 func (catalog *Catalog) ResolveModelInput(modelSpecifier string) ([]ProvModelPair, error)
@@ -220,7 +220,7 @@ func (catalog *Catalog) ResolveModelInput(modelSpecifier string) ([]ProvModelPai
 ResolveModelInput returns the provider and model pairs named by a model specifier. It checks explicit provider/model pairs, aliases, then unqualified model identifiers.
 
 <a name="ImageAPI"></a>
-## type [ImageAPI](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/imageapi.go#L13-L23>)
+## type [ImageAPI](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/imageapi.go#L13-L23>)
 
 ImageAPI describes the endpoints and wire format for image generation.
 
@@ -249,7 +249,7 @@ type ImageAPI struct {
 ```
 
 <a name="InputMediaStyle"></a>
-## type [InputMediaStyle](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/inputmedia.go#L4>)
+## type [InputMediaStyle](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/inputmedia.go#L4>)
 
 InputMediaStyle identifies the request layout used for input media.
 
@@ -274,7 +274,7 @@ const (
 ```
 
 <a name="Model"></a>
-## type [Model](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/provider.go#L70-L80>)
+## type [Model](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/provider.go#L70-L80>)
 
 Model contains a model's identity, media kind, family, aliases, and accepted parameters.
 
@@ -303,7 +303,7 @@ type Model struct {
 ```
 
 <a name="Model.Param"></a>
-### func \(\*Model\) [Param](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/provider.go#L90>)
+### func \(\*Model\) [Param](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/provider.go#L90>)
 
 ```go
 func (model *Model) Param(flagName params.FlagType) (params.Definition, bool)
@@ -312,7 +312,7 @@ func (model *Model) Param(flagName params.FlagType) (params.Definition, bool)
 Param takes a flag name and returns its configuration and whether it is declared.
 
 <a name="Model.SupportsParam"></a>
-### func \(\*Model\) [SupportsParam](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/provider.go#L83>)
+### func \(\*Model\) [SupportsParam](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/provider.go#L83>)
 
 ```go
 func (model *Model) SupportsParam(flagName params.FlagType) bool
@@ -321,7 +321,7 @@ func (model *Model) SupportsParam(flagName params.FlagType) bool
 SupportsParam takes a parameter name and reports whether the model accepts it.
 
 <a name="PollSeconds"></a>
-## type [PollSeconds](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/poll.go#L9>)
+## type [PollSeconds](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/poll.go#L9>)
 
 PollSeconds is an interval or timeout expressed in whole seconds in a provider description.
 
@@ -330,7 +330,7 @@ type PollSeconds int
 ```
 
 <a name="PollSeconds.Duration"></a>
-### func \(PollSeconds\) [Duration](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/poll.go#L12>)
+### func \(PollSeconds\) [Duration](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/poll.go#L12>)
 
 ```go
 func (seconds PollSeconds) Duration() time.Duration
@@ -339,7 +339,7 @@ func (seconds PollSeconds) Duration() time.Duration
 Duration returns the configured number of seconds as a duration.
 
 <a name="ProvModelPair"></a>
-## type [ProvModelPair](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/search.go#L22-L25>)
+## type [ProvModelPair](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/search.go#L22-L25>)
 
 ProvModelPair contains a provider and one of its models.
 
@@ -354,7 +354,7 @@ type ProvModelPair struct {
 ```
 
 <a name="SearchDirectory"></a>
-### func [SearchDirectory](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/search.go#L59>)
+### func [SearchDirectory](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/search.go#L59>)
 
 ```go
 func SearchDirectory(pairs []ProvModelPair, searchTerm, excludeTerm string, useRegexp bool) ([]ProvModelPair, error)
@@ -363,7 +363,7 @@ func SearchDirectory(pairs []ProvModelPair, searchTerm, excludeTerm string, useR
 SearchDirectory selects matching pairs, applies exclusions, and preserves directory order. Prefix terms match key tokens or aliases without regard to case; regular expressions also match complete keys and return an error if invalid. Empty terms impose no filter, and searchResultLimit applies only when a nonempty search term is supplied.
 
 <a name="SelectMedia"></a>
-### func [SelectMedia](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/search.go#L43>)
+### func [SelectMedia](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/search.go#L43>)
 
 ```go
 func SelectMedia(pairs []ProvModelPair, imageSelected, videoSelected bool) []ProvModelPair
@@ -372,7 +372,7 @@ func SelectMedia(pairs []ProvModelPair, imageSelected, videoSelected bool) []Pro
 SelectMedia takes provider\-model pairs and the media selections, and returns the pairs whose model generates a selected medium, in input order.
 
 <a name="ProvModelPair.Label"></a>
-### func \(\*ProvModelPair\) [Label](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/search.go#L28>)
+### func \(\*ProvModelPair\) [Label](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/search.go#L28>)
 
 ```go
 func (pair *ProvModelPair) Label() string
@@ -381,7 +381,7 @@ func (pair *ProvModelPair) Label() string
 Label formats the provider and model identifiers for diagnostics.
 
 <a name="Provider"></a>
-## type [Provider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/provider.go#L20-L29>)
+## type [Provider](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/provider.go#L20-L29>)
 
 Provider contains the identity, models, and request settings declared by one provider configuration.
 
@@ -408,7 +408,7 @@ type Provider struct {
 ```
 
 <a name="Provider.Identity"></a>
-### func \(\*Provider\) [Identity](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/provider.go#L32>)
+### func \(\*Provider\) [Identity](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/provider.go#L32>)
 
 ```go
 func (p *Provider) Identity() Provider
@@ -417,7 +417,7 @@ func (p *Provider) Identity() Provider
 Identity returns the provider's identity without its models or request settings.
 
 <a name="ProviderConfig"></a>
-## type [ProviderConfig](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/provconfig.go#L54-L59>)
+## type [ProviderConfig](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/provconfig.go#L54-L59>)
 
 ProviderConfig contains the request settings consumed by generators.
 
@@ -436,7 +436,7 @@ type ProviderConfig struct {
 ```
 
 <a name="ProviderConfig.Clone"></a>
-### func \(\*ProviderConfig\) [Clone](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/provconfig.go#L318>)
+### func \(\*ProviderConfig\) [Clone](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/provconfig.go#L318>)
 
 ```go
 func (config *ProviderConfig) Clone() ProviderConfig
@@ -445,7 +445,7 @@ func (config *ProviderConfig) Clone() ProviderConfig
 Clone returns independent copies of the request settings and their nested collections.
 
 <a name="Source"></a>
-## type [Source](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/catalog.go#L16-L19>)
+## type [Source](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/catalog.go#L16-L19>)
 
 Source identifies an embedded provider description supplied by the command.
 
@@ -460,7 +460,7 @@ type Source struct {
 ```
 
 <a name="VideoAPI"></a>
-## type [VideoAPI](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/videoapi.go#L26-L49>)
+## type [VideoAPI](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/videoapi.go#L26-L49>)
 
 VideoAPI describes the endpoints, wire format, and polling settings for video generation.
 
@@ -515,7 +515,7 @@ type VideoAPI struct {
 ```
 
 <a name="VideoAPI.FrameFields"></a>
-### func \(\*VideoAPI\) [FrameFields](<https://github.com/shdeen/bildomat-dev/blob/main/internal/catalog/videoapi.go#L52>)
+### func \(\*VideoAPI\) [FrameFields](<https://github.com/shdeen/bildomat/blob/main/internal/catalog/videoapi.go#L52>)
 
 ```go
 func (api *VideoAPI) FrameFields() (present, complete bool)

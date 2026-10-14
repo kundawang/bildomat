@@ -53,7 +53,7 @@ var spinnerFrames = []rune(spinnerFrameRunes)
 ```
 
 <a name="ConfirmOneWordPrompt"></a>
-## func [ConfirmOneWordPrompt](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/prompt.go#L16>)
+## func [ConfirmOneWordPrompt](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/prompt.go#L16>)
 
 ```go
 func ConfirmOneWordPrompt(input io.Reader, destination io.Writer, prompt string, interactive, styled bool) (canceled bool, err error)
@@ -62,7 +62,7 @@ func ConfirmOneWordPrompt(input io.Reader, destination io.Writer, prompt string,
 ConfirmOneWordPrompt asks whether to submit a one\-word prompt when interaction is enabled. It reads one reply from input and treats n and no as cancellation, regardless of case. Prompt and input failures retain their original causes.
 
 <a name="EnableStyling"></a>
-## func [EnableStyling](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/styling_other.go#L8>)
+## func [EnableStyling](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/styling_other.go#L8>)
 
 ```go
 func EnableStyling(stream any) bool
@@ -71,7 +71,7 @@ func EnableStyling(stream any) bool
 EnableStyling reports whether the supplied stream is a terminal that renders styling escape sequences. On every platform other than Windows a terminal renders them as they are, so the answer is IsTerminal's.
 
 <a name="IsTerminal"></a>
-## func [IsTerminal](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/terminal.go#L12>)
+## func [IsTerminal](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/terminal.go#L12>)
 
 ```go
 func IsTerminal(stream any) bool
@@ -80,7 +80,7 @@ func IsTerminal(stream any) bool
 IsTerminal reports whether the supplied stream is an actual terminal file. Non\-file readers and writers, nil files, pipes, and ordinary devices return false.
 
 <a name="RepromptModel"></a>
-## func [RepromptModel](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/prompt.go#L35>)
+## func [RepromptModel](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/prompt.go#L35>)
 
 ```go
 func RepromptModel(input io.Reader, destination io.Writer, interactive, styled bool) (reply string, asked bool, err error)
@@ -89,7 +89,7 @@ func RepromptModel(input io.Reader, destination io.Writer, interactive, styled b
 RepromptModel asks for a replacement model when interaction is enabled. It reports whether it asked and preserves prompt or input failures.
 
 <a name="readReply"></a>
-## func [readReply](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/prompt.go#L51>)
+## func [readReply](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/prompt.go#L51>)
 
 ```go
 func readReply(input io.Reader) (string, error)
@@ -98,7 +98,7 @@ func readReply(input io.Reader) (string, error)
 readReply reads and trims one line without consuming bytes from a later reply. EOF returns the available reply; other read failures retain their cause.
 
 <a name="Spinner"></a>
-## type [Spinner](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/spinner.go#L27-L46>)
+## type [Spinner](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/spinner.go#L27-L46>)
 
 Spinner animates a generation status until completion, cancellation, or a write failure.
 
@@ -126,7 +126,7 @@ type Spinner struct {
 ```
 
 <a name="StartSpinner"></a>
-### func [StartSpinner](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/spinner.go#L50>)
+### func [StartSpinner](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/spinner.go#L50>)
 
 ```go
 func StartSpinner(ctx context.Context, destination io.Writer, mediaKind media.Kind) *Spinner
@@ -135,7 +135,7 @@ func StartSpinner(ctx context.Context, destination io.Writer, mediaKind media.Ki
 StartSpinner renders the first status frame and starts animation on destination. A write failure stops the animation without affecting generation.
 
 <a name="Spinner.Finish"></a>
-### func \(\*Spinner\) [Finish](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/spinner.go#L73>)
+### func \(\*Spinner\) [Finish](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/spinner.go#L73>)
 
 ```go
 func (spinner *Spinner) Finish() time.Duration
@@ -144,7 +144,7 @@ func (spinner *Spinner) Finish() time.Duration
 Finish stops and waits for animation, returning the elapsed duration. Repeated calls return the same duration without writing again.
 
 <a name="Spinner.animate"></a>
-### func \(\*Spinner\) [animate](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/spinner.go#L88>)
+### func \(\*Spinner\) [animate](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/spinner.go#L88>)
 
 ```go
 func (spinner *Spinner) animate(ctx context.Context)
@@ -153,7 +153,7 @@ func (spinner *Spinner) animate(ctx context.Context)
 animate advances frames until completion, cancellation, or a write failure. It then attempts to clear the status line.
 
 <a name="Spinner.render"></a>
-### func \(\*Spinner\) [render](<https://github.com/shdeen/bildomat-dev/blob/main/internal/terminal/spinner.go#L109>)
+### func \(\*Spinner\) [render](<https://github.com/shdeen/bildomat/blob/main/internal/terminal/spinner.go#L109>)
 
 ```go
 func (spinner *Spinner) render() error

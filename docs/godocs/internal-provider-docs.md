@@ -55,7 +55,7 @@ const (
 ```
 
 <a name="APIErr"></a>
-## func [APIErr](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/apierr.go#L23>)
+## func [APIErr](<https://github.com/shdeen/bildomat/blob/main/internal/provider/apierr.go#L23>)
 
 ```go
 func APIErr(provModelLabel string, status int, body []byte) error
@@ -64,7 +64,7 @@ func APIErr(provModelLabel string, status int, body []byte) error
 APIErr classifies an unsuccessful HTTP response and preserves a recognized server message. Otherwise it includes a bounded body excerpt. Statuses 429, 502, 503, and 504 are temporary.
 
 <a name="AdapterSettings"></a>
-## func [AdapterSettings](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/provider.go#L56>)
+## func [AdapterSettings](<https://github.com/shdeen/bildomat/blob/main/internal/provider/provider.go#L56>)
 
 ```go
 func AdapterSettings(providerDescription *catalog.Provider, providerID string) (*catalog.AdapterAPI, error)
@@ -73,7 +73,7 @@ func AdapterSettings(providerDescription *catalog.Provider, providerID string) (
 AdapterSettings returns an owned copy of the selected provider's adapter settings. A missing description or adapter section returns a configuration error naming providerID.
 
 <a name="CheckOwnedPaths"></a>
-## func [CheckOwnedPaths](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/requestpath.go#L14>)
+## func [CheckOwnedPaths](<https://github.com/shdeen/bildomat/blob/main/internal/provider/requestpath.go#L14>)
 
 ```go
 func CheckOwnedPaths(providerID string, model *catalog.Model, ownedPaths ...string) error
@@ -82,7 +82,7 @@ func CheckOwnedPaths(providerID string, model *catalog.Model, ownedPaths ...stri
 CheckOwnedPaths rejects configured assignments that overlap fields an adapter must construct. The adapter supplies its own protocol paths; generic configured\-path consistency is checked when the catalog is decoded.
 
 <a name="NewProvider"></a>
-## func [NewProvider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/provider.go#L30>)
+## func [NewProvider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/provider.go#L30>)
 
 ```go
 func NewProvider(providerDescription *catalog.Provider) (generation.Generator, error)
@@ -91,7 +91,7 @@ func NewProvider(providerDescription *catalog.Provider) (generation.Generator, e
 NewProvider validates the API sections required by the models and returns a generator with independent copies of the request settings.
 
 <a name="PollResponseError"></a>
-## func [PollResponseError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/apierr.go#L43>)
+## func [PollResponseError](<https://github.com/shdeen/bildomat/blob/main/internal/provider/apierr.go#L43>)
 
 ```go
 func PollResponseError(identity string, status int, body []byte, transportErr error) error
@@ -100,7 +100,7 @@ func PollResponseError(identity string, status int, body []byte, transportErr er
 PollResponseError combines an unsuccessful HTTP status with any transport error. A successful or unavailable status returns the transport error unchanged.
 
 <a name="WireParamValues"></a>
-## func [WireParamValues](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/payload.go#L89>)
+## func [WireParamValues](<https://github.com/shdeen/bildomat/blob/main/internal/provider/payload.go#L89>)
 
 ```go
 func WireParamValues(model *catalog.Model, gp params.Values, stringParams ...params.FlagType) map[string]any

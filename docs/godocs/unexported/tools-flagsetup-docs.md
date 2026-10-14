@@ -101,7 +101,7 @@ var (
 ```
 
 <a name="generate"></a>
-## func [generate](<https://github.com/shdeen/bildomat-dev/blob/main/tools/flagsetup/flagsetup.go#L94>)
+## func [generate](<https://github.com/shdeen/bildomat/blob/main/tools/flagsetup/flagsetup.go#L94>)
 
 ```go
 func generate(sourcePath, targetPath string) error
@@ -110,7 +110,7 @@ func generate(sourcePath, targetPath string) error
 generate validates and formats parameter records before writing targetPath. Failures identify the source or target and retain their error category and cause.
 
 <a name="invalidContentError"></a>
-## func [invalidContentError](<https://github.com/shdeen/bildomat-dev/blob/main/tools/flagsetup/flagsetup.go#L164>)
+## func [invalidContentError](<https://github.com/shdeen/bildomat/blob/main/tools/flagsetup/flagsetup.go#L164>)
 
 ```go
 func invalidContentError(sourcePath, faultForm string, faultValues ...any) error
@@ -119,7 +119,7 @@ func invalidContentError(sourcePath, faultForm string, faultValues ...any) error
 invalidContentError classifies a content fault and includes its source path and details.
 
 <a name="main"></a>
-## func [main](<https://github.com/shdeen/bildomat-dev/blob/main/tools/flagsetup/flagsetup.go#L85>)
+## func [main](<https://github.com/shdeen/bildomat/blob/main/tools/flagsetup/flagsetup.go#L85>)
 
 ```go
 func main()
@@ -128,7 +128,7 @@ func main()
 main generates parameter records and reports failures on stderr with a nonzero exit status.
 
 <a name="renderSource"></a>
-## func [renderSource](<https://github.com/shdeen/bildomat-dev/blob/main/tools/flagsetup/flagsetup.go#L170>)
+## func [renderSource](<https://github.com/shdeen/bildomat/blob/main/tools/flagsetup/flagsetup.go#L170>)
 
 ```go
 func renderSource(records []flagRecord) string
@@ -137,7 +137,7 @@ func renderSource(records []flagRecord) string
 renderSource returns unformatted Go literals in record order and preserves string values. It preserves the distinction between nil slices and explicitly empty slices.
 
 <a name="flagRecord"></a>
-## type [flagRecord](<https://github.com/shdeen/bildomat-dev/blob/main/tools/flagsetup/flagsetup.go#L72-L82>)
+## type [flagRecord](<https://github.com/shdeen/bildomat/blob/main/tools/flagsetup/flagsetup.go#L72-L82>)
 
 flagRecord is one record of the parameter flag document. Its fields mirror the document's keys, which are also the fields of params.Flag.
 
@@ -166,7 +166,7 @@ type flagRecord struct {
 ```
 
 <a name="readRecords"></a>
-### func [readRecords](<https://github.com/shdeen/bildomat-dev/blob/main/tools/flagsetup/flagsetup.go#L120>)
+### func [readRecords](<https://github.com/shdeen/bildomat/blob/main/tools/flagsetup/flagsetup.go#L120>)
 
 ```go
 func readRecords(sourcePath string, document []byte) ([]flagRecord, error)

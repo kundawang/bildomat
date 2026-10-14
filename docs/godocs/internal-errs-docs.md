@@ -433,7 +433,7 @@ var (
 ```
 
 <a name="Excerpt"></a>
-## func [Excerpt](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/excerpt.go#L7>)
+## func [Excerpt](<https://github.com/shdeen/bildomat/blob/main/internal/errs/excerpt.go#L7>)
 
 ```go
 func Excerpt(encodedData []byte) string
@@ -442,7 +442,7 @@ func Excerpt(encodedData []byte) string
 Excerpt returns a bounded prefix of encoded data for diagnostic messages.
 
 <a name="FileError"></a>
-## func [FileError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/file.go#L30>)
+## func [FileError](<https://github.com/shdeen/bildomat/blob/main/internal/errs/file.go#L30>)
 
 ```go
 func FileError(operation, path string, classification, cause error) *os.PathError
@@ -451,7 +451,7 @@ func FileError(operation, path string, classification, cause error) *os.PathErro
 FileError retains the affected path, operation classification, and original cause in a standard filesystem error that callers can inspect with errors.As.
 
 <a name="ConfigError"></a>
-## type [ConfigError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/config.go#L15-L21>)
+## type [ConfigError](<https://github.com/shdeen/bildomat/blob/main/internal/errs/config.go#L15-L21>)
 
 ConfigError identifies a configuration source, its owner or setting, and the specific problem. Cause preserves its classification and original error.
 
@@ -472,7 +472,7 @@ type ConfigError struct {
 ```
 
 <a name="ConfigError.Error"></a>
-### func \(\*ConfigError\) [Error](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/config.go#L24>)
+### func \(\*ConfigError\) [Error](<https://github.com/shdeen/bildomat/blob/main/internal/errs/config.go#L24>)
 
 ```go
 func (failure *ConfigError) Error() string
@@ -481,7 +481,7 @@ func (failure *ConfigError) Error() string
 Error returns the complete configuration diagnostic.
 
 <a name="ConfigError.Unwrap"></a>
-### func \(\*ConfigError\) [Unwrap](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/config.go#L45>)
+### func \(\*ConfigError\) [Unwrap](<https://github.com/shdeen/bildomat/blob/main/internal/errs/config.go#L45>)
 
 ```go
 func (failure *ConfigError) Unwrap() error
@@ -490,7 +490,7 @@ func (failure *ConfigError) Unwrap() error
 Unwrap retains the configuration classification and original cause.
 
 <a name="CredentialError"></a>
-## type [CredentialError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/credential.go#L9-L12>)
+## type [CredentialError](<https://github.com/shdeen/bildomat/blob/main/internal/errs/credential.go#L9-L12>)
 
 CredentialError names the environment variable and optional provider entry under api\-keys that can supply a missing credential. It never holds a secret.
 
@@ -505,7 +505,7 @@ type CredentialError struct {
 ```
 
 <a name="CredentialError.Error"></a>
-### func \(\*CredentialError\) [Error](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/credential.go#L15>)
+### func \(\*CredentialError\) [Error](<https://github.com/shdeen/bildomat/blob/main/internal/errs/credential.go#L15>)
 
 ```go
 func (failure *CredentialError) Error() string
@@ -514,7 +514,7 @@ func (failure *CredentialError) Error() string
 Error returns the available credential\-setting locations.
 
 <a name="CredentialError.Unwrap"></a>
-### func \(\*CredentialError\) [Unwrap](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/credential.go#L24>)
+### func \(\*CredentialError\) [Unwrap](<https://github.com/shdeen/bildomat/blob/main/internal/errs/credential.go#L24>)
 
 ```go
 func (*CredentialError) Unwrap() error
@@ -523,7 +523,7 @@ func (*CredentialError) Unwrap() error
 Unwrap identifies a missing credential.
 
 <a name="MediaError"></a>
-## type [MediaError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/media.go#L10-L14>)
+## type [MediaError](<https://github.com/shdeen/bildomat/blob/main/internal/errs/media.go#L10-L14>)
 
 MediaError identifies an input source or a specific media problem without requiring the renderer to recover either from a formatted diagnostic.
 
@@ -540,7 +540,7 @@ type MediaError struct {
 ```
 
 <a name="MediaError.Error"></a>
-### func \(\*MediaError\) [Error](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/media.go#L17>)
+### func \(\*MediaError\) [Error](<https://github.com/shdeen/bildomat/blob/main/internal/errs/media.go#L17>)
 
 ```go
 func (failure *MediaError) Error() string
@@ -549,7 +549,7 @@ func (failure *MediaError) Error() string
 Error returns the source and media diagnostic with its original cause.
 
 <a name="MediaError.Unwrap"></a>
-### func \(\*MediaError\) [Unwrap](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/media.go#L31>)
+### func \(\*MediaError\) [Unwrap](<https://github.com/shdeen/bildomat/blob/main/internal/errs/media.go#L31>)
 
 ```go
 func (failure *MediaError) Unwrap() error
@@ -558,7 +558,7 @@ func (failure *MediaError) Unwrap() error
 Unwrap retains the media classification and original cause.
 
 <a name="ModelError"></a>
-## type [ModelError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/model.go#L8-L11>)
+## type [ModelError](<https://github.com/shdeen/bildomat/blob/main/internal/errs/model.go#L8-L11>)
 
 ModelError retains the model specifier that could not be resolved.
 
@@ -573,7 +573,7 @@ type ModelError struct {
 ```
 
 <a name="ModelError.Error"></a>
-### func \(\*ModelError\) [Error](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/model.go#L14>)
+### func \(\*ModelError\) [Error](<https://github.com/shdeen/bildomat/blob/main/internal/errs/model.go#L14>)
 
 ```go
 func (failure *ModelError) Error() string
@@ -582,7 +582,7 @@ func (failure *ModelError) Error() string
 Error returns the rejected model specifier and its classification.
 
 <a name="ModelError.Unwrap"></a>
-### func \(\*ModelError\) [Unwrap](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/model.go#L19>)
+### func \(\*ModelError\) [Unwrap](<https://github.com/shdeen/bildomat/blob/main/internal/errs/model.go#L19>)
 
 ```go
 func (failure *ModelError) Unwrap() error
@@ -591,7 +591,7 @@ func (failure *ModelError) Unwrap() error
 Unwrap retains the model resolution classification.
 
 <a name="PollError"></a>
-## type [PollError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/poll.go#L10-L14>)
+## type [PollError](<https://github.com/shdeen/bildomat/blob/main/internal/errs/poll.go#L10-L14>)
 
 PollError identifies the existing remote resource whose observation failed. Model and Resource remain available to ordinary output independently of transport diagnostics in Cause.
 
@@ -608,7 +608,7 @@ type PollError struct {
 ```
 
 <a name="PollError.Error"></a>
-### func \(\*PollError\) [Error](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/poll.go#L17>)
+### func \(\*PollError\) [Error](<https://github.com/shdeen/bildomat/blob/main/internal/errs/poll.go#L17>)
 
 ```go
 func (failure *PollError) Error() string
@@ -617,7 +617,7 @@ func (failure *PollError) Error() string
 Error returns the operation identity and its classified cause.
 
 <a name="PollError.Unwrap"></a>
-### func \(\*PollError\) [Unwrap](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/poll.go#L22>)
+### func \(\*PollError\) [Unwrap](<https://github.com/shdeen/bildomat/blob/main/internal/errs/poll.go#L22>)
 
 ```go
 func (failure *PollError) Unwrap() error
@@ -626,7 +626,7 @@ func (failure *PollError) Unwrap() error
 Unwrap preserves the timeout, response, or transport cause.
 
 <a name="ProviderError"></a>
-## type [ProviderError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/provider.go#L9-L12>)
+## type [ProviderError](<https://github.com/shdeen/bildomat/blob/main/internal/errs/provider.go#L9-L12>)
 
 ProviderError carries the provider's explanation independently of outer request labels and other failures in the same error chain.
 
@@ -641,7 +641,7 @@ type ProviderError struct {
 ```
 
 <a name="ProviderError.Error"></a>
-### func \(\*ProviderError\) [Error](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/provider.go#L15>)
+### func \(\*ProviderError\) [Error](<https://github.com/shdeen/bildomat/blob/main/internal/errs/provider.go#L15>)
 
 ```go
 func (failure *ProviderError) Error() string
@@ -650,7 +650,7 @@ func (failure *ProviderError) Error() string
 Error returns the provider's explanation and classified cause.
 
 <a name="ProviderError.Unwrap"></a>
-### func \(\*ProviderError\) [Unwrap](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/provider.go#L20>)
+### func \(\*ProviderError\) [Unwrap](<https://github.com/shdeen/bildomat/blob/main/internal/errs/provider.go#L20>)
 
 ```go
 func (failure *ProviderError) Unwrap() error
@@ -659,7 +659,7 @@ func (failure *ProviderError) Unwrap() error
 Unwrap retains the response classification and original cause.
 
 <a name="UsageError"></a>
-## type [UsageError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/usage.go#L9-L12>)
+## type [UsageError](<https://github.com/shdeen/bildomat/blob/main/internal/errs/usage.go#L9-L12>)
 
 UsageError retains an actionable command\-line explanation and its cause. Text is product copy supplied by the command that rejected the input.
 
@@ -674,7 +674,7 @@ type UsageError struct {
 ```
 
 <a name="UsageError.Error"></a>
-### func \(\*UsageError\) [Error](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/usage.go#L15>)
+### func \(\*UsageError\) [Error](<https://github.com/shdeen/bildomat/blob/main/internal/errs/usage.go#L15>)
 
 ```go
 func (failure *UsageError) Error() string
@@ -683,7 +683,7 @@ func (failure *UsageError) Error() string
 Error returns the command explanation and diagnostic cause.
 
 <a name="UsageError.Unwrap"></a>
-### func \(\*UsageError\) [Unwrap](<https://github.com/shdeen/bildomat-dev/blob/main/internal/errs/usage.go#L18>)
+### func \(\*UsageError\) [Unwrap](<https://github.com/shdeen/bildomat/blob/main/internal/errs/usage.go#L18>)
 
 ```go
 func (failure *UsageError) Unwrap() error

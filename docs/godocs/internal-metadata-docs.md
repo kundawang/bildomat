@@ -58,7 +58,7 @@ const (
 ```
 
 <a name="BinaryField"></a>
-## type [BinaryField](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/binary.go#L53-L57>)
+## type [BinaryField](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/binary.go#L53-L57>)
 
 BinaryField declares a base64 value at a JSON path; an asterisk matches one path segment.
 
@@ -75,7 +75,7 @@ type BinaryField struct {
 ```
 
 <a name="Call"></a>
-## type [Call](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L136-L145>)
+## type [Call](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L136-L145>)
 
 Call records an actual submitted request, excluding authentication headers.
 
@@ -98,7 +98,7 @@ type Call struct {
 ```
 
 <a name="File"></a>
-## type [File](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L181-L186>)
+## type [File](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L181-L186>)
 
 File describes generated media successfully saved to its final path.
 
@@ -116,7 +116,7 @@ type File struct {
 ```
 
 <a name="Input"></a>
-## type [Input](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L121-L126>)
+## type [Input](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L121-L126>)
 
 Input describes a prepared input; its data is retained through the submitted payload, without embedding the bytes a second time.
 
@@ -135,7 +135,7 @@ type Input struct {
 ```
 
 <a name="Record"></a>
-## type [Record](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L66-L91>)
+## type [Record](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L66-L91>)
 
 Record contains the retained facts of one generation. Its unexported state owns binary copies independently of provider artifact cleanup.
 
@@ -177,7 +177,7 @@ type Record struct {
 ```
 
 <a name="New"></a>
-### func [New](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L200>)
+### func [New](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L200>)
 
 ```go
 func New(provider, model, version, prompt string, started time.Time) *Record
@@ -186,7 +186,7 @@ func New(provider, model, version, prompt string, started time.Time) *Record
 New creates the record for one generation.
 
 <a name="Read"></a>
-### func [Read](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L438>)
+### func [Read](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L438>)
 
 ```go
 func Read(path string) (*Record, error)
@@ -195,7 +195,7 @@ func Read(path string) (*Record, error)
 Read loads a generation record and validates its schema and required fields.
 
 <a name="Record.Begin"></a>
-### func \(\*Record\) [Begin](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L244>)
+### func \(\*Record\) [Begin](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L244>)
 
 ```go
 func (record *Record) Begin(method, endpoint, contentType string, body []byte) int
@@ -204,7 +204,7 @@ func (record *Record) Begin(method, endpoint, contentType string, body []byte) i
 Begin records the actual payload before a provider request is sent. A nil receiver leaves persistence disabled and returns an unused request index.
 
 <a name="Record.Describe"></a>
-### func \(\*Record\) [Describe](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L219>)
+### func \(\*Record\) [Describe](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L219>)
 
 ```go
 func (record *Record) Describe(supplied json.RawMessage, sources []string)
@@ -213,7 +213,7 @@ func (record *Record) Describe(supplied json.RawMessage, sources []string)
 Describe assigns supplied options and input sources to the record without copying them.
 
 <a name="Record.Prepared"></a>
-### func \(\*Record\) [Prepared](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L229>)
+### func \(\*Record\) [Prepared](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L229>)
 
 ```go
 func (record *Record) Prepared(inputs []media.Input)
@@ -222,7 +222,7 @@ func (record *Record) Prepared(inputs []media.Input)
 Prepared records the inputs actually passed to the request builder and makes unchanged local files available for exact\-content matching during persistence.
 
 <a name="Record.ProviderFinished"></a>
-### func \(\*Record\) [ProviderFinished](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L340>)
+### func \(\*Record\) [ProviderFinished](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L340>)
 
 ```go
 func (record *Record) ProviderFinished(generationErr error)
@@ -231,7 +231,7 @@ func (record *Record) ProviderFinished(generationErr error)
 ProviderFinished distinguishes provider execution from later local write errors.
 
 <a name="Record.Receive"></a>
-### func \(\*Record\) [Receive](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L260>)
+### func \(\*Record\) [Receive](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L260>)
 
 ```go
 func (record *Record) Receive(requestIndex int, responseType string, status int, contentType string, body []byte, captureErr error)
@@ -240,7 +240,7 @@ func (record *Record) Receive(requestIndex int, responseType string, status int,
 Receive records a response before execution narrows its JSON shape.
 
 <a name="Record.ReceiveFile"></a>
-### func \(\*Record\) [ReceiveFile](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L294>)
+### func \(\*Record\) [ReceiveFile](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L294>)
 
 ```go
 func (record *Record) ReceiveFile(requestIndex, status int, contentType, path string, captureErr error)
@@ -249,7 +249,7 @@ func (record *Record) ReceiveFile(requestIndex, status int, contentType, path st
 ReceiveFile retains a downloaded body independently of the artifact's temporary file. The saved response later references its actual final file.
 
 <a name="Record.RequestFailed"></a>
-### func \(\*Record\) [RequestFailed](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L322>)
+### func \(\*Record\) [RequestFailed](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L322>)
 
 ```go
 func (record *Record) RequestFailed(requestIndex int, requestErr error)
@@ -258,7 +258,7 @@ func (record *Record) RequestFailed(requestIndex int, requestErr error)
 RequestFailed records a request that received no response.
 
 <a name="Record.Retain"></a>
-### func \(\*Record\) [Retain](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L331>)
+### func \(\*Record\) [Retain](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L331>)
 
 ```go
 func (record *Record) Retain(provider, model string, values json.RawMessage)
@@ -267,7 +267,7 @@ func (record *Record) Retain(provider, model string, values json.RawMessage)
 Retain adds provider\-specific values for subsequent requests.
 
 <a name="Record.Save"></a>
-### func \(\*Record\) [Save](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L350>)
+### func \(\*Record\) [Save](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L350>)
 
 ```go
 func (record *Record) Save(dir, stem string, files []artifact.SavedFile, generationErr error) (string, error)
@@ -276,7 +276,7 @@ func (record *Record) Save(dir, stem string, files []artifact.SavedFile, generat
 Save finishes the record and writes it beside the supplied final artifact paths. It also saves unmatched binary content and returns the record path with any persistence errors.
 
 <a name="Record.SetFields"></a>
-### func \(\*Record\) [SetFields](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L210>)
+### func \(\*Record\) [SetFields](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L210>)
 
 ```go
 func (record *Record) SetFields(requestFields, responseFields []BinaryField)
@@ -285,7 +285,7 @@ func (record *Record) SetFields(requestFields, responseFields []BinaryField)
 SetFields assigns provider\-declared binary fields to the record without copying the slices. Explicit data URIs are recognized even without a declaration.
 
 <a name="Request"></a>
-## type [Request](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L103-L111>)
+## type [Request](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L103-L111>)
 
 Request distinguishes the supplied options, adjusted options, prepared inputs, and exact submitted HTTP payloads of one generation.
 
@@ -309,7 +309,7 @@ type Request struct {
 ```
 
 <a name="Response"></a>
-## type [Response](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L160-L173>)
+## type [Response](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L160-L173>)
 
 Response retains one full provider body before its execution\-specific decode.
 
@@ -341,7 +341,7 @@ type Response struct {
 ```
 
 <a name="ReturnValue"></a>
-## type [ReturnValue](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/record.go#L193-L197>)
+## type [ReturnValue](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/record.go#L193-L197>)
 
 ReturnValue keeps a provider's own retained shape separate from generic facts.
 
@@ -357,7 +357,7 @@ type ReturnValue struct {
 ```
 
 <a name="Reuse"></a>
-## type [Reuse](<https://github.com/shdeen/bildomat-dev/blob/main/internal/metadata/reuse.go#L7-L10>)
+## type [Reuse](<https://github.com/shdeen/bildomat/blob/main/internal/metadata/reuse.go#L7-L10>)
 
 Reuse contains one provisional reuse selection loaded by the command. Its syntax and retained format are experimental and subject to change.
 

@@ -106,7 +106,7 @@ var ConfigJSON []byte
 ```
 
 <a name="NewProvider"></a>
-## func [NewProvider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/sourceful.go#L40>)
+## func [NewProvider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/sourceful.go#L40>)
 
 ```go
 func NewProvider(providerDescription *catalog.Provider) (generation.Generator, error)
@@ -115,7 +115,7 @@ func NewProvider(providerDescription *catalog.Provider) (generation.Generator, e
 NewProvider returns a generator with independent adapter settings. It rejects missing settings and configured paths that overwrite required request fields.
 
 <a name="buildRequestBody"></a>
-## func [buildRequestBody](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/generate.go#L54>)
+## func [buildRequestBody](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/generate.go#L54>)
 
 ```go
 func buildRequestBody(generationRequest *generation.Generation) map[string]any
@@ -124,7 +124,7 @@ func buildRequestBody(generationRequest *generation.Generation) map[string]any
 buildRequestBody returns a Sourceful request with a fresh idempotency key.
 
 <a name="creationJobID"></a>
-## func [creationJobID](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/generate.go#L91>)
+## func [creationJobID](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/generate.go#L91>)
 
 ```go
 func creationJobID(responseBody []byte, providerModelName string) (string, error)
@@ -133,7 +133,7 @@ func creationJobID(responseBody []byte, providerModelName string) (string, error
 creationJobID returns the required job ID from a creation response. Missing or incompatible identifiers retain missing\-data classification and any decoding cause.
 
 <a name="generationRoute"></a>
-## func [generationRoute](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/generate.go#L45>)
+## func [generationRoute](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/generate.go#L45>)
 
 ```go
 func generationRoute(modelFamily string) string
@@ -142,7 +142,7 @@ func generationRoute(modelFamily string) string
 generationRoute selects the generation and polling route from the configured model family.
 
 <a name="creationData"></a>
-## type [creationData](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/generate.go#L84-L87>)
+## type [creationData](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/generate.go#L84-L87>)
 
 creationData decodes the required creation job identifier.
 
@@ -154,7 +154,7 @@ type creationData struct {
 ```
 
 <a name="generator"></a>
-## type [generator](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/sourceful.go#L34-L36>)
+## type [generator](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/sourceful.go#L34-L36>)
 
 generator holds the Sourceful request settings.
 
@@ -167,7 +167,7 @@ type generator struct {
 ```
 
 <a name="generator.AdjustParams"></a>
-### func \(\*generator\) [AdjustParams](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/sourceful.go#L56>)
+### func \(\*generator\) [AdjustParams](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/sourceful.go#L56>)
 
 ```go
 func (*generator) AdjustParams(model *catalog.Model, flagInputs params.FlagInputs, mediaInputs []media.Input, _ *metadata.Reuse) (generation.Preparation, error)
@@ -176,7 +176,7 @@ func (*generator) AdjustParams(model *catalog.Model, flagInputs params.FlagInput
 AdjustParams returns the Sourceful generation parameters and adjustment records.
 
 <a name="generator.Generate"></a>
-### func \(\*generator\) [Generate](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/sourceful.go#L68>)
+### func \(\*generator\) [Generate](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/sourceful.go#L68>)
 
 ```go
 func (sourceful *generator) Generate(ctx context.Context, generationRequest *generation.Generation) (generation.Result, error)
@@ -185,7 +185,7 @@ func (sourceful *generator) Generate(ctx context.Context, generationRequest *gen
 Generate creates a Sourceful job, waits for completion, and downloads its images.
 
 <a name="generator.createJob"></a>
-### func \(\*generator\) [createJob](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/sourceful.go#L90>)
+### func \(\*generator\) [createJob](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/sourceful.go#L90>)
 
 ```go
 func (sourceful *generator) createJob(ctx context.Context, apiCredential httpapi.AuthCredential, providerModelName string, generationRequest *generation.Generation) (string, error)
@@ -194,7 +194,7 @@ func (sourceful *generator) createJob(ctx context.Context, apiCredential httpapi
 createJob posts a text or image generation request and returns its job ID.
 
 <a name="generator.fetchResult"></a>
-### func \(\*generator\) [fetchResult](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/sourceful.go#L117>)
+### func \(\*generator\) [fetchResult](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/sourceful.go#L117>)
 
 ```go
 func (sourceful *generator) fetchResult(ctx context.Context, apiCredential httpapi.AuthCredential, providerModelName, jobID, modelFamily string, record *metadata.Record) ([]artifact.Media, error)
@@ -203,7 +203,7 @@ func (sourceful *generator) fetchResult(ctx context.Context, apiCredential httpa
 fetchResult waits for completion and downloads every ready image. A failed download cleans up the temporary files from earlier downloads.
 
 <a name="jobArtifact"></a>
-## type [jobArtifact](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L51-L60>)
+## type [jobArtifact](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L51-L60>)
 
 jobArtifact decodes one version 2 artifact and retains its download information.
 
@@ -221,7 +221,7 @@ type jobArtifact struct {
 ```
 
 <a name="jobData"></a>
-## type [jobData](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L41-L48>)
+## type [jobData](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L41-L48>)
 
 jobData decodes the job and alternate result locations in a status response.
 
@@ -237,7 +237,7 @@ type jobData struct {
 ```
 
 <a name="jobPoll"></a>
-## type [jobPoll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L30-L38>)
+## type [jobPoll](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L30-L38>)
 
 jobPoll tracks one Sourceful generation job.
 
@@ -262,7 +262,7 @@ type jobPoll struct {
 ```
 
 <a name="jobPoll.Poll"></a>
-### func \(\*jobPoll\) [Poll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L81>)
+### func \(\*jobPoll\) [Poll](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L81>)
 
 ```go
 func (sourcefulPoll *jobPoll) Poll(ctx context.Context) (jobDone bool, err error)
@@ -271,7 +271,7 @@ func (sourcefulPoll *jobPoll) Poll(ctx context.Context) (jobDone bool, err error
 Poll retrieves the job status and retains image URLs and MIME types after valid completion.
 
 <a name="jobPoll.classifyJobResponse"></a>
-### func \(\*jobPoll\) [classifyJobResponse](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L94>)
+### func \(\*jobPoll\) [classifyJobResponse](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L94>)
 
 ```go
 func (sourcefulPoll *jobPoll) classifyJobResponse(responseBody []byte) (bool, error)
@@ -280,7 +280,7 @@ func (sourcefulPoll *jobPoll) classifyJobResponse(responseBody []byte) (bool, er
 classifyJobResponse returns whether the job completed and stores validated output in the poller. Missing, failed, and unknown statuses return classified errors.
 
 <a name="jobPoll.completedArtifacts"></a>
-### func \(\*jobPoll\) [completedArtifacts](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L164>)
+### func \(\*jobPoll\) [completedArtifacts](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L164>)
 
 ```go
 func (sourcefulPoll *jobPoll) completedArtifacts(encodedArtifacts json.RawMessage) (bool, error)
@@ -289,7 +289,7 @@ func (sourcefulPoll *jobPoll) completedArtifacts(encodedArtifacts json.RawMessag
 completedArtifacts retains all ready image outputs in provider order. A ready image without a URL, or a completed job without any ready image, is an incomplete result.
 
 <a name="jobPoll.completedResult"></a>
-### func \(\*jobPoll\) [completedResult](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L139>)
+### func \(\*jobPoll\) [completedResult](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L139>)
 
 ```go
 func (sourcefulPoll *jobPoll) completedResult(primary, alternate json.RawMessage) (bool, error)
@@ -298,7 +298,7 @@ func (sourcefulPoll *jobPoll) completedResult(primary, alternate json.RawMessage
 completedResult stores a completed output URL and optional MIME type in the poller. Each primary string takes precedence independently, including empty strings; a missing or empty resolved URL returns an error.
 
 <a name="jobRecord"></a>
-## type [jobRecord](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L63-L70>)
+## type [jobRecord](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L63-L70>)
 
 jobRecord preserves the types and presence of a job's status and result fields.
 
@@ -314,7 +314,7 @@ type jobRecord struct {
 ```
 
 <a name="responseEnvelope"></a>
-## type [responseEnvelope](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/generate.go#L78-L81>)
+## type [responseEnvelope](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/generate.go#L78-L81>)
 
 responseEnvelope retains the data object shared by creation and job responses.
 
@@ -326,7 +326,7 @@ type responseEnvelope struct {
 ```
 
 <a name="resultOutput"></a>
-## type [resultOutput](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L73-L78>)
+## type [resultOutput](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L73-L78>)
 
 resultOutput preserves the types of an output URL and optional MIME value.
 
@@ -340,7 +340,7 @@ type resultOutput struct {
 ```
 
 <a name="decodeResultOutput"></a>
-### func [decodeResultOutput](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/sourceful/poll.go#L196>)
+### func [decodeResultOutput](<https://github.com/shdeen/bildomat/blob/main/internal/provider/sourceful/poll.go#L196>)
 
 ```go
 func decodeResultOutput(encodedResult json.RawMessage) resultOutput

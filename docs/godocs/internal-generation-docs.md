@@ -42,7 +42,7 @@ const (
 ```
 
 <a name="ConformInputMedia"></a>
-## func [ConformInputMedia](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/conform.go#L23>)
+## func [ConformInputMedia](<https://github.com/shdeen/bildomat/blob/main/internal/generation/conform.go#L23>)
 
 ```go
 func ConformInputMedia(model *catalog.Model, parameterValues params.Values, mediaInputs []media.Input) ([]params.Adjustment, error)
@@ -51,7 +51,7 @@ func ConformInputMedia(model *catalog.Model, parameterValues params.Values, medi
 ConformInputMedia updates the supplied parameters and media slice to satisfy image dimensions. It records actual changes, retaining completed changes if a later image fails. An unresolved first image defers size adoption until its bytes become available.
 
 <a name="DropFramePrefixes"></a>
-## func [DropFramePrefixes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frame.go#L13>)
+## func [DropFramePrefixes](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frame.go#L13>)
 
 ```go
 func DropFramePrefixes(mediaInputs []media.Input) []params.Adjustment
@@ -60,7 +60,7 @@ func DropFramePrefixes(mediaInputs []media.Input) []params.Adjustment
 DropFramePrefixes clears frame markers in the supplied media slice and records each removal. The underlying media and bare sources remain unchanged.
 
 <a name="ResolveFrameAnchors"></a>
-## func [ResolveFrameAnchors](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frame.go#L39>)
+## func [ResolveFrameAnchors](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frame.go#L39>)
 
 ```go
 func ResolveFrameAnchors(mediaInputs []media.Input, parameterValues params.Values) ([]params.Adjustment, error)
@@ -69,7 +69,7 @@ func ResolveFrameAnchors(mediaInputs []media.Input, parameterValues params.Value
 ResolveFrameAnchors replaces numeric frame times in the supplied media with first/last anchors and records actual snaps. It rejects frame markers on video, conflicting anchors or times, and requests exceeding the two available frames.
 
 <a name="SelectSources"></a>
-## func [SelectSources](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/paramchange.go#L35>)
+## func [SelectSources](<https://github.com/shdeen/bildomat/blob/main/internal/generation/paramchange.go#L35>)
 
 ```go
 func SelectSources(sources []string, model *catalog.Model) []string
@@ -78,7 +78,7 @@ func SelectSources(sources []string, model *catalog.Model) []string
 SelectSources returns only the arguments a model retains, before any source is opened.
 
 <a name="Generation"></a>
-## type [Generation](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/generator.go#L64-L71>)
+## type [Generation](<https://github.com/shdeen/bildomat/blob/main/internal/generation/generator.go#L64-L71>)
 
 Generation contains the selected model and prepared inputs for one provider request.
 
@@ -100,7 +100,7 @@ type Generation struct {
 ```
 
 <a name="Generator"></a>
-## type [Generator](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/generator.go#L18-L21>)
+## type [Generator](<https://github.com/shdeen/bildomat/blob/main/internal/generation/generator.go#L18-L21>)
 
 Generator prepares a model's retained inputs and generates its artifacts.
 
@@ -115,7 +115,7 @@ type Generator interface {
 ```
 
 <a name="Preparation"></a>
-## type [Preparation](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/generator.go#L29-L34>)
+## type [Preparation](<https://github.com/shdeen/bildomat/blob/main/internal/generation/generator.go#L29-L34>)
 
 Preparation owns the values and media records to be submitted to a provider. Bytes and timestamps referenced by InputMedia remain immutable; transformations replace them.
 
@@ -134,7 +134,7 @@ type Preparation struct {
 ```
 
 <a name="AdjustGeneration"></a>
-### func [AdjustGeneration](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/paramchange.go#L50>)
+### func [AdjustGeneration](<https://github.com/shdeen/bildomat/blob/main/internal/generation/paramchange.go#L50>)
 
 ```go
 func AdjustGeneration(model *catalog.Model, inputs params.FlagInputs, mediaInputs []media.Input) (Preparation, error)
@@ -143,7 +143,7 @@ func AdjustGeneration(model *catalog.Model, inputs params.FlagInputs, mediaInput
 AdjustGeneration selects owned media records and applies common scalar adjustments once. Completed records survive any later scalar failure, in their established presentation order.
 
 <a name="Preparation.Clone"></a>
-### func \(\*Preparation\) [Clone](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/generator.go#L38>)
+### func \(\*Preparation\) [Clone](<https://github.com/shdeen/bildomat/blob/main/internal/generation/generator.go#L38>)
 
 ```go
 func (preparedGeneration *Preparation) Clone() Preparation
@@ -152,7 +152,7 @@ func (preparedGeneration *Preparation) Clone() Preparation
 Clone copies parameter values, media records, and adjustment records for independent mutation. Media bytes and timestamps remain shared and must stay immutable.
 
 <a name="Result"></a>
-## type [Result](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/result.go#L9-L13>)
+## type [Result](<https://github.com/shdeen/bildomat/blob/main/internal/generation/result.go#L9-L13>)
 
 Result contains the outputs from one provider request.
 

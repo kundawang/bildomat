@@ -37,7 +37,7 @@ const (
 ```
 
 <a name="DownloadInputMedia"></a>
-## func [DownloadInputMedia](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/inputmedia.go#L111>)
+## func [DownloadInputMedia](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/inputmedia.go#L111>)
 
 ```go
 func DownloadInputMedia(ctx context.Context, mediaInputs []media.Input) ([]media.Input, error)
@@ -46,7 +46,7 @@ func DownloadInputMedia(ctx context.Context, mediaInputs []media.Input) ([]media
 DownloadInputMedia downloads URL inputs without credentials into a copied media slice. It preserves source order and leaves format compatibility to the receiving provider. On failure it returns completed downloads and untouched remaining inputs without mutating the caller's slice.
 
 <a name="Fetch"></a>
-## func [Fetch](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/download.go#L19>)
+## func [Fetch](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/download.go#L19>)
 
 ```go
 func Fetch(ctx context.Context, endpoint string, credential AuthCredential, fallbackExt string, record *metadata.Record) (artifact.Media, error)
@@ -55,7 +55,7 @@ func Fetch(ctx context.Context, endpoint string, credential AuthCredential, fall
 Fetch streams generated media into a temporary file that the caller owns. On failure it removes that file and returns no media. A nonnil record retains received bytes.
 
 <a name="GetAuth"></a>
-## func [GetAuth](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L64>)
+## func [GetAuth](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L64>)
 
 ```go
 func GetAuth(ctx context.Context, endpoint string, credential AuthCredential, responseType string, record *metadata.Record) (status int, respBody []byte, err error)
@@ -64,7 +64,7 @@ func GetAuth(ctx context.Context, endpoint string, credential AuthCredential, re
 GetAuth retrieves an endpoint with the credential and returns its status and bounded body. A nonnil record captures the transaction; responseType labels the response as a poll or direct retrieval.
 
 <a name="Poll"></a>
-## func [Poll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/poll.go#L20>)
+## func [Poll](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/poll.go#L20>)
 
 ```go
 func Poll(ctx context.Context, pace, pollBudget time.Duration, poller jobPoll) error
@@ -73,7 +73,7 @@ func Poll(ctx context.Context, pace, pollBudget time.Duration, poller jobPoll) e
 Poll checks a job at fixed intervals until it completes, the context ends, or the polling budget expires. The caller may read its poller's completed result only after Poll succeeds.
 
 <a name="PostJSON"></a>
-## func [PostJSON](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L46>)
+## func [PostJSON](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L46>)
 
 ```go
 func PostJSON(ctx context.Context, endpoint string, credential AuthCredential, body any, record *metadata.Record) (status int, respBody []byte, err error)
@@ -82,7 +82,7 @@ func PostJSON(ctx context.Context, endpoint string, credential AuthCredential, b
 PostJSON sends body as JSON and returns the response status and body. When record is nonnil, it captures the actual request and full bounded response.
 
 <a name="ResolveInputMediaTypes"></a>
-## func [ResolveInputMediaTypes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/inputmedia.go#L30>)
+## func [ResolveInputMediaTypes](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/inputmedia.go#L30>)
 
 ```go
 func ResolveInputMediaTypes(ctx context.Context, mediaInputs []media.Input) ([]media.Input, error)
@@ -91,7 +91,7 @@ func ResolveInputMediaTypes(ctx context.Context, mediaInputs []media.Input) ([]m
 ResolveInputMediaTypes returns copies with unresolved remote media identified. It tries HTTP metadata, then a bounded content sample, without provider credentials. Source URLs, existing metadata, bytes, and frame information remain unchanged. A source that cannot be read or identified returns a classified input error.
 
 <a name="SendBody"></a>
-## func [SendBody](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L57>)
+## func [SendBody](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L57>)
 
 ```go
 func SendBody(ctx context.Context, endpoint string, credential AuthCredential, contentType string, body []byte, record *metadata.Record) (status int, respBody []byte, err error)
@@ -100,7 +100,7 @@ func SendBody(ctx context.Context, endpoint string, credential AuthCredential, c
 SendBody posts a prepared body and returns the response status and bounded body. A nonnil record captures the request, response, and any transfer failure.
 
 <a name="AuthCredential"></a>
-## type [AuthCredential](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/auth.go#L12>)
+## type [AuthCredential](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/auth.go#L12>)
 
 AuthCredential contains an HTTP header credential.
 
@@ -112,7 +112,7 @@ type AuthCredential struct{ HeaderName, Value string }
 ```
 
 <a name="Bearer"></a>
-### func [Bearer](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/auth.go#L15>)
+### func [Bearer](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/auth.go#L15>)
 
 ```go
 func Bearer(apiKey string) AuthCredential
@@ -121,7 +121,7 @@ func Bearer(apiKey string) AuthCredential
 Bearer returns an Authorization header credential containing an API key.
 
 <a name="CredentialForURL"></a>
-### func [CredentialForURL](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/auth.go#L33>)
+### func [CredentialForURL](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/auth.go#L33>)
 
 ```go
 func CredentialForURL(candidateURL, apiBase string, credential AuthCredential) AuthCredential
@@ -130,7 +130,7 @@ func CredentialForURL(candidateURL, apiBase string, credential AuthCredential) A
 CredentialForURL returns the credential only when the candidate and API base have the same origin. An invalid or nonabsolute candidate, or an origin mismatch, receives no credential.
 
 <a name="HeaderCred"></a>
-### func [HeaderCred](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/auth.go#L20>)
+### func [HeaderCred](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/auth.go#L20>)
 
 ```go
 func HeaderCred(header, apiKey string) AuthCredential

@@ -120,7 +120,7 @@ var ConfigJSON []byte
 ```
 
 <a name="NewProvider"></a>
-## func [NewProvider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/bfl.go#L37>)
+## func [NewProvider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/bfl.go#L37>)
 
 ```go
 func NewProvider(providerDescription *catalog.Provider) (generation.Generator, error)
@@ -129,7 +129,7 @@ func NewProvider(providerDescription *catalog.Provider) (generation.Generator, e
 NewProvider returns a generator with owned adapter settings, or a missing\-description error.
 
 <a name="addImageInputs"></a>
-## func [addImageInputs](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L235>)
+## func [addImageInputs](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L235>)
 
 ```go
 func addImageInputs(requestDocument map[string]any, model *catalog.Model, mediaInputs []media.Input) error
@@ -138,7 +138,7 @@ func addImageInputs(requestDocument map[string]any, model *catalog.Model, mediaI
 addImageInputs writes an image array, a single declared field, or indexed fields. It rejects videos, timed inputs, and multiple inputs for a single field.
 
 <a name="addVideoInputs"></a>
-## func [addVideoInputs](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L203>)
+## func [addVideoInputs](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L203>)
 
 ```go
 func addVideoInputs(requestDocument map[string]any, mediaInputs []media.Input, parameterValues params.Values) error
@@ -147,7 +147,7 @@ func addVideoInputs(requestDocument map[string]any, mediaInputs []media.Input, p
 addVideoInputs writes continuation media or image keyframes and their mode into the body. It rejects mixed media, multiple videos, and timed continuation videos.
 
 <a name="addVideoToolInput"></a>
-## func [addVideoToolInput](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L305>)
+## func [addVideoToolInput](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L305>)
 
 ```go
 func addVideoToolInput(requestDocument map[string]any, inputField string, mediaInputs []media.Input) error
@@ -156,7 +156,7 @@ func addVideoToolInput(requestDocument map[string]any, inputField string, mediaI
 addVideoToolInput writes one whole video at the model's declared input field.
 
 <a name="buildKeyframes"></a>
-## func [buildKeyframes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L15>)
+## func [buildKeyframes](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L15>)
 
 ```go
 func buildKeyframes(imageInputs []media.Input, parameterValues params.Values) ([]any, error)
@@ -165,7 +165,7 @@ func buildKeyframes(imageInputs []media.Input, parameterValues params.Values) ([
 buildKeyframes returns media strings when no frame has an explicit time. Otherwise it fills missing times and returns validated time/media pairs.
 
 <a name="checkKeyframeTimes"></a>
-## func [checkKeyframeTimes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L101>)
+## func [checkKeyframeTimes](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L101>)
 
 ```go
 func checkKeyframeTimes(times []float64, durationSeconds float64) error
@@ -174,7 +174,7 @@ func checkKeyframeTimes(times []float64, durationSeconds float64) error
 checkKeyframeTimes takes the frame times and the duration and fails on a time below zero, above the duration, or not later than the time before it.
 
 <a name="classifyPollStatus"></a>
-## func [classifyPollStatus](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/poll.go#L72>)
+## func [classifyPollStatus](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/poll.go#L72>)
 
 ```go
 func classifyPollStatus(adapterAPI *catalog.AdapterAPI, jobID string, response pollResp) (complete bool, err error)
@@ -183,7 +183,7 @@ func classifyPollStatus(adapterAPI *catalog.AdapterAPI, jobID string, response p
 classifyPollStatus accepts completion only when the response contains a sample URL.
 
 <a name="compareFrameOrder"></a>
-## func [compareFrameOrder](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L171>)
+## func [compareFrameOrder](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L171>)
 
 ```go
 func compareFrameOrder(a, b media.Input) int
@@ -192,7 +192,7 @@ func compareFrameOrder(a, b media.Input) int
 compareFrameOrder orders media inputs by frame anchor: the opening image first, unanchored media between, and the closing image last.
 
 <a name="errorDetails"></a>
-## func [errorDetails](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/poll.go#L103>)
+## func [errorDetails](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/poll.go#L103>)
 
 ```go
 func errorDetails(detailsJSON json.RawMessage) string
@@ -201,7 +201,7 @@ func errorDetails(detailsJSON json.RawMessage) string
 errorDetails returns encoded failure details as text, or an empty string for absent and null values.
 
 <a name="fillKeyframeTimes"></a>
-## func [fillKeyframeTimes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L64>)
+## func [fillKeyframeTimes](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L64>)
 
 ```go
 func fillKeyframeTimes(times []float64, timeSet []bool, durationSeconds float64) error
@@ -210,7 +210,7 @@ func fillKeyframeTimes(times []float64, timeSet []bool, durationSeconds float64)
 fillKeyframeTimes updates the supplied times and presence flags. Missing endpoints become zero and duration; missing interior times require evenly spaced positions. Supplied times remain unchanged, and inconsistent positions return an error.
 
 <a name="frameOrderRank"></a>
-## func [frameOrderRank](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L176>)
+## func [frameOrderRank](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L176>)
 
 ```go
 func frameOrderRank(frameAnchor string) int
@@ -219,7 +219,7 @@ func frameOrderRank(frameAnchor string) int
 frameOrderRank maps a frame anchor to its position rank in the keyframe order.
 
 <a name="indexedInputMediaParam"></a>
-## func [indexedInputMediaParam](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L276>)
+## func [indexedInputMediaParam](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L276>)
 
 ```go
 func indexedInputMediaParam(i int) string
@@ -228,7 +228,7 @@ func indexedInputMediaParam(i int) string
 indexedInputMediaParam returns the request field name for a zero\-based image index.
 
 <a name="isVideoToolInput"></a>
-## func [isVideoToolInput](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L300>)
+## func [isVideoToolInput](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L300>)
 
 ```go
 func isVideoToolInput(parameterID string) bool
@@ -237,7 +237,7 @@ func isVideoToolInput(parameterID string) bool
 isVideoToolInput identifies the declared fields that accept a whole video without a mode.
 
 <a name="keyframeTimes"></a>
-## func [keyframeTimes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L39>)
+## func [keyframeTimes](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L39>)
 
 ```go
 func keyframeTimes(imageInputs []media.Input) (times []float64, timeSet []bool)
@@ -246,7 +246,7 @@ func keyframeTimes(imageInputs []media.Input) (times []float64, timeSet []bool)
 keyframeTimes takes the image inputs and returns each input's frame time and whether the input carries one, in input order.
 
 <a name="parseDuration"></a>
-## func [parseDuration](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L126>)
+## func [parseDuration](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L126>)
 
 ```go
 func parseDuration(parameterValues params.Values) (float64, bool)
@@ -255,7 +255,7 @@ func parseDuration(parameterValues params.Values) (float64, bool)
 parseDuration returns duration as seconds when it is numeric.
 
 <a name="parseWidthHeight"></a>
-## func [parseWidthHeight](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L289>)
+## func [parseWidthHeight](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L289>)
 
 ```go
 func parseWidthHeight(size string) (width, height int, valid bool)
@@ -264,7 +264,7 @@ func parseWidthHeight(size string) (width, height int, valid bool)
 parseWidthHeight returns the positive width and height represented by a size value.
 
 <a name="requestBinaryFields"></a>
-## func [requestBinaryFields](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L158>)
+## func [requestBinaryFields](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L158>)
 
 ```go
 func requestBinaryFields(model *catalog.Model, mediaInputs []media.Input) []metadata.BinaryField
@@ -273,7 +273,7 @@ func requestBinaryFields(model *catalog.Model, mediaInputs []media.Input) []meta
 requestBinaryFields describes the encoded media locations used by BFL's image and video request shapes. URL values at these locations remain URLs.
 
 <a name="requestBody"></a>
-## func [requestBody](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L106>)
+## func [requestBody](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L106>)
 
 ```go
 func requestBody(model *catalog.Model, prompt string, parameterValues params.Values, mediaInputs []media.Input) (map[string]any, error)
@@ -282,7 +282,7 @@ func requestBody(model *catalog.Model, prompt string, parameterValues params.Val
 requestBody returns the request fields for an image or video job. It omits the prompt field when the supplied prompt is empty.
 
 <a name="resolveFluxFrameAnchors"></a>
-## func [resolveFluxFrameAnchors](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L140>)
+## func [resolveFluxFrameAnchors](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L140>)
 
 ```go
 func resolveFluxFrameAnchors(mediaInputs []media.Input, parameterValues params.Values)
@@ -291,7 +291,7 @@ func resolveFluxFrameAnchors(mediaInputs []media.Input, parameterValues params.V
 resolveFluxFrameAnchors updates the supplied media in place and clears its frame anchors. With a duration, anchors become zero and duration timestamps; otherwise opening and closing images move to the beginning and end.
 
 <a name="startJob"></a>
-## func [startJob](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L66>)
+## func [startJob](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L66>)
 
 ```go
 func startJob(ctx context.Context, base string, cred httpapi.AuthCredential, provModelLabel string, model *catalog.Model, prompt string, gp params.Values, inputs []media.Input, record *metadata.Record) (jobID, pollURL string, err error)
@@ -300,7 +300,7 @@ func startJob(ctx context.Context, base string, cred httpapi.AuthCredential, pro
 startJob sends an image or video job request and returns its identifier and polling URL.
 
 <a name="timedKeyframes"></a>
-## func [timedKeyframes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L116>)
+## func [timedKeyframes](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L116>)
 
 ```go
 func timedKeyframes(imageInputs []media.Input, times []float64) []any
@@ -309,7 +309,7 @@ func timedKeyframes(imageInputs []media.Input, times []float64) []any
 timedKeyframes takes the image inputs and their frame times and returns the keyframe array of time and media value pairs.
 
 <a name="untimedKeyframes"></a>
-## func [untimedKeyframes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/keyframes.go#L52>)
+## func [untimedKeyframes](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/keyframes.go#L52>)
 
 ```go
 func untimedKeyframes(imageInputs []media.Input) []any
@@ -318,7 +318,7 @@ func untimedKeyframes(imageInputs []media.Input) []any
 untimedKeyframes takes image inputs carrying no frame times and returns the keyframe array of their media values alone.
 
 <a name="Provider"></a>
-## type [Provider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/bfl.go#L31-L34>)
+## type [Provider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/bfl.go#L31-L34>)
 
 Provider generates images and videos through the Black Forest Labs asynchronous API.
 
@@ -330,7 +330,7 @@ type Provider struct {
 ```
 
 <a name="Provider.AdjustParams"></a>
-### func \(\*Provider\) [AdjustParams](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/bfl.go#L49>)
+### func \(\*Provider\) [AdjustParams](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/bfl.go#L49>)
 
 ```go
 func (*Provider) AdjustParams(model *catalog.Model, inputs params.FlagInputs, mediaInputs []media.Input, _ *metadata.Reuse) (generation.Preparation, error)
@@ -339,7 +339,7 @@ func (*Provider) AdjustParams(model *catalog.Model, inputs params.FlagInputs, me
 AdjustParams returns model\-compatible generation parameters and records describing each adjustment. Video generation resolves first and last frame anchors to keyframe times; image models drop frame prefixes with a record.
 
 <a name="Provider.Generate"></a>
-### func \(\*Provider\) [Generate](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/bfl.go#L70>)
+### func \(\*Provider\) [Generate](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/bfl.go#L70>)
 
 ```go
 func (p *Provider) Generate(ctx context.Context, run *generation.Generation) (generation.Result, error)
@@ -348,7 +348,7 @@ func (p *Provider) Generate(ctx context.Context, run *generation.Generation) (ge
 Generate starts an image or video job, waits for completion, and returns the downloaded artifact.
 
 <a name="pollProbe"></a>
-## type [pollProbe](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/poll.go#L42-L49>)
+## type [pollProbe](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/poll.go#L42-L49>)
 
 pollProbe holds the values needed to inspect a generation job.
 
@@ -371,7 +371,7 @@ type pollProbe struct {
 ```
 
 <a name="pollProbe.Poll"></a>
-### func \(\*pollProbe\) [Poll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/poll.go#L52>)
+### func \(\*pollProbe\) [Poll](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/poll.go#L52>)
 
 ```go
 func (probe *pollProbe) Poll(ctx context.Context) (complete bool, err error)
@@ -380,7 +380,7 @@ func (probe *pollProbe) Poll(ctx context.Context) (complete bool, err error)
 Poll retrieves the job status and stores a validated completed response in the probe.
 
 <a name="pollResp"></a>
-## type [pollResp](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/poll.go#L18-L27>)
+## type [pollResp](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/poll.go#L18-L27>)
 
 pollResp contains the current state of a generation job.
 
@@ -398,7 +398,7 @@ type pollResp struct {
 ```
 
 <a name="pollResult"></a>
-## type [pollResult](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/poll.go#L30-L33>)
+## type [pollResult](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/poll.go#L30-L33>)
 
 pollResult contains the completed media location.
 
@@ -410,7 +410,7 @@ type pollResult struct {
 ```
 
 <a name="submitAck"></a>
-## type [submitAck](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/submit.go#L58-L63>)
+## type [submitAck](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/submit.go#L58-L63>)
 
 submitAck contains the identifiers returned for an asynchronous generation job.
 

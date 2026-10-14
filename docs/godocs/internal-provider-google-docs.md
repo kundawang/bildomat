@@ -59,7 +59,7 @@ var ConfigJSON []byte
 ```
 
 <a name="NewProvider"></a>
-## func [NewProvider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/google/google.go#L36>)
+## func [NewProvider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/google/google.go#L36>)
 
 ```go
 func NewProvider(providerDescription *catalog.Provider) (generation.Generator, error)
@@ -68,7 +68,7 @@ func NewProvider(providerDescription *catalog.Provider) (generation.Generator, e
 NewProvider returns a generator with independent adapter settings. It rejects missing settings and configured paths that overwrite required Interactions fields.
 
 <a name="Provider"></a>
-## type [Provider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/google/google.go#L29-L32>)
+## type [Provider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/google/google.go#L29-L32>)
 
 Provider generates media through the Google Veo and Interactions APIs.
 
@@ -79,7 +79,7 @@ type Provider struct {
 ```
 
 <a name="Provider.AdjustParams"></a>
-### func \(\*Provider\) [AdjustParams](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/google/google.go#L62>)
+### func \(\*Provider\) [AdjustParams](<https://github.com/shdeen/bildomat/blob/main/internal/provider/google/google.go#L62>)
 
 ```go
 func (*Provider) AdjustParams(model *catalog.Model, inputs params.FlagInputs, mediaInputs []media.Input, reuse *metadata.Reuse) (generation.Preparation, error)
@@ -88,7 +88,7 @@ func (*Provider) AdjustParams(model *catalog.Model, inputs params.FlagInputs, me
 AdjustParams returns model\-compatible parameters, media, and change records. It validates reuse selections and Veo frame constraints, and removes frame prefixes from Interactions inputs.
 
 <a name="Provider.Generate"></a>
-### func \(\*Provider\) [Generate](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/google/google.go#L142>)
+### func \(\*Provider\) [Generate](<https://github.com/shdeen/bildomat/blob/main/internal/provider/google/google.go#L142>)
 
 ```go
 func (prov *Provider) Generate(ctx context.Context, run *generation.Generation) (generation.Result, error)

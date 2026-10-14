@@ -53,7 +53,7 @@ var ConfigJSON []byte
 ```
 
 <a name="NewProvider"></a>
-## func [NewProvider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/bfl.go#L37>)
+## func [NewProvider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/bfl.go#L37>)
 
 ```go
 func NewProvider(providerDescription *catalog.Provider) (generation.Generator, error)
@@ -62,7 +62,7 @@ func NewProvider(providerDescription *catalog.Provider) (generation.Generator, e
 NewProvider returns a generator with owned adapter settings, or a missing\-description error.
 
 <a name="Provider"></a>
-## type [Provider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/bfl.go#L31-L34>)
+## type [Provider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/bfl.go#L31-L34>)
 
 Provider generates images and videos through the Black Forest Labs asynchronous API.
 
@@ -73,7 +73,7 @@ type Provider struct {
 ```
 
 <a name="Provider.AdjustParams"></a>
-### func \(\*Provider\) [AdjustParams](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/bfl.go#L49>)
+### func \(\*Provider\) [AdjustParams](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/bfl.go#L49>)
 
 ```go
 func (*Provider) AdjustParams(model *catalog.Model, inputs params.FlagInputs, mediaInputs []media.Input, _ *metadata.Reuse) (generation.Preparation, error)
@@ -82,7 +82,7 @@ func (*Provider) AdjustParams(model *catalog.Model, inputs params.FlagInputs, me
 AdjustParams returns model\-compatible generation parameters and records describing each adjustment. Video generation resolves first and last frame anchors to keyframe times; image models drop frame prefixes with a record.
 
 <a name="Provider.Generate"></a>
-### func \(\*Provider\) [Generate](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/bfl/bfl.go#L70>)
+### func \(\*Provider\) [Generate](<https://github.com/shdeen/bildomat/blob/main/internal/provider/bfl/bfl.go#L70>)
 
 ```go
 func (p *Provider) Generate(ctx context.Context, run *generation.Generation) (generation.Result, error)

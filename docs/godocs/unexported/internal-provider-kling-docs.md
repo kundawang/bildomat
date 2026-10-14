@@ -189,7 +189,7 @@ var ConfigJSON []byte
 ```
 
 <a name="NewProvider"></a>
-## func [NewProvider](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/kling.go#L49>)
+## func [NewProvider](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/kling.go#L49>)
 
 ```go
 func NewProvider(providerDescription *catalog.Provider) (generation.Generator, error)
@@ -198,7 +198,7 @@ func NewProvider(providerDescription *catalog.Provider) (generation.Generator, e
 NewProvider returns a generator with owned adapter settings, or a missing\-description error.
 
 <a name="buildRequestBody"></a>
-## func [buildRequestBody](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/request.go#L72>)
+## func [buildRequestBody](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/request.go#L72>)
 
 ```go
 func buildRequestBody(generationRequest *generation.Generation) (creationPath string, requestBody map[string]any)
@@ -207,7 +207,7 @@ func buildRequestBody(generationRequest *generation.Generation) (creationPath st
 buildRequestBody returns the creation path and JSON body for one generation.
 
 <a name="compareImageIndexes"></a>
-## func [compareImageIndexes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/imagepoll.go#L174>)
+## func [compareImageIndexes](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/imagepoll.go#L174>)
 
 ```go
 func compareImageIndexes(firstImage, secondImage imageResult) int
@@ -216,7 +216,7 @@ func compareImageIndexes(firstImage, secondImage imageResult) int
 compareImageIndexes compares images by their provider\-assigned index.
 
 <a name="createTask"></a>
-## func [createTask](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/request.go#L243>)
+## func [createTask](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/request.go#L243>)
 
 ```go
 func createTask(ctx context.Context, endpoint string, credential httpapi.AuthCredential, generationRequest *generation.Generation, requestBody map[string]any) (string, error)
@@ -225,7 +225,7 @@ func createTask(ctx context.Context, endpoint string, credential httpapi.AuthCre
 createTask submits one request and returns the task identifier.
 
 <a name="downloadImages"></a>
-## func [downloadImages](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/artifact.go#L16>)
+## func [downloadImages](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/artifact.go#L16>)
 
 ```go
 func downloadImages(ctx context.Context, providerModelName string, resultURLs []string, fallbackExtension string, record *metadata.Record) ([]artifact.Media, error)
@@ -234,7 +234,7 @@ func downloadImages(ctx context.Context, providerModelName string, resultURLs []
 downloadImages downloads every completed image in provider index order. A failed download removes the temporary files from prior successful downloads.
 
 <a name="envelopeFailure"></a>
-## func [envelopeFailure](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/response.go#L38>)
+## func [envelopeFailure](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/response.go#L38>)
 
 ```go
 func envelopeFailure(response *taskEnvelope, diagnosticContext string) error
@@ -243,7 +243,7 @@ func envelopeFailure(response *taskEnvelope, diagnosticContext string) error
 envelopeFailure returns nil for code zero and classifies missing, invalid, or nonzero response codes.
 
 <a name="exactInteger"></a>
-## func [exactInteger](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/response.go#L62>)
+## func [exactInteger](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/response.go#L62>)
 
 ```go
 func exactInteger(encoded json.RawMessage) (int, bool)
@@ -252,7 +252,7 @@ func exactInteger(encoded json.RawMessage) (int, bool)
 exactInteger converts a valid encoded JSON number to int without rounding. Decimal and exponent forms must be integral and fit int; oversized exponents do not allocate expanded numbers.
 
 <a name="frameContents"></a>
-## func [frameContents](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/request.go#L197>)
+## func [frameContents](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/request.go#L197>)
 
 ```go
 func frameContents(mediaInputs []media.Input) []any
@@ -261,7 +261,7 @@ func frameContents(mediaInputs []media.Input) []any
 frameContents maps at most two images onto opening and closing frames. Explicit anchors keep their roles; unanchored images fill the free roles in retained order.
 
 <a name="imageRequestBody"></a>
-## func [imageRequestBody](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/request.go#L116>)
+## func [imageRequestBody](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/request.go#L116>)
 
 ```go
 func imageRequestBody(generationRequest *generation.Generation, omniRequest bool) map[string]any
@@ -270,7 +270,7 @@ func imageRequestBody(generationRequest *generation.Generation, omniRequest bool
 imageRequestBody returns the standard or omni image request fields.
 
 <a name="integerFromDecimal"></a>
-## func [integerFromDecimal](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/response.go#L94>)
+## func [integerFromDecimal](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/response.go#L94>)
 
 ```go
 func integerFromDecimal(digits string, decimalPlaces, exponent int, negative bool) (int, bool)
@@ -279,7 +279,7 @@ func integerFromDecimal(digits string, decimalPlaces, exponent int, negative boo
 integerFromDecimal bounds the exponent before expanding or truncating digits. It rejects fractional remainders and int overflow without lossy conversion.
 
 <a name="omniContents"></a>
-## func [omniContents](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/request.go#L173>)
+## func [omniContents](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/request.go#L173>)
 
 ```go
 func omniContents(mediaInputs []media.Input) []any
@@ -288,7 +288,7 @@ func omniContents(mediaInputs []media.Input) []any
 omniContents returns anchored frames and unanchored reference images in their retained order.
 
 <a name="selectCreationPath"></a>
-## func [selectCreationPath](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/request.go#L85>)
+## func [selectCreationPath](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/request.go#L85>)
 
 ```go
 func selectCreationPath(model *catalog.Model, mediaCount int) string
@@ -297,7 +297,7 @@ func selectCreationPath(model *catalog.Model, mediaCount int) string
 selectCreationPath selects a documented creation path from a model's medium and family and its retained input count. It returns an empty path for an unsupported medium.
 
 <a name="taskFailure"></a>
-## func [taskFailure](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/response.go#L129>)
+## func [taskFailure](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/response.go#L129>)
 
 ```go
 func taskFailure(taskID, taskStatus, failureMessage string) error
@@ -306,7 +306,7 @@ func taskFailure(taskID, taskStatus, failureMessage string) error
 taskFailure returns a provider generation failure containing the task, terminal status, and provider message when one is present.
 
 <a name="unknownStatus"></a>
-## func [unknownStatus](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/response.go#L139>)
+## func [unknownStatus](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/response.go#L139>)
 
 ```go
 func unknownStatus(taskID string, observedStatus any) error
@@ -315,7 +315,7 @@ func unknownStatus(taskID string, observedStatus any) error
 unknownStatus returns an unexpected\-status failure containing the task and observed value.
 
 <a name="videoRequestBody"></a>
-## func [videoRequestBody](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/request.go#L147>)
+## func [videoRequestBody](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/request.go#L147>)
 
 ```go
 func videoRequestBody(generationRequest *generation.Generation, omniRequest bool) map[string]any
@@ -324,7 +324,7 @@ func videoRequestBody(generationRequest *generation.Generation, omniRequest bool
 videoRequestBody returns a text, image, or omni video request body.
 
 <a name="generator"></a>
-## type [generator](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/kling.go#L44-L46>)
+## type [generator](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/kling.go#L44-L46>)
 
 generator holds the Kling request settings.
 
@@ -337,7 +337,7 @@ type generator struct {
 ```
 
 <a name="generator.AdjustParams"></a>
-### func \(\*generator\) [AdjustParams](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/kling.go#L61>)
+### func \(\*generator\) [AdjustParams](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/kling.go#L61>)
 
 ```go
 func (*generator) AdjustParams(model *catalog.Model, inputs params.FlagInputs, mediaInputs []media.Input, _ *metadata.Reuse) (generation.Preparation, error)
@@ -346,7 +346,7 @@ func (*generator) AdjustParams(model *catalog.Model, inputs params.FlagInputs, m
 AdjustParams returns adjusted parameters and media with change records. It rejects video inputs, resolves video frame anchors, removes image frame prefixes, and converts the audio switch to the provider's request value.
 
 <a name="generator.Generate"></a>
-### func \(\*generator\) [Generate](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/kling.go#L104>)
+### func \(\*generator\) [Generate](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/kling.go#L104>)
 
 ```go
 func (prov *generator) Generate(ctx context.Context, generationRequest *generation.Generation) (generation.Result, error)
@@ -355,7 +355,7 @@ func (prov *generator) Generate(ctx context.Context, generationRequest *generati
 Generate starts one Kling task, waits for completion, and downloads its artifacts.
 
 <a name="generator.completeImageTask"></a>
-### func \(\*generator\) [completeImageTask](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/kling.go#L163>)
+### func \(\*generator\) [completeImageTask](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/kling.go#L163>)
 
 ```go
 func (prov *generator) completeImageTask(ctx context.Context, imagePoll *imageJobPoll) (generation.Result, error)
@@ -364,7 +364,7 @@ func (prov *generator) completeImageTask(ctx context.Context, imagePoll *imageJo
 completeImageTask polls one image task until it completes and downloads its result images in provider index order, returning them as the result.
 
 <a name="generator.completeVideoTask"></a>
-### func \(\*generator\) [completeVideoTask](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/kling.go#L180>)
+### func \(\*generator\) [completeVideoTask](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/kling.go#L180>)
 
 ```go
 func (prov *generator) completeVideoTask(ctx context.Context, videoPoll *videoJobPoll) (generation.Result, error)
@@ -373,7 +373,7 @@ func (prov *generator) completeVideoTask(ctx context.Context, videoPoll *videoJo
 completeVideoTask polls one video task until it completes and fetches its result video, returning it as the result.
 
 <a name="generator.generateMedia"></a>
-### func \(\*generator\) [generateMedia](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/kling.go#L116>)
+### func \(\*generator\) [generateMedia](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/kling.go#L116>)
 
 ```go
 func (prov *generator) generateMedia(ctx context.Context, generationRequest *generation.Generation) (generation.Result, error)
@@ -382,7 +382,7 @@ func (prov *generator) generateMedia(ctx context.Context, generationRequest *gen
 generateMedia starts the selected image or video task and retrieves its completed artifacts.
 
 <a name="imageJobPoll"></a>
-## type [imageJobPoll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/imagepoll.go#L36-L44>)
+## type [imageJobPoll](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/imagepoll.go#L36-L44>)
 
 imageJobPoll tracks one Kling image task.
 
@@ -407,7 +407,7 @@ type imageJobPoll struct {
 ```
 
 <a name="imageJobPoll.Poll"></a>
-### func \(\*imageJobPoll\) [Poll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/imagepoll.go#L47>)
+### func \(\*imageJobPoll\) [Poll](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/imagepoll.go#L47>)
 
 ```go
 func (imagePoll *imageJobPoll) Poll(ctx context.Context) (taskComplete bool, pollErr error)
@@ -416,7 +416,7 @@ func (imagePoll *imageJobPoll) Poll(ctx context.Context) (taskComplete bool, pol
 Poll retrieves and classifies one image task response.
 
 <a name="imageJobPoll.classifyResponse"></a>
-### func \(\*imageJobPoll\) [classifyResponse](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/imagepoll.go#L86>)
+### func \(\*imageJobPoll\) [classifyResponse](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/imagepoll.go#L86>)
 
 ```go
 func (imagePoll *imageJobPoll) classifyResponse(responseBody []byte) (bool, error)
@@ -425,7 +425,7 @@ func (imagePoll *imageJobPoll) classifyResponse(responseBody []byte) (bool, erro
 classifyResponse reports task completion and stores ordered output URLs in the poller. It validates the fields required by the reported task state.
 
 <a name="imageJobPoll.retainResultURLs"></a>
-### func \(\*imageJobPoll\) [retainResultURLs](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/imagepoll.go#L126>)
+### func \(\*imageJobPoll\) [retainResultURLs](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/imagepoll.go#L126>)
 
 ```go
 func (imagePoll *imageJobPoll) retainResultURLs(encodedResult json.RawMessage) error
@@ -434,7 +434,7 @@ func (imagePoll *imageJobPoll) retainResultURLs(encodedResult json.RawMessage) e
 retainResultURLs validates image URLs and unique indexes, then stores URLs in index order in the poller. Invalid results leave its retained URLs unchanged.
 
 <a name="imageResponse"></a>
-## type [imageResponse](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/imagepoll.go#L69-L74>)
+## type [imageResponse](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/imagepoll.go#L69-L74>)
 
 imageResponse preserves the declared index until its exact value is validated.
 
@@ -448,7 +448,7 @@ type imageResponse struct {
 ```
 
 <a name="imageResult"></a>
-## type [imageResult](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/imagepoll.go#L77-L82>)
+## type [imageResult](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/imagepoll.go#L77-L82>)
 
 imageResult contains the validated facts needed to order and download an image.
 
@@ -462,7 +462,7 @@ type imageResult struct {
 ```
 
 <a name="imageTask"></a>
-## type [imageTask](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/imagepoll.go#L59-L66>)
+## type [imageTask](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/imagepoll.go#L59-L66>)
 
 imageTask carries the image API's distinct status and result fields.
 
@@ -478,7 +478,7 @@ type imageTask struct {
 ```
 
 <a name="taskEnvelope"></a>
-## type [taskEnvelope](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/response.go#L13-L20>)
+## type [taskEnvelope](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/response.go#L13-L20>)
 
 taskEnvelope preserves absent code separately from explicit JSON null.
 
@@ -494,7 +494,7 @@ type taskEnvelope struct {
 ```
 
 <a name="decodeEnvelope"></a>
-### func [decodeEnvelope](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/response.go#L23>)
+### func [decodeEnvelope](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/response.go#L23>)
 
 ```go
 func decodeEnvelope(responseBody []byte, diagnosticContext string) (*taskEnvelope, error)
@@ -503,7 +503,7 @@ func decodeEnvelope(responseBody []byte, diagnosticContext string) (*taskEnvelop
 decodeEnvelope accepts additional remote fields and rejects a non\-object envelope.
 
 <a name="videoJobPoll"></a>
-## type [videoJobPoll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/videopoll.go#L33-L40>)
+## type [videoJobPoll](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/videopoll.go#L33-L40>)
 
 videoJobPoll tracks one Kling video task.
 
@@ -526,7 +526,7 @@ type videoJobPoll struct {
 ```
 
 <a name="videoJobPoll.Poll"></a>
-### func \(\*videoJobPoll\) [Poll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/videopoll.go#L43>)
+### func \(\*videoJobPoll\) [Poll](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/videopoll.go#L43>)
 
 ```go
 func (videoPoll *videoJobPoll) Poll(ctx context.Context) (taskComplete bool, pollErr error)
@@ -535,7 +535,7 @@ func (videoPoll *videoJobPoll) Poll(ctx context.Context) (taskComplete bool, pol
 Poll retrieves and classifies one video task response.
 
 <a name="videoJobPoll.classifyResponse"></a>
-### func \(\*videoJobPoll\) [classifyResponse](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/videopoll.go#L67>)
+### func \(\*videoJobPoll\) [classifyResponse](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/videopoll.go#L67>)
 
 ```go
 func (videoPoll *videoJobPoll) classifyResponse(responseBody []byte) (bool, error)
@@ -544,7 +544,7 @@ func (videoPoll *videoJobPoll) classifyResponse(responseBody []byte) (bool, erro
 classifyResponse reports the first returned task's completion and stores its first output URL in the poller. Invalid or failed states return classified errors.
 
 <a name="videoJobPoll.retainResultURL"></a>
-### func \(\*videoJobPoll\) [retainResultURL](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/videopoll.go#L111>)
+### func \(\*videoJobPoll\) [retainResultURL](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/videopoll.go#L111>)
 
 ```go
 func (videoPoll *videoJobPoll) retainResultURL(encodedOutputs json.RawMessage) error
@@ -553,7 +553,7 @@ func (videoPoll *videoJobPoll) retainResultURL(encodedOutputs json.RawMessage) e
 retainResultURL validates the first output and stores its URL in the poller.
 
 <a name="videoTask"></a>
-## type [videoTask](<https://github.com/shdeen/bildomat-dev/blob/main/internal/provider/kling/videopoll.go#L56-L63>)
+## type [videoTask](<https://github.com/shdeen/bildomat/blob/main/internal/provider/kling/videopoll.go#L56-L63>)
 
 videoTask carries the video API's distinct status and output list.
 

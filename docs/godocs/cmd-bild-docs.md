@@ -131,7 +131,7 @@ const (
 ```
 
 <a name="RunFlags"></a>
-## type [RunFlags](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/input.go#L19-L25>)
+## type [RunFlags](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/input.go#L19-L25>)
 
 RunFlags contains generation values that are independent of model params.
 

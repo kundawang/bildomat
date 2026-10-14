@@ -292,7 +292,7 @@ var helpExampleProviderIDs = []string{config.IDOpenAI, google.ProviderID, config
 ```
 
 <a name="adjustRequest"></a>
-## func [adjustRequest](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/generate.go#L21>)
+## func [adjustRequest](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/generate.go#L21>)
 
 ```go
 func adjustRequest(generator generation.Generator, pair *catalog.ProvModelPair, inputs params.FlagInputs, inputMedia []media.Input, pathChanges []params.Adjustment, paramFlags []params.Flag, outcome *output.GenerationOutcome, record *metadata.Record, reuse *metadata.Reuse) (generation.Preparation, error)
@@ -301,7 +301,7 @@ func adjustRequest(generator generation.Generator, pair *catalog.ProvModelPair, 
 adjustRequest prepares provider inputs and appends their changes to outcome. It also updates record, when present, even when preparation returns partial results and an error.
 
 <a name="appVersion"></a>
-## func [appVersion](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/main.go#L77>)
+## func [appVersion](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/main.go#L77>)
 
 ```go
 func appVersion() string
@@ -310,7 +310,7 @@ func appVersion() string
 appVersion returns the main module version that the Go toolchain recorded in the binary, without its leading "v". Go derives that version from the git tag or commit the binary was built from, so no build flag sets it.
 
 <a name="applyLandingExt"></a>
-## func [applyLandingExt](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/outpath.go#L55>)
+## func [applyLandingExt](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/outpath.go#L55>)
 
 ```go
 func applyLandingExt(artifacts []artifact.Media, requestedExt string) []params.Adjustment
@@ -319,7 +319,7 @@ func applyLandingExt(artifacts []artifact.Media, requestedExt string) []params.A
 applyLandingExt changes artifact extensions in place only within the same format. It reports each distinct incompatible extension once; an empty request changes nothing.
 
 <a name="applyOutPathFormat"></a>
-## func [applyOutPathFormat](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/outpath.go#L15>)
+## func [applyOutPathFormat](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/outpath.go#L15>)
 
 ```go
 func applyOutPathFormat(parts artifact.Location, rawOutPath string, model *catalog.Model, userInputs params.FlagInputs) []params.Adjustment
@@ -328,7 +328,7 @@ func applyOutPathFormat(parts artifact.Location, rawOutPath string, model *catal
 applyOutPathFormat applies the path's format to userInputs when the model supports it. It reports an adjustment if that format supersedes an explicitly supplied value.
 
 <a name="argCountError"></a>
-## func [argCountError](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/usage.go#L35>)
+## func [argCountError](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/usage.go#L35>)
 
 ```go
 func argCountError(cmdName string, expectedArgCt, actualArgCt int) error
@@ -337,7 +337,7 @@ func argCountError(cmdName string, expectedArgCt, actualArgCt int) error
 argCountError reports a violation of a command's zero\- or one\-argument requirement.
 
 <a name="canonExt"></a>
-## func [canonExt](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/outpath.go#L86>)
+## func [canonExt](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/outpath.go#L86>)
 
 ```go
 func canonExt(ext string) string
@@ -346,7 +346,7 @@ func canonExt(ext string) string
 canonExt normalizes extension case and treats .jpeg and .jpg as the same format.
 
 <a name="cleanupGeneration"></a>
-## func [cleanupGeneration](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/generate.go#L100>)
+## func [cleanupGeneration](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/generate.go#L100>)
 
 ```go
 func cleanupGeneration(artifacts []artifact.Media, generationErr *error)
@@ -355,7 +355,7 @@ func cleanupGeneration(artifacts []artifact.Media, generationErr *error)
 cleanupGeneration removes owned temporary artifacts and joins failures into generationErr.
 
 <a name="combinedFlagError"></a>
-## func [combinedFlagError](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/usage.go#L12>)
+## func [combinedFlagError](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/usage.go#L12>)
 
 ```go
 func combinedFlagError(flagName string) error
@@ -364,7 +364,7 @@ func combinedFlagError(flagName string) error
 combinedFlagError rejects help or version beside a positional argument. It names the long flag because the parser does not retain the typed spelling.
 
 <a name="commandsHelpText"></a>
-## func [commandsHelpText](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/help.go#L36>)
+## func [commandsHelpText](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/help.go#L36>)
 
 ```go
 func commandsHelpText(cmd *cli.Command) string
@@ -373,7 +373,7 @@ func commandsHelpText(cmd *cli.Command) string
 commandsHelpText formats visible subcommands with aligned names and usage summaries.
 
 <a name="createAliasesFlag"></a>
-## func [createAliasesFlag](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L160>)
+## func [createAliasesFlag](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L160>)
 
 ```go
 func createAliasesFlag() cli.Flag
@@ -382,7 +382,7 @@ func createAliasesFlag() cli.Flag
 createAliasesFlag returns the switch that includes model aliases in listings.
 
 <a name="createCommand"></a>
-## func [createCommand](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L314>)
+## func [createCommand](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L314>)
 
 ```go
 func createCommand(bild *bildApp) *cli.Command
@@ -391,7 +391,7 @@ func createCommand(bild *bildApp) *cli.Command
 createCommand builds the CLI without loading configuration or providers. It disables the library's global help flag so bild can enforce its own help and version rules.
 
 <a name="createFlagGroup"></a>
-## func [createFlagGroup](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L52>)
+## func [createFlagGroup](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L52>)
 
 ```go
 func createFlagGroup(ordinaryFlags []cli.Flag, aloneFlags ...cli.Flag) []cli.MutuallyExclusiveFlags
@@ -400,7 +400,7 @@ func createFlagGroup(ordinaryFlags []cli.Flag, aloneFlags ...cli.Flag) []cli.Mut
 createFlagGroup allows ordinaryFlags together and makes each aloneFlags member exclusive of every other flag. The returned group also determines the flags' order in help.
 
 <a name="createFlags"></a>
-## func [createFlags](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L179>)
+## func [createFlags](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L179>)
 
 ```go
 func createFlags(paramFlags []params.Flag) []cli.MutuallyExclusiveFlags
@@ -409,7 +409,7 @@ func createFlags(paramFlags []params.Flag) []cli.MutuallyExclusiveFlags
 createFlags builds root flags in help\-page order, sorting parameter flags by name. Root flags are local so their position relative to a subcommand remains observable.
 
 <a name="createListingFlags"></a>
-## func [createListingFlags](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L129>)
+## func [createListingFlags](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L129>)
 
 ```go
 func createListingFlags() []cli.MutuallyExclusiveFlags
@@ -418,7 +418,7 @@ func createListingFlags() []cli.MutuallyExclusiveFlags
 createListingFlags returns the list command's flag group: the shared flags, the alias display switch, and the provider, model, and media filters.
 
 <a name="createMediaFlags"></a>
-## func [createMediaFlags](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L65>)
+## func [createMediaFlags](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L65>)
 
 ```go
 func createMediaFlags() []cli.MutuallyExclusiveFlags
@@ -427,7 +427,7 @@ func createMediaFlags() []cli.MutuallyExclusiveFlags
 createMediaFlags returns the info command's flag group: the shared flags and the image and video filters.
 
 <a name="createParamInputs"></a>
-## func [createParamInputs](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/input.go#L40>)
+## func [createParamInputs](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/input.go#L40>)
 
 ```go
 func createParamInputs(cmd *cli.Command, paramFlags []params.Flag) params.FlagInputs
@@ -436,7 +436,7 @@ func createParamInputs(cmd *cli.Command, paramFlags []params.Flag) params.FlagIn
 createParamInputs collects supplied parameter flags, preserving explicit zero values.
 
 <a name="createSearchFlags"></a>
-## func [createSearchFlags](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L86>)
+## func [createSearchFlags](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L86>)
 
 ```go
 func createSearchFlags() []cli.MutuallyExclusiveFlags
@@ -445,7 +445,7 @@ func createSearchFlags() []cli.MutuallyExclusiveFlags
 createSearchFlags adds search controls to the shared presentation flags. The exclusion flag always consumes a value, including when that value resembles a flag.
 
 <a name="createSharedFlags"></a>
-## func [createSharedFlags](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L29>)
+## func [createSharedFlags](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L29>)
 
 ```go
 func createSharedFlags() (jsonFlag, debugFlag, helpFlag cli.Flag)
@@ -454,7 +454,7 @@ func createSharedFlags() (jsonFlag, debugFlag, helpFlag cli.Flag)
 createSharedFlags returns fresh JSON, hidden debug, and standalone help flags.
 
 <a name="getGenFlagsInput"></a>
-## func [getGenFlagsInput](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/input.go#L59>)
+## func [getGenFlagsInput](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/input.go#L59>)
 
 ```go
 func getGenFlagsInput(runFlags *RunFlags, paramInputs params.FlagInputs) map[string]any
@@ -463,7 +463,7 @@ func getGenFlagsInput(runFlags *RunFlags, paramInputs params.FlagInputs) map[str
 getGenFlagsInput copies supplied model, output\-path, and parameter flags for reporting. It omits nonfinite numbers, which cannot be encoded as JSON.
 
 <a name="inclusivePair"></a>
-## func [inclusivePair](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L169>)
+## func [inclusivePair](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L169>)
 
 ```go
 func inclusivePair(firstSet, secondSet bool) (first, second bool)
@@ -472,7 +472,7 @@ func inclusivePair(firstSet, secondSet bool) (first, second bool)
 inclusivePair selects both alternatives when neither or both switches are set.
 
 <a name="inputMediaFlagValues"></a>
-## func [inputMediaFlagValues](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/input.go#L113>)
+## func [inputMediaFlagValues](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/input.go#L113>)
 
 ```go
 func inputMediaFlagValues(values []string) []string
@@ -481,7 +481,7 @@ func inputMediaFlagValues(values []string) []string
 inputMediaFlagValues expands comma\-separated local source lists while preserving complete HTTP\(S\) sources. A frame prefix may precede a URL.
 
 <a name="landingExt"></a>
-## func [landingExt](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/outpath.go#L36>)
+## func [landingExt](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/outpath.go#L36>)
 
 ```go
 func landingExt(parts artifact.Location, adjusted params.Values) (string, error)
@@ -490,7 +490,7 @@ func landingExt(parts artifact.Location, adjusted params.Values) (string, error)
 landingExt prefers the path's extension, then the adjusted format for a named file. An unnamed output or unavailable format leaves the extension unspecified.
 
 <a name="main"></a>
-## func [main](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/main.go#L56>)
+## func [main](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/main.go#L56>)
 
 ```go
 func main()
@@ -499,7 +499,7 @@ func main()
 main runs the command and exits with its classified status.
 
 <a name="newGenerator"></a>
-## func [newGenerator](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/main.go#L87>)
+## func [newGenerator](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/main.go#L87>)
 
 ```go
 func newGenerator(loadedCatalog *catalog.Catalog, providerID string, registrations []providerRegistration) (generation.Generator, error)
@@ -508,7 +508,7 @@ func newGenerator(loadedCatalog *catalog.Catalog, providerID string, registratio
 newGenerator constructs a registered, loaded provider and rejects unusable constructors.
 
 <a name="newSubcommand"></a>
-## func [newSubcommand](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L300>)
+## func [newSubcommand](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L300>)
 
 ```go
 func newSubcommand(bild *bildApp, name, summary, usageForm string, flagGroup []cli.MutuallyExclusiveFlags) *cli.Command
@@ -517,7 +517,7 @@ func newSubcommand(bild *bildApp, name, summary, usageForm string, flagGroup []c
 newSubcommand attaches shared preparation and usage\-error handling. The caller supplies its action; bild handles help instead of the CLI library.
 
 <a name="pageFuncs"></a>
-## func [pageFuncs](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/help.go#L25>)
+## func [pageFuncs](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/help.go#L25>)
 
 ```go
 func pageFuncs(bild *bildApp) map[string]any
@@ -526,7 +526,7 @@ func pageFuncs(bild *bildApp) map[string]any
 pageFuncs supplies the template callbacks for this application's help pages.
 
 <a name="paramCLIFlag"></a>
-## func [paramCLIFlag](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L233>)
+## func [paramCLIFlag](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L233>)
 
 ```go
 func paramCLIFlag(paramFlag *params.Flag) cli.Flag
@@ -535,7 +535,7 @@ func paramCLIFlag(paramFlag *params.Flag) cli.Flag
 paramCLIFlag converts a parameter definition into a typed, local CLI flag.
 
 <a name="paramFlagUsage"></a>
-## func [paramFlagUsage](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/cli.go#L285>)
+## func [paramFlagUsage](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/cli.go#L285>)
 
 ```go
 func paramFlagUsage(paramFlag *params.Flag) string
@@ -544,7 +544,7 @@ func paramFlagUsage(paramFlag *params.Flag) string
 paramFlagUsage combines a parameter description, guidance, and examples. The help renderer adds provider support after the catalog loads.
 
 <a name="parseReuse"></a>
-## func [parseReuse](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/reuse.go#L23>)
+## func [parseReuse](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/reuse.go#L23>)
 
 ```go
 func parseReuse(selection, providerID string) (*metadata.Reuse, error)
@@ -553,7 +553,7 @@ func parseReuse(selection, providerID string) (*metadata.Reuse, error)
 parseReuse validates an experimental \<id\>=\<source\> selection for the provider. An HTTPS source supplies a provider reference; any other source is read as a retained record.
 
 <a name="parsedFlagValue"></a>
-## func [parsedFlagValue](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/input.go#L88>)
+## func [parsedFlagValue](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/input.go#L88>)
 
 ```go
 func parsedFlagValue(cmd *cli.Command, paramFlag *params.Flag, flagID string) any
@@ -562,7 +562,7 @@ func parsedFlagValue(cmd *cli.Command, paramFlag *params.Flag, flagID string) an
 parsedFlagValue reads a flag in its declared type and expands local input\-media lists.
 
 <a name="recordPreparation"></a>
-## func [recordPreparation](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/generate.go#L38>)
+## func [recordPreparation](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/generate.go#L38>)
 
 ```go
 func recordPreparation(preparedGeneration *generation.Preparation, record *metadata.Record) error
@@ -571,7 +571,7 @@ func recordPreparation(preparedGeneration *generation.Preparation, record *metad
 recordPreparation copies adjusted inputs and changes into the optional in\-memory record.
 
 <a name="resolveOutputTarget"></a>
-## func [resolveOutputTarget](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/outpath.go#L97>)
+## func [resolveOutputTarget](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/outpath.go#L97>)
 
 ```go
 func resolveOutputTarget(genInputs *RunFlags, model *catalog.Model, userInputs params.FlagInputs, defaultOutDir string) (artifact.Location, []params.Adjustment, error)
@@ -580,7 +580,7 @@ func resolveOutputTarget(genInputs *RunFlags, model *catalog.Model, userInputs p
 resolveOutputTarget resolves the output directory and applies the output path's format to userInputs. It uses the configured directory only when the run omitted an output path.
 
 <a name="runExitCode"></a>
-## func [runExitCode](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/main.go#L63>)
+## func [runExitCode](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/main.go#L63>)
 
 ```go
 func runExitCode(runErr error) int
@@ -589,7 +589,7 @@ func runExitCode(runErr error) int
 runExitCode returns 0 for success, 2 for usage errors, and 1 for other failures.
 
 <a name="searchTermsError"></a>
-## func [searchTermsError](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/usage.go#L18>)
+## func [searchTermsError](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/usage.go#L18>)
 
 ```go
 func searchTermsError(c *cli.Command) error
@@ -598,7 +598,7 @@ func searchTermsError(c *cli.Command) error
 searchTermsError validates search\-term presence and count. An explicitly empty term is invalid, distinct from an omitted term.
 
 <a name="writeRunResults"></a>
-## func [writeRunResults](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/generate.go#L64>)
+## func [writeRunResults](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/generate.go#L64>)
 
 ```go
 func writeRunResults(result *generation.Result, outDir, stem, extOverride string, run *generation.Generation, paramFlags []params.Flag, outcome *output.GenerationOutcome) (finalStem string, completedFiles []output.SavedFile, resultErr error)
@@ -607,7 +607,7 @@ func writeRunResults(result *generation.Result, outDir, stem, extOverride string
 writeRunResults creates the output directory if missing and saves media and any requested thoughts sidecar. It adds every saved file to outcome but returns only media files for record persistence.
 
 <a name="RunFlags"></a>
-## type [RunFlags](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/input.go#L19-L25>)
+## type [RunFlags](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/input.go#L19-L25>)
 
 RunFlags contains generation values that are independent of model params.
 
@@ -628,7 +628,7 @@ type RunFlags struct {
 ```
 
 <a name="createRunInputs"></a>
-### func [createRunInputs](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/input.go#L29>)
+### func [createRunInputs](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/input.go#L29>)
 
 ```go
 func createRunInputs(cmd *cli.Command) RunFlags
@@ -637,7 +637,7 @@ func createRunInputs(cmd *cli.Command) RunFlags
 createRunInputs captures generation controls and trims the prompt. Optional string flags retain the distinction between omitted and explicitly empty.
 
 <a name="bildApp"></a>
-## type [bildApp](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L41-L47>)
+## type [bildApp](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L41-L47>)
 
 bildApp owns the loaded settings and command state for each invocation. The selected command prepares them after parsing the command line.
 
@@ -658,7 +658,7 @@ type bildApp struct {
 ```
 
 <a name="bildApp.apiKey"></a>
-### func \(\*bildApp\) [apiKey](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L452>)
+### func \(\*bildApp\) [apiKey](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L452>)
 
 ```go
 func (bild *bildApp) apiKey(description *catalog.Provider) (string, error)
@@ -667,7 +667,7 @@ func (bild *bildApp) apiKey(description *catalog.Provider) (string, error)
 apiKey returns the provider's nonempty configured credential, falling back to its environment variable. If neither supplies a value, it returns a CredentialError naming both settings.
 
 <a name="bildApp.applyAPIKeys"></a>
-### func \(\*bildApp\) [applyAPIKeys](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L465>)
+### func \(\*bildApp\) [applyAPIKeys](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L465>)
 
 ```go
 func (bild *bildApp) applyAPIKeys(keys map[string]string) []string
@@ -676,7 +676,7 @@ func (bild *bildApp) applyAPIKeys(keys map[string]string) []string
 applyAPIKeys stores configured credentials in the command and reports unknown providers.
 
 <a name="bildApp.applyFinalPreparation"></a>
-### func \(\*bildApp\) [applyFinalPreparation](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L587>)
+### func \(\*bildApp\) [applyFinalPreparation](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L587>)
 
 ```go
 func (bild *bildApp) applyFinalPreparation(run *generation.Generation, preparedGeneration *generation.Preparation) error
@@ -685,7 +685,7 @@ func (bild *bildApp) applyFinalPreparation(run *generation.Generation, preparedG
 applyFinalPreparation replaces the run's preparation and updates its optional record. It appends newly reported changes to the invocation outcome, including after generation failure.
 
 <a name="bildApp.cliClassifyUsageError"></a>
-### func \(\*bildApp\) [cliClassifyUsageError](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L732>)
+### func \(\*bildApp\) [cliClassifyUsageError](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L732>)
 
 ```go
 func (bild *bildApp) cliClassifyUsageError(_ context.Context, command *cli.Command, err error, isSubcommand bool) error
@@ -694,7 +694,7 @@ func (bild *bildApp) cliClassifyUsageError(_ context.Context, command *cli.Comma
 cliClassifyUsageError reports parser failures using the output modes already parsed. For root invocations it opens any requested results file, reports the classified usage error, and closes the file while preserving output and parsing failures.
 
 <a name="bildApp.cliPrepareCommand"></a>
-### func \(\*bildApp\) [cliPrepareCommand](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L126>)
+### func \(\*bildApp\) [cliPrepareCommand](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L126>)
 
 ```go
 func (bild *bildApp) cliPrepareCommand(ctx context.Context, command *cli.Command) (context.Context, error)
@@ -703,7 +703,7 @@ func (bild *bildApp) cliPrepareCommand(ctx context.Context, command *cli.Command
 cliPrepareCommand validates subcommand placement, then loads its settings and catalog using the already selected invocation streams.
 
 <a name="bildApp.cliPrepareRoot"></a>
-### func \(\*bildApp\) [cliPrepareRoot](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L86>)
+### func \(\*bildApp\) [cliPrepareRoot](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L86>)
 
 ```go
 func (bild *bildApp) cliPrepareRoot(ctx context.Context, root *cli.Command) (context.Context, error)
@@ -712,7 +712,7 @@ func (bild *bildApp) cliPrepareRoot(ctx context.Context, root *cli.Command) (con
 cliPrepareRoot captures the parsed command streams and output modes. For root requests, it opens the requested results file before loading settings and the catalog. Standalone version requests skip both loading and file creation; selected subcommands perform their own preparation.
 
 <a name="bildApp.cliRenderFlagEntry"></a>
-### func \(\*bildApp\) [cliRenderFlagEntry](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L411>)
+### func \(\*bildApp\) [cliRenderFlagEntry](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L411>)
 
 ```go
 func (bild *bildApp) cliRenderFlagEntry(flag cli.Flag) string
@@ -721,7 +721,7 @@ func (bild *bildApp) cliRenderFlagEntry(flag cli.Flag) string
 cliRenderFlagEntry renders a flag with catalog support and default\-model details. Flags without documentation produce no entry.
 
 <a name="bildApp.cliRunGenerate"></a>
-### func \(\*bildApp\) [cliRunGenerate](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L168>)
+### func \(\*bildApp\) [cliRunGenerate](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L168>)
 
 ```go
 func (bild *bildApp) cliRunGenerate(ctx context.Context, command *cli.Command) error
@@ -730,7 +730,7 @@ func (bild *bildApp) cliRunGenerate(ctx context.Context, command *cli.Command) e
 cliRunGenerate serves standalone help/version requests or one generation. Every generation return closes its owned result file and retains all causes.
 
 <a name="bildApp.cliRunHelp"></a>
-### func \(\*bildApp\) [cliRunHelp](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L700>)
+### func \(\*bildApp\) [cliRunHelp](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L700>)
 
 ```go
 func (bild *bildApp) cliRunHelp(_ context.Context, command *cli.Command) error
@@ -739,7 +739,7 @@ func (bild *bildApp) cliRunHelp(_ context.Context, command *cli.Command) error
 cliRunHelp serves general or named command help and classifies unknown topics.
 
 <a name="bildApp.cliRunInfo"></a>
-### func \(\*bildApp\) [cliRunInfo](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L245>)
+### func \(\*bildApp\) [cliRunInfo](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L245>)
 
 ```go
 func (bild *bildApp) cliRunInfo(_ context.Context, command *cli.Command) error
@@ -748,7 +748,7 @@ func (bild *bildApp) cliRunInfo(_ context.Context, command *cli.Command) error
 cliRunInfo resolves provider or model details and propagates every rendering failure. Provider configuration failures retain their original identity.
 
 <a name="bildApp.cliRunList"></a>
-### func \(\*bildApp\) [cliRunList](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L212>)
+### func \(\*bildApp\) [cliRunList](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L212>)
 
 ```go
 func (bild *bildApp) cliRunList(_ context.Context, command *cli.Command) error
@@ -757,7 +757,7 @@ func (bild *bildApp) cliRunList(_ context.Context, command *cli.Command) error
 cliRunList renders the requested listing or the command's help page.
 
 <a name="bildApp.cliRunSearch"></a>
-### func \(\*bildApp\) [cliRunSearch](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L226>)
+### func \(\*bildApp\) [cliRunSearch](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L226>)
 
 ```go
 func (bild *bildApp) cliRunSearch(_ context.Context, command *cli.Command) error
@@ -766,7 +766,7 @@ func (bild *bildApp) cliRunSearch(_ context.Context, command *cli.Command) error
 cliRunSearch filters models by media and search terms, then renders the selected listing form. It returns validation, search, and output errors after reporting them.
 
 <a name="bildApp.defaultModelKey"></a>
-### func \(\*bildApp\) [defaultModelKey](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L322>)
+### func \(\*bildApp\) [defaultModelKey](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L322>)
 
 ```go
 func (bild *bildApp) defaultModelKey() (string, bool)
@@ -775,7 +775,7 @@ func (bild *bildApp) defaultModelKey() (string, bool)
 defaultModelKey prefers the configured default, then a catalog default with available credentials.
 
 <a name="bildApp.executeGeneration"></a>
-### func \(\*bildApp\) [executeGeneration](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L532>)
+### func \(\*bildApp\) [executeGeneration](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L532>)
 
 ```go
 func (bild *bildApp) executeGeneration(ctx context.Context, generator generation.Generator, pair *catalog.ProvModelPair, flags *RunFlags, inputs params.FlagInputs, inputMedia []media.Input, outPath artifact.Location, pathChanges []params.Adjustment, record *metadata.Record) (finalStem string, completedFiles []output.SavedFile, resultErr error)
@@ -784,7 +784,7 @@ func (bild *bildApp) executeGeneration(ctx context.Context, generator generation
 executeGeneration resolves any reuse selection, prepares provider inputs, and runs generation. It saves generated artifacts and returns their final stem and completed file records, including those saved before a later failure.
 
 <a name="bildApp.generate"></a>
-### func \(\*bildApp\) [generate](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L341>)
+### func \(\*bildApp\) [generate](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L341>)
 
 ```go
 func (bild *bildApp) generate(ctx context.Context, genInputs *RunFlags, userInputs params.FlagInputs) (catalog.ProvModelPair, error)
@@ -793,7 +793,7 @@ func (bild *bildApp) generate(ctx context.Context, genInputs *RunFlags, userInpu
 generate resolves inputs, calls the provider, writes artifacts, and optionally saves a record. It returns any resolved provider and model even on failure for reporting context.
 
 <a name="bildApp.helpExampleProvider"></a>
-### func \(\*bildApp\) [helpExampleProvider](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L609>)
+### func \(\*bildApp\) [helpExampleProvider](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L609>)
 
 ```go
 func (bild *bildApp) helpExampleProvider() *catalog.Provider
@@ -802,7 +802,7 @@ func (bild *bildApp) helpExampleProvider() *catalog.Provider
 helpExampleProvider chooses a loaded example provider at random from the rotation. It falls back to the first provider with models, or an empty provider when none qualify.
 
 <a name="bildApp.identifyInputMedia"></a>
-### func \(\*bildApp\) [identifyInputMedia](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L484>)
+### func \(\*bildApp\) [identifyInputMedia](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L484>)
 
 ```go
 func (bild *bildApp) identifyInputMedia(ctx context.Context, pair *catalog.ProvModelPair, inputMedia []media.Input) error
@@ -811,7 +811,7 @@ func (bild *bildApp) identifyInputMedia(ctx context.Context, pair *catalog.ProvM
 identifyInputMedia resolves media types and updates inputMedia in place when credentials exist. It may fetch remote sources. Without credentials, it returns nil without fetching so the later generation step can report the missing key.
 
 <a name="bildApp.load"></a>
-### func \(\*bildApp\) [load](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L51>)
+### func \(\*bildApp\) [load](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L51>)
 
 ```go
 func (bild *bildApp) load() error
@@ -820,7 +820,7 @@ func (bild *bildApp) load() error
 load reads user settings and the provider catalog and applies configured API keys. It prints configuration faults as warnings and returns any warning\-write or catalog\-load error.
 
 <a name="bildApp.optionsHelpText"></a>
-### func \(\*bildApp\) [optionsHelpText](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L718>)
+### func \(\*bildApp\) [optionsHelpText](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L718>)
 
 ```go
 func (bild *bildApp) optionsHelpText(command *cli.Command) string
@@ -829,7 +829,7 @@ func (bild *bildApp) optionsHelpText(command *cli.Command) string
 optionsHelpText renders visible flags using this application's loaded catalog.
 
 <a name="bildApp.printListing"></a>
-### func \(\*bildApp\) [printListing](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L644>)
+### func \(\*bildApp\) [printListing](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L644>)
 
 ```go
 func (bild *bildApp) printListing(command *cli.Command, pairs []catalog.ProvModelPair) error
@@ -838,7 +838,7 @@ func (bild *bildApp) printListing(command *cli.Command, pairs []catalog.ProvMode
 printListing renders provider, model, media, alias, and JSON choices for list or search. It reports output failures on the invocation's diagnostic stream and returns their causes.
 
 <a name="bildApp.promptIgnored"></a>
-### func \(\*bildApp\) [promptIgnored](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L300>)
+### func \(\*bildApp\) [promptIgnored](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L300>)
 
 ```go
 func (bild *bildApp) promptIgnored(genInputs *RunFlags) bool
@@ -847,7 +847,7 @@ func (bild *bildApp) promptIgnored(genInputs *RunFlags) bool
 promptIgnored reports whether the selected or default model requires no prompt. Unresolved or ambiguous model input returns false.
 
 <a name="bildApp.resolveGenerator"></a>
-### func \(\*bildApp\) [resolveGenerator](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L148>)
+### func \(\*bildApp\) [resolveGenerator](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L148>)
 
 ```go
 func (bild *bildApp) resolveGenerator(genInputs *RunFlags) (catalog.ProvModelPair, generation.Generator, error)
@@ -856,7 +856,7 @@ func (bild *bildApp) resolveGenerator(genInputs *RunFlags) (catalog.ProvModelPai
 resolveGenerator resolves the model and records its identity before constructing the provider, so construction failures retain the provider and model context.
 
 <a name="bildApp.resolveModelInput"></a>
-### func \(\*bildApp\) [resolveModelInput](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L655>)
+### func \(\*bildApp\) [resolveModelInput](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L655>)
 
 ```go
 func (bild *bildApp) resolveModelInput(modelInput string) (catalog.ProvModelPair, error)
@@ -865,7 +865,7 @@ func (bild *bildApp) resolveModelInput(modelInput string) (catalog.ProvModelPair
 resolveModelInput returns the uniquely matching provider and model. For ambiguous input, it shows candidates unless JSON output is noninteractive, asks terminal users for a replacement, and retries. It returns resolution, prompt, or diagnostic\-write errors when correction cannot continue.
 
 <a name="bildApp.runGeneration"></a>
-### func \(\*bildApp\) [runGeneration](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L182>)
+### func \(\*bildApp\) [runGeneration](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L182>)
 
 ```go
 func (bild *bildApp) runGeneration(ctx context.Context, command *cli.Command) error
@@ -874,7 +874,7 @@ func (bild *bildApp) runGeneration(ctx context.Context, command *cli.Command) er
 runGeneration validates and confirms the prompt, collects the generation outcome, and reports it. When generation runs, final reporting follows artifact saving, record persistence, and cleanup.
 
 <a name="bildApp.runGenerator"></a>
-### func \(\*bildApp\) [runGenerator](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L499>)
+### func \(\*bildApp\) [runGenerator](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L499>)
 
 ```go
 func (bild *bildApp) runGenerator(ctx context.Context, generator generation.Generator, run *generation.Generation) (generation.Result, error)
@@ -883,7 +883,7 @@ func (bild *bildApp) runGenerator(ctx context.Context, generator generation.Gene
 runGenerator assigns credentials and invokes the provider, recording its completion. Any progress animation stops before the result returns for persistence and reporting.
 
 <a name="bildApp.runModelInput"></a>
-### func \(\*bildApp\) [runModelInput](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L312>)
+### func \(\*bildApp\) [runModelInput](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L312>)
 
 ```go
 func (bild *bildApp) runModelInput(genInputs *RunFlags) (string, bool)
@@ -892,7 +892,7 @@ func (bild *bildApp) runModelInput(genInputs *RunFlags) (string, bool)
 runModelInput returns the supplied or default model and whether one is available.
 
 <a name="bildApp.selectedModels"></a>
-### func \(\*bildApp\) [selectedModels](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L636>)
+### func \(\*bildApp\) [selectedModels](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L636>)
 
 ```go
 func (bild *bildApp) selectedModels(command *cli.Command) []catalog.ProvModelPair
@@ -901,7 +901,7 @@ func (bild *bildApp) selectedModels(command *cli.Command) []catalog.ProvModelPai
 selectedModels returns catalog models matching the image and video flags. It selects both media kinds when neither flag or both flags are set.
 
 <a name="bildApp.showHelpPage"></a>
-### func \(\*bildApp\) [showHelpPage](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L690>)
+### func \(\*bildApp\) [showHelpPage](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L690>)
 
 ```go
 func (bild *bildApp) showHelpPage(command *cli.Command) error
@@ -910,7 +910,7 @@ func (bild *bildApp) showHelpPage(command *cli.Command) error
 showHelpPage renders a complete root or command page before delivering it.
 
 <a name="bildApp.tipsHelpText"></a>
-### func \(\*bildApp\) [tipsHelpText](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/bild.go#L603>)
+### func \(\*bildApp\) [tipsHelpText](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/bild.go#L603>)
 
 ```go
 func (bild *bildApp) tipsHelpText() (string, error)
@@ -919,7 +919,7 @@ func (bild *bildApp) tipsHelpText() (string, error)
 tipsHelpText renders general help tips with examples from an available provider.
 
 <a name="commandInvocation"></a>
-## type [commandInvocation](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L31-L48>)
+## type [commandInvocation](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L31-L48>)
 
 commandInvocation owns the streams, result file, presentation choices, and completed generation facts of one command.
 
@@ -957,7 +957,7 @@ type commandInvocation struct {
 ```
 
 <a name="newInvocation"></a>
-### func [newInvocation](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L53>)
+### func [newInvocation](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L53>)
 
 ```go
 func newInvocation(stdin io.Reader, stdout, stderr io.Writer) commandInvocation
@@ -966,7 +966,7 @@ func newInvocation(stdin io.Reader, stdout, stderr io.Writer) commandInvocation
 newInvocation stores the supplied streams and detects terminal support for each one. It enables interaction only when both input and diagnostics are terminals, and styles an output stream only when its terminal renders styling.
 
 <a name="commandInvocation.fail"></a>
-### func \(\*commandInvocation\) [fail](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L126>)
+### func \(\*commandInvocation\) [fail](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L126>)
 
 ```go
 func (invocation *commandInvocation) fail(err error) error
@@ -975,7 +975,7 @@ func (invocation *commandInvocation) fail(err error) error
 fail renders a command failure before a generation has resolved its provider. The returned error retains the command cause and any failed delivery.
 
 <a name="commandInvocation.finish"></a>
-### func \(\*commandInvocation\) [finish](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L105>)
+### func \(\*commandInvocation\) [finish](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L105>)
 
 ```go
 func (invocation *commandInvocation) finish(commandErr error) error
@@ -984,7 +984,7 @@ func (invocation *commandInvocation) finish(commandErr error) error
 finish closes the owned results file and restores stdout as the result destination. It joins close and diagnostic\-delivery failures with commandErr without rewriting results.
 
 <a name="commandInvocation.openResults"></a>
-### func \(\*commandInvocation\) [openResults](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L73>)
+### func \(\*commandInvocation\) [openResults](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L73>)
 
 ```go
 func (invocation *commandInvocation) openResults(path string) error
@@ -993,7 +993,7 @@ func (invocation *commandInvocation) openResults(path string) error
 openResults creates missing parent directories, then creates or truncates the requested results file. Without a path, filename mode discards ordinary results; other modes keep stdout.
 
 <a name="commandInvocation.printAdjustments"></a>
-### func \(\*commandInvocation\) [printAdjustments](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L231>)
+### func \(\*commandInvocation\) [printAdjustments](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L231>)
 
 ```go
 func (invocation *commandInvocation) printAdjustments() error
@@ -1002,7 +1002,7 @@ func (invocation *commandInvocation) printAdjustments() error
 printAdjustments delivers the text notices not yet reported. Successful delivery advances the count so final reporting prints only changes discovered during generation.
 
 <a name="commandInvocation.printFailure"></a>
-### func \(\*commandInvocation\) [printFailure](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L132>)
+### func \(\*commandInvocation\) [printFailure](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L132>)
 
 ```go
 func (invocation *commandInvocation) printFailure(err error, providerName, modelName string) error
@@ -1011,7 +1011,7 @@ func (invocation *commandInvocation) printFailure(err error, providerName, model
 printFailure renders a failure with its available provider and model context. It returns delivery errors separately from the primary failure being described.
 
 <a name="commandInvocation.printSavedFiles"></a>
-### func \(\*commandInvocation\) [printSavedFiles](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L167>)
+### func \(\*commandInvocation\) [printSavedFiles](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L167>)
 
 ```go
 func (invocation *commandInvocation) printSavedFiles(destination io.Writer, styled bool) error
@@ -1020,7 +1020,7 @@ func (invocation *commandInvocation) printSavedFiles(destination io.Writer, styl
 printSavedFiles reports the invocation's complete saved\-file facts to one destination.
 
 <a name="commandInvocation.reportGeneration"></a>
-### func \(\*commandInvocation\) [reportGeneration](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L180>)
+### func \(\*commandInvocation\) [reportGeneration](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L180>)
 
 ```go
 func (invocation *commandInvocation) reportGeneration(startedAt time.Time, providerName, modelName string, generationErr error) error
@@ -1029,7 +1029,7 @@ func (invocation *commandInvocation) reportGeneration(startedAt time.Time, provi
 reportGeneration completes the outcome and writes its text or JSON report and requested filenames. If reporting fails, it reports that error on diagnostics and joins it with the generation error.
 
 <a name="commandInvocation.reportOutputError"></a>
-### func \(\*commandInvocation\) [reportOutputError](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L151>)
+### func \(\*commandInvocation\) [reportOutputError](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L151>)
 
 ```go
 func (invocation *commandInvocation) reportOutputError(err error, providerName, modelName string) error
@@ -1038,7 +1038,7 @@ func (invocation *commandInvocation) reportOutputError(err error, providerName, 
 reportOutputError writes the output error and any completed file reports to diagnostics. It returns the original error joined with failures from either diagnostic write.
 
 <a name="commandInvocation.reportText"></a>
-### func \(\*commandInvocation\) [reportText](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L209>)
+### func \(\*commandInvocation\) [reportText](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L209>)
 
 ```go
 func (invocation *commandInvocation) reportText(providerName, modelName string, generationErr error) error
@@ -1047,7 +1047,7 @@ func (invocation *commandInvocation) reportText(providerName, modelName string, 
 reportText writes adjustments and file notices, the available elapsed time, saved\-file reports, and any generation error. It attempts each report even if an earlier write fails.
 
 <a name="commandInvocation.selectMode"></a>
-### func \(\*commandInvocation\) [selectMode](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/invocation.go#L63>)
+### func \(\*commandInvocation\) [selectMode](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/invocation.go#L63>)
 
 ```go
 func (invocation *commandInvocation) selectMode(command *cli.Command)
@@ -1056,7 +1056,7 @@ func (invocation *commandInvocation) selectMode(command *cli.Command)
 selectMode stores parsed presentation choices without opening a results file.
 
 <a name="providerRegistration"></a>
-## type [providerRegistration](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/main.go#L34-L39>)
+## type [providerRegistration](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/main.go#L34-L39>)
 
 providerRegistration binds a provider's description to its executable operations.
 
@@ -1075,7 +1075,7 @@ type providerRegistration struct {
 ```
 
 <a name="providerRegistrations"></a>
-### func [providerRegistrations](<https://github.com/shdeen/bildomat-dev/blob/main/cmd/bild/main.go#L42>)
+### func [providerRegistrations](<https://github.com/shdeen/bildomat/blob/main/cmd/bild/main.go#L42>)
 
 ```go
 func providerRegistrations() []providerRegistration

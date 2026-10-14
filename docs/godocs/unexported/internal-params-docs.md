@@ -134,7 +134,7 @@ const nullJSON = "null"
 ```
 
 <a name="Adjust"></a>
-## func [Adjust](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L74>)
+## func [Adjust](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L74>)
 
 ```go
 func Adjust(inputs FlagInputs, definitions Definitions, modelLabel string) (Values, []Adjustment, error)
@@ -143,7 +143,7 @@ func Adjust(inputs FlagInputs, definitions Definitions, modelLabel string) (Valu
 Adjust applies model parameter definitions and returns request values and adjustment notices. It leaves supplied inputs unchanged and returns completed values and notices on failure; modelLabel identifies the model in notices and conflicting\-constraint errors.
 
 <a name="CheckFlagInputTypes"></a>
-## func [CheckFlagInputTypes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/flag.go#L114>)
+## func [CheckFlagInputTypes](<https://github.com/shdeen/bildomat/blob/main/internal/params/flag.go#L114>)
 
 ```go
 func CheckFlagInputTypes(inputs FlagInputs, paramFlags []Flag) error
@@ -152,7 +152,7 @@ func CheckFlagInputTypes(inputs FlagInputs, paramFlags []Flag) error
 CheckFlagInputTypes rejects the first stored input that differs from its declared Go type. Repeatable flags require a string slice; inputs without a flag definition are not checked.
 
 <a name="ConstraintFault"></a>
-## func [ConstraintFault](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/validation.go#L26>)
+## func [ConstraintFault](<https://github.com/shdeen/bildomat/blob/main/internal/params/validation.go#L26>)
 
 ```go
 func ConstraintFault(param *Definition) string
@@ -161,7 +161,7 @@ func ConstraintFault(param *Definition) string
 ConstraintFault returns the first constraint error in a parameter configuration, or an empty string when it is valid.
 
 <a name="FormatValue"></a>
-## func [FormatValue](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/flag.go#L162>)
+## func [FormatValue](<https://github.com/shdeen/bildomat/blob/main/internal/params/flag.go#L162>)
 
 ```go
 func FormatValue(paramVal any) string
@@ -170,7 +170,7 @@ func FormatValue(paramVal any) string
 FormatValue returns the textual representation of a parameter value.
 
 <a name="GuidanceMissing"></a>
-## func [GuidanceMissing](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/validation.go#L9>)
+## func [GuidanceMissing](<https://github.com/shdeen/bildomat/blob/main/internal/params/validation.go#L9>)
 
 ```go
 func GuidanceMissing(paramCfg *Definition, paramFlag *Flag) bool
@@ -179,7 +179,7 @@ func GuidanceMissing(paramCfg *Definition, paramFlag *Flag) bool
 GuidanceMissing reports whether a parameter lacks declared constraints and flag value guidance. Boolean flags need no value guidance.
 
 <a name="ParseDimensions"></a>
-## func [ParseDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L52>)
+## func [ParseDimensions](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L52>)
 
 ```go
 func ParseDimensions(size string) (parsedWidth, parsedHeight int, isValid bool)
@@ -188,7 +188,7 @@ func ParseDimensions(size string) (parsedWidth, parsedHeight int, isValid bool)
 ParseDimensions takes WxH dimensions and returns positive width and height values and whether parsing succeeded.
 
 <a name="ParseValue"></a>
-## func [ParseValue](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/flag.go#L82>)
+## func [ParseValue](<https://github.com/shdeen/bildomat/blob/main/internal/params/flag.go#L82>)
 
 ```go
 func ParseValue(dataType DataType, rawValue string) (any, error)
@@ -197,7 +197,7 @@ func ParseValue(dataType DataType, rawValue string) (any, error)
 ParseValue parses parameter text according to the requested data type and returns its typed value.
 
 <a name="PickSize"></a>
-## func [PickSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L206>)
+## func [PickSize](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L206>)
 
 ```go
 func PickSize(sizes []string, landscape bool, tierH int, requestedRatio Nullable[float64]) string
@@ -206,7 +206,7 @@ func PickSize(sizes []string, landscape bool, tierH int, requestedRatio Nullable
 PickSize selects declared dimensions by orientation, nearest short edge, nearest supplied ratio, and declaration order. If the requested orientation has no candidate, it considers both orientations.
 
 <a name="Value"></a>
-## func [Value](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L39>)
+## func [Value](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L39>)
 
 ```go
 func Value[T any](paramVals map[FlagType]any, param FlagType) (T, error)
@@ -215,7 +215,7 @@ func Value[T any](paramVals map[FlagType]any, param FlagType) (T, error)
 Value reads a typed parameter, returning its zero value when absent. A stored value of another type returns ErrParamValueTypeMismatch naming the parameter.
 
 <a name="allowedIntValues"></a>
-## func [allowedIntValues](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L373>)
+## func [allowedIntValues](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L373>)
 
 ```go
 func allowedIntValues(allowedVals []string) []int
@@ -224,7 +224,7 @@ func allowedIntValues(allowedVals []string) []int
 allowedIntValues takes text values and returns those that parse as integers.
 
 <a name="allowedMember"></a>
-## func [allowedMember](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L577>)
+## func [allowedMember](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L577>)
 
 ```go
 func allowedMember(input string, allowed []string) (string, bool)
@@ -233,7 +233,7 @@ func allowedMember(input string, allowed []string) (string, bool)
 allowedMember returns the declared spelling of a case\-insensitive member.
 
 <a name="aspectNearest"></a>
-## func [aspectNearest](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L88>)
+## func [aspectNearest](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L88>)
 
 ```go
 func aspectNearest(input string, allowed []string) (string, bool)
@@ -242,7 +242,7 @@ func aspectNearest(input string, allowed []string) (string, bool)
 aspectNearest takes an aspect\-ratio value and allowed values and returns the exact member or nearest parseable ratio. Its boolean result reports whether the input was already a member.
 
 <a name="boundedInt"></a>
-## func [boundedInt](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L478>)
+## func [boundedInt](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L478>)
 
 ```go
 func boundedInt(value float64) int
@@ -251,7 +251,7 @@ func boundedInt(value float64) int
 boundedInt converts a nonnegative edge estimate without overflowing an int.
 
 <a name="capRatio"></a>
-## func [capRatio](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L520>)
+## func [capRatio](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L520>)
 
 ```go
 func capRatio(bounds SizeBounds, floatWidth, floatHeight float64) (adjustedWidth, adjustedHeight float64)
@@ -260,7 +260,7 @@ func capRatio(bounds SizeBounds, floatWidth, floatHeight float64) (adjustedWidth
 capRatio takes size bounds and floating\-point dimensions and returns dimensions whose long\-to\-short ratio does not exceed the configured maximum.
 
 <a name="ceilSquareRoot"></a>
-## func [ceilSquareRoot](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L509>)
+## func [ceilSquareRoot](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L509>)
 
 ```go
 func ceilSquareRoot(count int) int
@@ -269,7 +269,7 @@ func ceilSquareRoot(count int) int
 ceilSquareRoot returns the smallest edge whose square reaches the count.
 
 <a name="clampFree"></a>
-## func [clampFree](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L288>)
+## func [clampFree](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L288>)
 
 ```go
 func clampFree(bounds SizeBounds, width, height int) (adjustedWidth, adjustedHeight int)
@@ -278,7 +278,7 @@ func clampFree(bounds SizeBounds, width, height int) (adjustedWidth, adjustedHei
 clampFree takes size bounds and dimensions and returns dimensions adjusted to the configured ratio, edge, pixel\-count, and increment constraints.
 
 <a name="closerDimensions"></a>
-## func [closerDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L406>)
+## func [closerDimensions](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L406>)
 
 ```go
 func closerDimensions(requestedShort, requestedLong float64, shortEdge, longEdge, chosenShort, chosenLong int) bool
@@ -287,7 +287,7 @@ func closerDimensions(requestedShort, requestedLong float64, shortEdge, longEdge
 closerDimensions orders usable dimensions by distance, then a balanced shape, then preservation of the requested longer edge on an exact tie.
 
 <a name="deriveSize"></a>
-## func [deriveSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L268>)
+## func [deriveSize](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L268>)
 
 ```go
 func deriveSize(bounds SizeBounds, ratio float64) string
@@ -296,7 +296,7 @@ func deriveSize(bounds SizeBounds, ratio float64) string
 deriveSize takes size bounds and an aspect ratio and returns constrained dimensions based on the configured long edge. It returns an empty string when no long edge is configured.
 
 <a name="fixRounded"></a>
-## func [fixRounded](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L297>)
+## func [fixRounded](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L297>)
 
 ```go
 func fixRounded(bounds SizeBounds, width, height int) (adjustedWidth, adjustedHeight int)
@@ -305,7 +305,7 @@ func fixRounded(bounds SizeBounds, width, height int) (adjustedWidth, adjustedHe
 fixRounded chooses whole increments satisfying every constraint near the rounded request.
 
 <a name="floorSquareRoot"></a>
-## func [floorSquareRoot](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L491>)
+## func [floorSquareRoot](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L491>)
 
 ```go
 func floorSquareRoot(count int) int
@@ -314,7 +314,7 @@ func floorSquareRoot(count int) int
 floorSquareRoot returns the floor of the square root of a nonnegative count.
 
 <a name="fmtWH"></a>
-## func [fmtWH](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L69>)
+## func [fmtWH](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L69>)
 
 ```go
 func fmtWH(width, height int) string
@@ -323,7 +323,7 @@ func fmtWH(width, height int) string
 fmtWH takes width and height values and returns WxH dimensions.
 
 <a name="holdsDeclaredType"></a>
-## func [holdsDeclaredType](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/flag.go#L132>)
+## func [holdsDeclaredType](<https://github.com/shdeen/bildomat/blob/main/internal/params/flag.go#L132>)
 
 ```go
 func holdsDeclaredType(stored any, paramFlag *Flag) bool
@@ -332,7 +332,7 @@ func holdsDeclaredType(stored any, paramFlag *Flag) bool
 holdsDeclaredType checks a parsed value against its flag's scalar or repeatable type.
 
 <a name="inputVal"></a>
-## func [inputVal](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L31>)
+## func [inputVal](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L31>)
 
 ```go
 func inputVal[T any](paramVals map[FlagType]any, param FlagType) (T, bool)
@@ -341,7 +341,7 @@ func inputVal[T any](paramVals map[FlagType]any, param FlagType) (T, bool)
 inputVal reads a typed parameter value, reporting false when absent or of another type.
 
 <a name="nearestRes"></a>
-## func [nearestRes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L130>)
+## func [nearestRes](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L130>)
 
 ```go
 func nearestRes(height int, allowed []string) string
@@ -350,7 +350,7 @@ func nearestRes(height int, allowed []string) string
 nearestRes takes a height and allowed resolution labels and returns the label with the nearest representative height.
 
 <a name="nearestSize"></a>
-## func [nearestSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L249>)
+## func [nearestSize](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L249>)
 
 ```go
 func nearestSize(sizes []string, ratio float64) string
@@ -359,7 +359,7 @@ func nearestSize(sizes []string, ratio float64) string
 nearestSize takes allowed dimensions and an aspect ratio and returns the dimensions with the nearest ratio. A tie returns the first matching value.
 
 <a name="parseRatio"></a>
-## func [parseRatio](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L29>)
+## func [parseRatio](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L29>)
 
 ```go
 func parseRatio(ratio string) (float64, bool)
@@ -368,7 +368,7 @@ func parseRatio(ratio string) (float64, bool)
 parseRatio takes an A:B aspect ratio and returns its positive finite quotient and whether parsing succeeded.
 
 <a name="ratioFromSpec"></a>
-## func [ratioFromSpec](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L588>)
+## func [ratioFromSpec](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L588>)
 
 ```go
 func ratioFromSpec(sizeInput string) (float64, bool)
@@ -377,7 +377,7 @@ func ratioFromSpec(sizeInput string) (float64, bool)
 ratioFromSpec returns the ratio represented by dimensions or an aspect ratio.
 
 <a name="repHeight"></a>
-## func [repHeight](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L162>)
+## func [repHeight](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L162>)
 
 ```go
 func repHeight(size string) (int, bool)
@@ -386,7 +386,7 @@ func repHeight(size string) (int, bool)
 repHeight takes a resolution label, dimensions, or positive integer and returns its representative height and whether the value is recognized.
 
 <a name="roundToIncrem"></a>
-## func [roundToIncrem](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L568>)
+## func [roundToIncrem](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L568>)
 
 ```go
 func roundToIncrem(value float64, step int) int
@@ -395,7 +395,7 @@ func roundToIncrem(value float64, step int) int
 roundToIncrem takes a value and increment and returns the nearest positive multiple of the increment. A non\-positive increment rounds to the nearest positive integer.
 
 <a name="scaleLongFactor"></a>
-## func [scaleLongFactor](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L538>)
+## func [scaleLongFactor](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L538>)
 
 ```go
 func scaleLongFactor(bounds SizeBounds, floatWidth, floatHeight float64) float64
@@ -404,7 +404,7 @@ func scaleLongFactor(bounds SizeBounds, floatWidth, floatHeight float64) float64
 scaleLongFactor takes size bounds and floating\-point dimensions and returns the scale that brings the longer edge within the configured maximum. It returns one when no reduction is needed.
 
 <a name="scalePxFactor"></a>
-## func [scalePxFactor](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L548>)
+## func [scalePxFactor](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L548>)
 
 ```go
 func scalePxFactor(bounds SizeBounds, pixelCount float64) float64
@@ -413,7 +413,7 @@ func scalePxFactor(bounds SizeBounds, pixelCount float64) float64
 scalePxFactor takes size bounds and a pixel count and returns the scale that brings the count within the configured range. It returns one when no scaling is needed.
 
 <a name="scaleTo"></a>
-## func [scaleTo](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L562>)
+## func [scaleTo](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L562>)
 
 ```go
 func scaleTo(floatWidth, floatHeight, scale float64) (scaledWidth, scaledHeight float64)
@@ -422,7 +422,7 @@ func scaleTo(floatWidth, floatHeight, scale float64) (scaledWidth, scaledHeight 
 scaleTo takes floating\-point dimensions and a scale and returns both dimensions multiplied by that scale.
 
 <a name="snapInt"></a>
-## func [snapInt](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L117>)
+## func [snapInt](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L117>)
 
 ```go
 func snapInt(sec int, allowed []int) int
@@ -431,7 +431,7 @@ func snapInt(sec int, allowed []int) int
 snapInt takes an integer and allowed values and returns the nearest allowed value. A tie returns the first matching value.
 
 <a name="suffixNum"></a>
-## func [suffixNum](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L73>)
+## func [suffixNum](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L73>)
 
 ```go
 func suffixNum(text, suffix string) (int, bool)
@@ -440,7 +440,7 @@ func suffixNum(text, suffix string) (int, bool)
 suffixNum takes text and a required suffix and returns the positive integer before that suffix and whether parsing succeeded.
 
 <a name="Adjustment"></a>
-## type [Adjustment](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L19-L25>)
+## type [Adjustment](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L19-L25>)
 
 Adjustment records one adjustment to a supplied generation parameter.
 
@@ -461,7 +461,7 @@ type Adjustment struct {
 ```
 
 <a name="applyNumericRange"></a>
-### func [applyNumericRange](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L394>)
+### func [applyNumericRange](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L394>)
 
 ```go
 func applyNumericRange[N int | float64](paramCfg *Definition, suppliedNum N) (N, *Adjustment)
@@ -470,7 +470,7 @@ func applyNumericRange[N int | float64](paramCfg *Definition, suppliedNum N) (N,
 applyNumericRange returns a number constrained to its declared bounds and an optional change record.
 
 <a name="constrainToBound"></a>
-### func [constrainToBound](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L407>)
+### func [constrainToBound](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L407>)
 
 ```go
 func constrainToBound[N int | float64](param *Definition, suppliedNum, constrainedNum N, changeType Change, boundForm string) (N, *Adjustment)
@@ -479,7 +479,7 @@ func constrainToBound[N int | float64](param *Definition, suppliedNum, constrain
 constrainToBound returns the constrained value and the notice identifying its bound.
 
 <a name="Change"></a>
-## type [Change](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/param.go#L4>)
+## type [Change](<https://github.com/shdeen/bildomat/blob/main/internal/params/param.go#L4>)
 
 Change identifies how a generation parameter was altered.
 
@@ -514,7 +514,7 @@ const (
 ```
 
 <a name="DataType"></a>
-## type [DataType](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/flag.go#L41>)
+## type [DataType](<https://github.com/shdeen/bildomat/blob/main/internal/params/flag.go#L41>)
 
 DataType identifies a parameter value's data type.
 
@@ -539,7 +539,7 @@ const (
 ```
 
 <a name="Definition"></a>
-## type [Definition](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/param.go#L43-L54>)
+## type [Definition](<https://github.com/shdeen/bildomat/blob/main/internal/params/param.go#L43-L54>)
 
 Definition contains a model's provider mapping and constraints for one parameter.
 
@@ -572,7 +572,7 @@ type Definition struct {
 ```
 
 <a name="Definitions"></a>
-## type [Definitions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/param.go#L57>)
+## type [Definitions](<https://github.com/shdeen/bildomat/blob/main/internal/params/param.go#L57>)
 
 Definitions contains the declared parameter configurations for a model.
 
@@ -581,7 +581,7 @@ type Definitions []Definition
 ```
 
 <a name="Definitions.Param"></a>
-### func \(Definitions\) [Param](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/param.go#L60>)
+### func \(Definitions\) [Param](<https://github.com/shdeen/bildomat/blob/main/internal/params/param.go#L60>)
 
 ```go
 func (definitions Definitions) Param(flag FlagType) (Definition, bool)
@@ -590,7 +590,7 @@ func (definitions Definitions) Param(flag FlagType) (Definition, bool)
 Param returns a flag's declared configuration and whether it exists.
 
 <a name="Flag"></a>
-## type [Flag](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/flag.go#L68-L78>)
+## type [Flag](<https://github.com/shdeen/bildomat/blob/main/internal/params/flag.go#L68-L78>)
 
 Flag describes a generation parameter's identifier, accepted names, type, and help text.
 
@@ -621,7 +621,7 @@ type Flag struct {
 ```
 
 <a name="Flags"></a>
-### func [Flags](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/zz_paramflags.go#L7>)
+### func [Flags](<https://github.com/shdeen/bildomat/blob/main/internal/params/zz_paramflags.go#L7>)
 
 ```go
 func Flags() []Flag
@@ -630,7 +630,7 @@ func Flags() []Flag
 Flags returns generation parameter records in declaration order. Each call creates independent records that callers may modify.
 
 <a name="FlagInputs"></a>
-## type [FlagInputs](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/input.go#L4>)
+## type [FlagInputs](<https://github.com/shdeen/bildomat/blob/main/internal/params/input.go#L4>)
 
 FlagInputs maps supplied parameter names to their parsed values.
 
@@ -639,7 +639,7 @@ type FlagInputs map[FlagType]any
 ```
 
 <a name="declaredSizingInputs"></a>
-### func [declaredSizingInputs](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L460>)
+### func [declaredSizingInputs](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L460>)
 
 ```go
 func declaredSizingInputs(userInputs FlagInputs, definitions Definitions) FlagInputs
@@ -648,7 +648,7 @@ func declaredSizingInputs(userInputs FlagInputs, definitions Definitions) FlagIn
 declaredSizingInputs excludes sizing inputs that the parameter definitions do not consume.
 
 <a name="FlagInputs.Supplied"></a>
-### func \(FlagInputs\) [Supplied](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/input.go#L8>)
+### func \(FlagInputs\) [Supplied](<https://github.com/shdeen/bildomat/blob/main/internal/params/input.go#L8>)
 
 ```go
 func (userInputs FlagInputs) Supplied(flag FlagType) bool
@@ -657,7 +657,7 @@ func (userInputs FlagInputs) Supplied(flag FlagType) bool
 Supplied reports whether a parameter has a meaningful supplied value. Thought output requires true, and input media requires at least one source.
 
 <a name="FlagType"></a>
-## type [FlagType](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/flag.go#L14>)
+## type [FlagType](<https://github.com/shdeen/bildomat/blob/main/internal/params/flag.go#L14>)
 
 FlagType identifies a generation parameter by its command flag name.
 
@@ -694,7 +694,7 @@ const (
 ```
 
 <a name="Nullable"></a>
-## type [Nullable](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/nullable.go#L16-L20>)
+## type [Nullable](<https://github.com/shdeen/bildomat/blob/main/internal/params/nullable.go#L16-L20>)
 
 Nullable distinguishes an explicitly supplied value from absence.
 
@@ -710,7 +710,7 @@ type Nullable[T any] struct {
 ```
 
 <a name="GetSetIf"></a>
-### func [GetSetIf](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/nullable.go#L23>)
+### func [GetSetIf](<https://github.com/shdeen/bildomat/blob/main/internal/params/nullable.go#L23>)
 
 ```go
 func GetSetIf[T any](provided bool, val T) Nullable[T]
@@ -719,7 +719,7 @@ func GetSetIf[T any](provided bool, val T) Nullable[T]
 GetSetIf returns a set Nullable only when provided is true.
 
 <a name="Nullable[T].MarshalJSON"></a>
-### func \(Nullable\[T\]\) [MarshalJSON](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/nullable.go#L46>)
+### func \(Nullable\[T\]\) [MarshalJSON](<https://github.com/shdeen/bildomat/blob/main/internal/params/nullable.go#L46>)
 
 ```go
 func (n Nullable[T]) MarshalJSON() ([]byte, error)
@@ -728,7 +728,7 @@ func (n Nullable[T]) MarshalJSON() ([]byte, error)
 MarshalJSON encodes the stored value, or the JSON null token when none was set.
 
 <a name="Nullable[T].UnmarshalJSON"></a>
-### func \(\*Nullable\[T\]\) [UnmarshalJSON](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/nullable.go#L61>)
+### func \(\*Nullable\[T\]\) [UnmarshalJSON](<https://github.com/shdeen/bildomat/blob/main/internal/params/nullable.go#L61>)
 
 ```go
 func (n *Nullable[T]) UnmarshalJSON(data []byte) error
@@ -737,7 +737,7 @@ func (n *Nullable[T]) UnmarshalJSON(data []byte) error
 UnmarshalJSON replaces n with the decoded value, or clears it for null. An invalid value returns a decoding error without changing n.
 
 <a name="Nullable[T].ValIf"></a>
-### func \(Nullable\[T\]\) [ValIf](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/nullable.go#L41>)
+### func \(Nullable\[T\]\) [ValIf](<https://github.com/shdeen/bildomat/blob/main/internal/params/nullable.go#L41>)
 
 ```go
 func (n Nullable[T]) ValIf() (T, bool)
@@ -746,7 +746,7 @@ func (n Nullable[T]) ValIf() (T, bool)
 ValIf returns the stored value and whether it was set.
 
 <a name="Nullable[T].ValOr"></a>
-### func \(Nullable\[T\]\) [ValOr](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/nullable.go#L32>)
+### func \(Nullable\[T\]\) [ValOr](<https://github.com/shdeen/bildomat/blob/main/internal/params/nullable.go#L32>)
 
 ```go
 func (n Nullable[T]) ValOr(defaultVal T) T
@@ -755,7 +755,7 @@ func (n Nullable[T]) ValOr(defaultVal T) T
 ValOr returns the stored value or defaultVal when unset.
 
 <a name="SizeBounds"></a>
-## type [SizeBounds](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L17-L25>)
+## type [SizeBounds](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L17-L25>)
 
 SizeBounds contains constraints for free\-form image dimensions.
 
@@ -780,7 +780,7 @@ type SizeBounds struct {
 ```
 
 <a name="SizeBounds.incrementBounds"></a>
-### func \(SizeBounds\) [incrementBounds](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L323>)
+### func \(SizeBounds\) [incrementBounds](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L323>)
 
 ```go
 func (bounds SizeBounds) incrementBounds() (units SizeBounds, step int, usable bool)
@@ -789,7 +789,7 @@ func (bounds SizeBounds) incrementBounds() (units SizeBounds, step int, usable b
 incrementBounds expresses the constraints in whole edge increments. Pixel limits use division so neither the step square nor the area can overflow.
 
 <a name="SizeBounds.longForShort"></a>
-### func \(SizeBounds\) [longForShort](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L426>)
+### func \(SizeBounds\) [longForShort](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L426>)
 
 ```go
 func (bounds SizeBounds) longForShort(shortEdge int, requestedLong float64) int
@@ -798,7 +798,7 @@ func (bounds SizeBounds) longForShort(shortEdge int, requestedLong float64) int
 longForShort returns the nearest supported longer edge in increment units.
 
 <a name="SizeBounds.probeInitialDimensions"></a>
-### func \(SizeBounds\) [probeInitialDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L385>)
+### func \(SizeBounds\) [probeInitialDimensions](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L385>)
 
 ```go
 func (bounds SizeBounds) probeInitialDimensions(requestedShort, requestedLong float64, shortMaximum int) (shortEdge, longEdge int, distance float64)
@@ -807,7 +807,7 @@ func (bounds SizeBounds) probeInitialDimensions(requestedShort, requestedLong fl
 probeInitialDimensions compares the requested shorter edge with the two search limits.
 
 <a name="SizeBounds.searchNearestDimensions"></a>
-### func \(SizeBounds\) [searchNearestDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L349>)
+### func \(SizeBounds\) [searchNearestDimensions](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L349>)
 
 ```go
 func (bounds SizeBounds) searchNearestDimensions(requestedShort, requestedLong float64) (shortEdge, longEdge int)
@@ -816,7 +816,7 @@ func (bounds SizeBounds) searchNearestDimensions(requestedShort, requestedLong f
 searchNearestDimensions searches a finite interval of shorter edges. A nearby supported pair narrows that interval; longForShort provides the complete admissible longer range.
 
 <a name="SizeBounds.validDimensions"></a>
-### func \(SizeBounds\) [validDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L453>)
+### func \(SizeBounds\) [validDimensions](<https://github.com/shdeen/bildomat/blob/main/internal/params/sizing.go#L453>)
 
 ```go
 func (bounds SizeBounds) validDimensions(width, height int) bool
@@ -825,7 +825,7 @@ func (bounds SizeBounds) validDimensions(width, height int) bool
 validDimensions checks every declared constraint without multiplying the edges. Its callers first validate the declaration through incrementBounds.
 
 <a name="Values"></a>
-## type [Values](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L28>)
+## type [Values](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L28>)
 
 Values maps parameter names to values that are ready for a provider request.
 
@@ -834,7 +834,7 @@ type Values map[FlagType]any
 ```
 
 <a name="adjustmentState"></a>
-## type [adjustmentState](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L62-L69>)
+## type [adjustmentState](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L62-L69>)
 
 adjustmentState collects one model's request values and adjustment notices.
 
@@ -857,7 +857,7 @@ type adjustmentState struct {
 ```
 
 <a name="adjustmentState.adjustDuration"></a>
-### func \(\*adjustmentState\) [adjustDuration](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L360>)
+### func \(\*adjustmentState\) [adjustDuration](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L360>)
 
 ```go
 func (paramAdjustment *adjustmentState) adjustDuration(secs int, param *Definition)
@@ -866,7 +866,7 @@ func (paramAdjustment *adjustmentState) adjustDuration(secs int, param *Definiti
 adjustDuration stores the nearest declared duration and records a changed value.
 
 <a name="adjustmentState.adjustMode"></a>
-### func \(\*adjustmentState\) [adjustMode](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L148>)
+### func \(\*adjustmentState\) [adjustMode](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L148>)
 
 ```go
 func (paramAdjustment *adjustmentState) adjustMode()
@@ -875,7 +875,7 @@ func (paramAdjustment *adjustmentState) adjustMode()
 adjustMode selects free\-form dimensions, fixed dimensions, or independent aspect and resolution adjustment.
 
 <a name="adjustmentState.adjustResolution"></a>
-### func \(\*adjustmentState\) [adjustResolution](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L192>)
+### func \(\*adjustmentState\) [adjustResolution](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L192>)
 
 ```go
 func (paramAdjustment *adjustmentState) adjustResolution()
@@ -884,7 +884,7 @@ func (paramAdjustment *adjustmentState) adjustResolution()
 adjustResolution stores an exact declared label or its nearest numerical tier. Inputs without an interpretable declared match receive a dropped notice.
 
 <a name="adjustmentState.adjustSize"></a>
-### func \(\*adjustmentState\) [adjustSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L91>)
+### func \(\*adjustmentState\) [adjustSize](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L91>)
 
 ```go
 func (paramAdjustment *adjustmentState) adjustSize() bool
@@ -893,7 +893,7 @@ func (paramAdjustment *adjustmentState) adjustSize() bool
 adjustSize applies an explicit, declared size and records superseded sizing inputs. It reports whether that size was consumed, including a conflicting\-bound failure.
 
 <a name="adjustmentState.adjustSuppliedParam"></a>
-### func \(\*adjustmentState\) [adjustSuppliedParam](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L249>)
+### func \(\*adjustmentState\) [adjustSuppliedParam](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L249>)
 
 ```go
 func (paramAdjustment *adjustmentState) adjustSuppliedParam(param *Definition, paramVal any)
@@ -902,7 +902,7 @@ func (paramAdjustment *adjustmentState) adjustSuppliedParam(param *Definition, p
 adjustSuppliedParam applies the declared set or range for the supplied value type.
 
 <a name="adjustmentState.applyParamLimits"></a>
-### func \(\*adjustmentState\) [applyParamLimits](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L232>)
+### func \(\*adjustmentState\) [applyParamLimits](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L232>)
 
 ```go
 func (paramAdjustment *adjustmentState) applyParamLimits()
@@ -911,7 +911,7 @@ func (paramAdjustment *adjustmentState) applyParamLimits()
 applyParamLimits adjusts supplied, declared parameters other than sizing and media inputs.
 
 <a name="adjustmentState.checkAllowedValue"></a>
-### func \(\*adjustmentState\) [checkAllowedValue](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L340>)
+### func \(\*adjustmentState\) [checkAllowedValue](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L340>)
 
 ```go
 func (paramAdjustment *adjustmentState) checkAllowedValue(paramFlag FlagType, flagInputVal string, allowedVals []string)
@@ -920,7 +920,7 @@ func (paramAdjustment *adjustmentState) checkAllowedValue(paramFlag FlagType, fl
 checkAllowedValue stores the declared spelling of an accepted string or records its rejection.
 
 <a name="adjustmentState.checkTypedMembership"></a>
-### func \(\*adjustmentState\) [checkTypedMembership](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L305>)
+### func \(\*adjustmentState\) [checkTypedMembership](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L305>)
 
 ```go
 func (paramAdjustment *adjustmentState) checkTypedMembership(paramCfg *Definition, paramVal any, dataType DataType)
@@ -929,7 +929,7 @@ func (paramAdjustment *adjustmentState) checkTypedMembership(paramCfg *Definitio
 checkTypedMembership stores a matching typed value or records its rejection.
 
 <a name="adjustmentState.customSize"></a>
-### func \(\*adjustmentState\) [customSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L477>)
+### func \(\*adjustmentState\) [customSize](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L477>)
 
 ```go
 func (paramAdjustment *adjustmentState) customSize(userInputs FlagInputs, bounds SizeBounds)
@@ -938,7 +938,7 @@ func (paramAdjustment *adjustmentState) customSize(userInputs FlagInputs, bounds
 customSize derives free\-form dimensions from the declared resolution or aspect input. It records unusable inputs and conflicting bounds.
 
 <a name="adjustmentState.failBounds"></a>
-### func \(\*adjustmentState\) [failBounds](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L441>)
+### func \(\*adjustmentState\) [failBounds](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L441>)
 
 ```go
 func (paramAdjustment *adjustmentState) failBounds(bounds SizeBounds)
@@ -947,7 +947,7 @@ func (paramAdjustment *adjustmentState) failBounds(bounds SizeBounds)
 failBounds records a configuration failure with its model and conflicting bounds.
 
 <a name="adjustmentState.interpretSources"></a>
-### func \(\*adjustmentState\) [interpretSources](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L526>)
+### func \(\*adjustmentState\) [interpretSources](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L526>)
 
 ```go
 func (paramAdjustment *adjustmentState) interpretSources(userInputs FlagInputs) sizeSources
@@ -956,7 +956,7 @@ func (paramAdjustment *adjustmentState) interpretSources(userInputs FlagInputs) 
 interpretSources parses the sizing inputs and records unusable values. A ratio supplied as resolution takes precedence over the aspect input.
 
 <a name="adjustmentState.raiseCountFloor"></a>
-### func \(\*adjustmentState\) [raiseCountFloor](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L326>)
+### func \(\*adjustmentState\) [raiseCountFloor](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L326>)
 
 ```go
 func (paramAdjustment *adjustmentState) raiseCountFloor()
@@ -965,7 +965,7 @@ func (paramAdjustment *adjustmentState) raiseCountFloor()
 raiseCountFloor raises a stored image count below one and records the change.
 
 <a name="adjustmentState.selectFixedSize"></a>
-### func \(\*adjustmentState\) [selectFixedSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L560>)
+### func \(\*adjustmentState\) [selectFixedSize](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L560>)
 
 ```go
 func (paramAdjustment *adjustmentState) selectFixedSize(userInputs FlagInputs, allowedSizes []string)
@@ -974,7 +974,7 @@ func (paramAdjustment *adjustmentState) selectFixedSize(userInputs FlagInputs, a
 selectFixedSize stores declared dimensions and records each contributing sizing input. Unchanged ratios receive derived notices; changed ratios receive snapped notices.
 
 <a name="adjustmentState.splitAspect"></a>
-### func \(\*adjustmentState\) [splitAspect](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L163>)
+### func \(\*adjustmentState\) [splitAspect](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L163>)
 
 ```go
 func (paramAdjustment *adjustmentState) splitAspect()
@@ -983,7 +983,7 @@ func (paramAdjustment *adjustmentState) splitAspect()
 splitAspect stores an accepted aspect ratio and records a snapped or unusable input.
 
 <a name="adjustmentState.storeDimensions"></a>
-### func \(\*adjustmentState\) [storeDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L424>)
+### func \(\*adjustmentState\) [storeDimensions](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L424>)
 
 ```go
 func (paramAdjustment *adjustmentState) storeDimensions(flag FlagType, supplied string, bounds SizeBounds, width, height int)
@@ -992,7 +992,7 @@ func (paramAdjustment *adjustmentState) storeDimensions(flag FlagType, supplied 
 storeDimensions applies bounds and records a change only for usable dimensions.
 
 <a name="adjustmentState.storeRange"></a>
-### func \(\*adjustmentState\) [storeRange](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L416>)
+### func \(\*adjustmentState\) [storeRange](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L416>)
 
 ```go
 func (paramAdjustment *adjustmentState) storeRange(flag FlagType, value any, changeRecord *Adjustment)
@@ -1001,7 +1001,7 @@ func (paramAdjustment *adjustmentState) storeRange(flag FlagType, value any, cha
 storeRange stores a numeric result and its optional bound notice.
 
 <a name="adjustmentState.supersede"></a>
-### func \(\*adjustmentState\) [supersede](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L133>)
+### func \(\*adjustmentState\) [supersede](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L133>)
 
 ```go
 func (paramAdjustment *adjustmentState) supersede(sizeInput string)
@@ -1010,7 +1010,7 @@ func (paramAdjustment *adjustmentState) supersede(sizeInput string)
 supersede records aspect and resolution values displaced by an explicit size.
 
 <a name="sizeSources"></a>
-## type [sizeSources](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/paramchange.go#L451-L457>)
+## type [sizeSources](<https://github.com/shdeen/bildomat/blob/main/internal/params/paramchange.go#L451-L457>)
 
 sizeSources retains interpreted sizing inputs for selection and adjustment notices.
 

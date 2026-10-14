@@ -190,7 +190,7 @@ const (
 ```
 
 <a name="ElapsedText"></a>
-## func [ElapsedText](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/progress.go#L33>)
+## func [ElapsedText](<https://github.com/shdeen/bildomat/blob/main/internal/output/progress.go#L33>)
 
 ```go
 func ElapsedText(elapsed time.Duration) string
@@ -199,7 +199,7 @@ func ElapsedText(elapsed time.Duration) string
 ElapsedText formats elapsed time as seconds with one decimal place, truncating fractional tenths. It adds minutes at one minute and hours at one hour, as in 23.6s, 1m 23.6s, and 1h 2m 12.3s. Negative durations render as zero.
 
 <a name="FlagEntry"></a>
-## func [FlagEntry](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/help.go#L100>)
+## func [FlagEntry](<https://github.com/shdeen/bildomat/blob/main/internal/output/help.go#L100>)
 
 ```go
 func FlagEntry(flagNames []string, valueHint, detailText string) string
@@ -208,7 +208,7 @@ func FlagEntry(flagNames []string, valueHint, detailText string) string
 FlagEntry formats a flag heading followed by its wrapped, indented description.
 
 <a name="FlagSupportNote"></a>
-## func [FlagSupportNote](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/list.go#L36>)
+## func [FlagSupportNote](<https://github.com/shdeen/bildomat/blob/main/internal/output/list.go#L36>)
 
 ```go
 func FlagSupportNote(param params.FlagType, provModelPairs []catalog.ProvModelPair) string
@@ -217,7 +217,7 @@ func FlagSupportNote(param params.FlagType, provModelPairs []catalog.ProvModelPa
 FlagSupportNote names providers that support the flag, marking partial support as "select models". It considers only media kinds for which some model declares the flag. If every model in those media kinds supports it, the note is empty.
 
 <a name="FlagValueHint"></a>
-## func [FlagValueHint](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/help.go#L84>)
+## func [FlagValueHint](<https://github.com/shdeen/bildomat/blob/main/internal/output/help.go#L84>)
 
 ```go
 func FlagValueHint(longName string, paramFlags []params.Flag, flagHints map[string]string) string
@@ -226,7 +226,7 @@ func FlagValueHint(longName string, paramFlags []params.Flag, flagHints map[stri
 FlagValueHint returns the parameter hint when present. Otherwise, it returns the command flag hint, or the long flag name if neither hint exists.
 
 <a name="GenerationStatusText"></a>
-## func [GenerationStatusText](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/progress.go#L79>)
+## func [GenerationStatusText](<https://github.com/shdeen/bildomat/blob/main/internal/output/progress.go#L79>)
 
 ```go
 func GenerationStatusText(frame rune, mediaKind media.Kind, elapsed time.Duration, styled bool) string
@@ -235,7 +235,7 @@ func GenerationStatusText(frame rune, mediaKind media.Kind, elapsed time.Duratio
 GenerationStatusText formats one status frame with the requested styling. It performs no cursor movement or animation.
 
 <a name="HelpTips"></a>
-## func [HelpTips](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/helptips.go#L19>)
+## func [HelpTips](<https://github.com/shdeen/bildomat/blob/main/internal/output/helptips.go#L19>)
 
 ```go
 func HelpTips(prov *catalog.Provider, styled bool) (string, error)
@@ -244,7 +244,7 @@ func HelpTips(prov *catalog.Provider, styled bool) (string, error)
 HelpTips renders general\-help examples drawn from the supplied provider's models.
 
 <a name="IndentText"></a>
-## func [IndentText](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/help.go#L19>)
+## func [IndentText](<https://github.com/shdeen/bildomat/blob/main/internal/output/help.go#L19>)
 
 ```go
 func IndentText(steps int, text string) string
@@ -253,7 +253,7 @@ func IndentText(steps int, text string) string
 IndentText indents every line by the requested number of indentation steps.
 
 <a name="NoticeTexts"></a>
-## func [NoticeTexts](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L110>)
+## func [NoticeTexts](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L110>)
 
 ```go
 func NoticeTexts(paramFlags []params.Flag, paramChanges []params.Adjustment, flagNames map[params.FlagType]string) []string
@@ -262,7 +262,7 @@ func NoticeTexts(paramFlags []params.Flag, paramChanges []params.Adjustment, fla
 NoticeTexts formats parameter changes as user\-facing notice strings.
 
 <a name="PrintAmbiguity"></a>
-## func [PrintAmbiguity](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/errs.go#L127>)
+## func [PrintAmbiguity](<https://github.com/shdeen/bildomat/blob/main/internal/output/errs.go#L127>)
 
 ```go
 func PrintAmbiguity(destination io.Writer, modelSpecifier string, modelMatches []catalog.ProvModelPair, styled bool) error
@@ -271,7 +271,7 @@ func PrintAmbiguity(destination io.Writer, modelSpecifier string, modelMatches [
 PrintAmbiguity writes the ambiguous specifier and its fully qualified candidates to the selected diagnostic destination.
 
 <a name="PrintError"></a>
-## func [PrintError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/errs.go#L82>)
+## func [PrintError](<https://github.com/shdeen/bildomat/blob/main/internal/output/errs.go#L82>)
 
 ```go
 func PrintError(destination io.Writer, err error, providerDisplayName, modelName string, debugMode, styled bool) error
@@ -280,7 +280,7 @@ func PrintError(destination io.Writer, err error, providerDisplayName, modelName
 PrintError writes a mapped failure, cancellation notice, or raw diagnostic chain to the selected diagnostic destination and returns any delivery failure.
 
 <a name="PrintGenerationCompleted"></a>
-## func [PrintGenerationCompleted](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/progress.go#L73>)
+## func [PrintGenerationCompleted](<https://github.com/shdeen/bildomat/blob/main/internal/output/progress.go#L73>)
 
 ```go
 func PrintGenerationCompleted(destination io.Writer, elapsedText string) error
@@ -289,7 +289,7 @@ func PrintGenerationCompleted(destination io.Writer, elapsedText string) error
 PrintGenerationCompleted writes the completion message with the supplied elapsed time and returns any write failure.
 
 <a name="PrintJSON"></a>
-## func [PrintJSON](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L134>)
+## func [PrintJSON](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L134>)
 
 ```go
 func PrintJSON(destination io.Writer, value any) error
@@ -298,7 +298,7 @@ func PrintJSON(destination io.Writer, value any) error
 PrintJSON writes one JSON document to destination, indenting successfully encoded values. If encoding fails, it writes a failure document and returns the original encoding error. A write failure is returned together with any encoding error.
 
 <a name="PrintListing"></a>
-## func [PrintListing](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/list.go#L145>)
+## func [PrintListing](<https://github.com/shdeen/bildomat/blob/main/internal/output/list.go#L145>)
 
 ```go
 func PrintListing(destination io.Writer, page CatalogPage, providersSelected, modelsSelected, jsonOutput bool) error
@@ -307,7 +307,7 @@ func PrintListing(destination io.Writer, page CatalogPage, providersSelected, mo
 PrintListing writes the selected provider/model listing as text or JSON. It returns template, encoding, and delivery failures to the command.
 
 <a name="PrintModelInfo"></a>
-## func [PrintModelInfo](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/info.go#L199>)
+## func [PrintModelInfo](<https://github.com/shdeen/bildomat/blob/main/internal/output/info.go#L199>)
 
 ```go
 func PrintModelInfo(destination io.Writer, provModelPair *catalog.ProvModelPair, paramFlags []params.Flag, styled bool) error
@@ -316,7 +316,7 @@ func PrintModelInfo(destination io.Writer, provModelPair *catalog.ProvModelPair,
 PrintModelInfo writes the model card with the requested terminal styling. Template and delivery failures are returned to the command.
 
 <a name="PrintProviderInfo"></a>
-## func [PrintProviderInfo](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/info.go#L205>)
+## func [PrintProviderInfo](<https://github.com/shdeen/bildomat/blob/main/internal/output/info.go#L205>)
 
 ```go
 func PrintProviderInfo(destination io.Writer, prov *catalog.Provider, pairs []catalog.ProvModelPair, paramFlags []params.Flag, mediaFilterFlags map[media.Kind]string, styled bool) error
@@ -325,7 +325,7 @@ func PrintProviderInfo(destination io.Writer, prov *catalog.Provider, pairs []ca
 PrintProviderInfo writes the selected provider's detailed page or aggregator summary. It returns template and delivery failures to the command.
 
 <a name="PrintReprompt"></a>
-## func [PrintReprompt](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/prompt.go#L14>)
+## func [PrintReprompt](<https://github.com/shdeen/bildomat/blob/main/internal/output/prompt.go#L14>)
 
 ```go
 func PrintReprompt(destination io.Writer, styled bool) error
@@ -334,7 +334,7 @@ func PrintReprompt(destination io.Writer, styled bool) error
 PrintReprompt renders the replacement\-model question with the selected styling.
 
 <a name="PrintRunDetails"></a>
-## func [PrintRunDetails](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/output.go#L16>)
+## func [PrintRunDetails](<https://github.com/shdeen/bildomat/blob/main/internal/output/output.go#L16>)
 
 ```go
 func PrintRunDetails(destination io.Writer, providerDisplayName, modelName string) error
@@ -343,7 +343,7 @@ func PrintRunDetails(destination io.Writer, providerDisplayName, modelName strin
 PrintRunDetails writes the provider and model headers to destination.
 
 <a name="PrintSavedFile"></a>
-## func [PrintSavedFile](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/disk.go#L7>)
+## func [PrintSavedFile](<https://github.com/shdeen/bildomat/blob/main/internal/output/disk.go#L7>)
 
 ```go
 func PrintSavedFile(destination io.Writer, savedFile SavedFile, styled bool) error
@@ -352,7 +352,7 @@ func PrintSavedFile(destination io.Writer, savedFile SavedFile, styled bool) err
 PrintSavedFile writes one completed file's path and size to destination. Styled output uses a human\-readable size; plain output reports the byte count.
 
 <a name="PrintSingleWordPromptConfirmation"></a>
-## func [PrintSingleWordPromptConfirmation](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/prompt.go#L7>)
+## func [PrintSingleWordPromptConfirmation](<https://github.com/shdeen/bildomat/blob/main/internal/output/prompt.go#L7>)
 
 ```go
 func PrintSingleWordPromptConfirmation(destination io.Writer, prompt string, styled bool) error
@@ -361,7 +361,7 @@ func PrintSingleWordPromptConfirmation(destination io.Writer, prompt string, sty
 PrintSingleWordPromptConfirmation renders the confirmation using the selected diagnostic styling and returns any failure to deliver it.
 
 <a name="PrintTemplate"></a>
-## func [PrintTemplate](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/page.go#L130>)
+## func [PrintTemplate](<https://github.com/shdeen/bildomat/blob/main/internal/output/page.go#L130>)
 
 ```go
 func PrintTemplate(destination io.Writer, name, source string, data any, functions template.FuncMap) error
@@ -370,7 +370,7 @@ func PrintTemplate(destination io.Writer, name, source string, data any, functio
 PrintTemplate renders a command\-supplied template with its required functions and data, and writes only a fully rendered page. Every failure is classified.
 
 <a name="PrintUsageError"></a>
-## func [PrintUsageError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/errs.go#L59>)
+## func [PrintUsageError](<https://github.com/shdeen/bildomat/blob/main/internal/output/errs.go#L59>)
 
 ```go
 func PrintUsageError(destination io.Writer, err error, debugMode, styled bool) error
@@ -379,7 +379,7 @@ func PrintUsageError(destination io.Writer, err error, debugMode, styled bool) e
 PrintUsageError writes the diagnostic and compact usage. If template rendering fails, it writes the diagnostic alone and returns the rendering error together with any write failure.
 
 <a name="PrintUserConfigWarning"></a>
-## func [PrintUserConfigWarning](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/errs.go#L96>)
+## func [PrintUserConfigWarning](<https://github.com/shdeen/bildomat/blob/main/internal/output/errs.go#L96>)
 
 ```go
 func PrintUserConfigWarning(destination io.Writer, fault error, styled bool) error
@@ -388,7 +388,7 @@ func PrintUserConfigWarning(destination io.Writer, fault error, styled bool) err
 PrintUserConfigWarning writes a styled or plain configuration warning to destination and returns any write failure.
 
 <a name="RenderSidecar"></a>
-## func [RenderSidecar](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/sidecar.go#L19>)
+## func [RenderSidecar](<https://github.com/shdeen/bildomat/blob/main/internal/output/sidecar.go#L19>)
 
 ```go
 func RenderSidecar(prompt, modelID string, paramFlags []params.Flag, adjusted params.Values, inputMedia []media.Input, thoughts []string) []byte
@@ -397,7 +397,7 @@ func RenderSidecar(prompt, modelID string, paramFlags []params.Flag, adjusted pa
 RenderSidecar returns Markdown with the prompt, model ID, current UTC timestamp, and nonempty parameters in flag\-record order. It records the supplied input\-media sources under input\-media and places thought chunks after the front matter, separated by fences.
 
 <a name="WrapDetails"></a>
-## func [WrapDetails](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/help.go#L57>)
+## func [WrapDetails](<https://github.com/shdeen/bildomat/blob/main/internal/output/help.go#L57>)
 
 ```go
 func WrapDetails(steps int, detailText string) string
@@ -406,7 +406,7 @@ func WrapDetails(steps int, detailText string) string
 WrapDetails wraps and indents paragraphs to the page width, separated by blank lines.
 
 <a name="WriteText"></a>
-## func [WriteText](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/write.go#L13>)
+## func [WriteText](<https://github.com/shdeen/bildomat/blob/main/internal/output/write.go#L13>)
 
 ```go
 func WriteText(destination io.Writer, format string, values ...any) error
@@ -415,7 +415,7 @@ func WriteText(destination io.Writer, format string, values ...any) error
 WriteText writes formatted text to the supplied destination. Incomplete writes retain their original cause and output\-write classification, including short writes.
 
 <a name="Adjustment"></a>
-## type [Adjustment](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L46-L51>)
+## type [Adjustment](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L46-L51>)
 
 Adjustment is one user\-facing flag adjustment made before provider submission.
 
@@ -433,7 +433,7 @@ type Adjustment struct {
 ```
 
 <a name="AdjustmentRecords"></a>
-### func [AdjustmentRecords](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L94>)
+### func [AdjustmentRecords](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L94>)
 
 ```go
 func AdjustmentRecords(paramFlags []params.Flag, paramChanges []params.Adjustment, flagNames map[params.FlagType]string) []Adjustment
@@ -442,7 +442,7 @@ func AdjustmentRecords(paramFlags []params.Flag, paramChanges []params.Adjustmen
 AdjustmentRecords formats parameter changes as user\-facing JSON adjustment records.
 
 <a name="CatalogPage"></a>
-## type [CatalogPage](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/catalog.go#L17-L20>)
+## type [CatalogPage](<https://github.com/shdeen/bildomat/blob/main/internal/output/catalog.go#L17-L20>)
 
 CatalogPage contains the providers, models, and parameter descriptions selected for a listing or information document. Its values are independent of the catalog. Empty listings retain an empty providers array; unneeded flag records are omitted.
 
@@ -457,7 +457,7 @@ type CatalogPage struct {
 ```
 
 <a name="ListingPage"></a>
-### func [ListingPage](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/catalog.go#L86>)
+### func [ListingPage](<https://github.com/shdeen/bildomat/blob/main/internal/output/catalog.go#L86>)
 
 ```go
 func ListingPage(pairs []catalog.ProvModelPair, withModels, includeAliases bool) CatalogPage
@@ -466,7 +466,7 @@ func ListingPage(pairs []catalog.ProvModelPair, withModels, includeAliases bool)
 ListingPage describes already selected provider/model pairs. Providers sort by display name, ignoring case, with aggregators last; models sort by identifier. Models and aliases appear only when requested. Listings never include parameters.
 
 <a name="ModelInfoPage"></a>
-### func [ModelInfoPage](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/catalog.go#L129>)
+### func [ModelInfoPage](<https://github.com/shdeen/bildomat/blob/main/internal/output/catalog.go#L129>)
 
 ```go
 func ModelInfoPage(pair *catalog.ProvModelPair, paramFlags []params.Flag) CatalogPage
@@ -475,7 +475,7 @@ func ModelInfoPage(pair *catalog.ProvModelPair, paramFlags []params.Flag) Catalo
 ModelInfoPage describes one provider/model pair and its referenced parameter flags.
 
 <a name="ProviderInfoPage"></a>
-### func [ProviderInfoPage](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/catalog.go#L119>)
+### func [ProviderInfoPage](<https://github.com/shdeen/bildomat/blob/main/internal/output/catalog.go#L119>)
 
 ```go
 func ProviderInfoPage(prov *catalog.Provider, pairs []catalog.ProvModelPair, paramFlags []params.Flag) CatalogPage
@@ -484,7 +484,7 @@ func ProviderInfoPage(prov *catalog.Provider, pairs []catalog.ProvModelPair, par
 ProviderInfoPage describes a provider and its already selected models in input order, followed by the referenced parameter flags in their declaration order.
 
 <a name="FailureOutcome"></a>
-## type [FailureOutcome](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L33-L36>)
+## type [FailureOutcome](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L33-L36>)
 
 FailureOutcome is the JSON result for a command that failed before producing a more specific outcome.
 
@@ -499,7 +499,7 @@ type FailureOutcome struct {
 ```
 
 <a name="NewFailureOutcome"></a>
-### func [NewFailureOutcome](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L120>)
+### func [NewFailureOutcome](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L120>)
 
 ```go
 func NewFailureOutcome(err error, providerDisplayName, modelName string, debugMode, usageError bool) FailureOutcome
@@ -508,7 +508,7 @@ func NewFailureOutcome(err error, providerDisplayName, modelName string, debugMo
 NewFailureOutcome returns the failure document for a command or usage error.
 
 <a name="GenerationOutcome"></a>
-## type [GenerationOutcome](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L64-L76>)
+## type [GenerationOutcome](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L64-L76>)
 
 GenerationOutcome is the complete user\-facing JSON result of one generation request.
 
@@ -540,7 +540,7 @@ type GenerationOutcome struct {
 ```
 
 <a name="NewGenerationOutcome"></a>
-### func [NewGenerationOutcome](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L80>)
+### func [NewGenerationOutcome](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L80>)
 
 ```go
 func NewGenerationOutcome(startedAt time.Time, prompt string, flags map[string]any) *GenerationOutcome
@@ -549,7 +549,7 @@ func NewGenerationOutcome(startedAt time.Time, prompt string, flags map[string]a
 NewGenerationOutcome initializes a generation result with a UTC start time. The result retains the supplied flag map without copying it.
 
 <a name="GenerationOutcome.Complete"></a>
-### func \(\*GenerationOutcome\) [Complete](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L170>)
+### func \(\*GenerationOutcome\) [Complete](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L170>)
 
 ```go
 func (outcome *GenerationOutcome) Complete(startedAt time.Time, providerDisplayName, modelName string, generationErr error, debugMode bool)
@@ -558,7 +558,7 @@ func (outcome *GenerationOutcome) Complete(startedAt time.Time, providerDisplayN
 Complete records the elapsed time and final status, and appends a formatted generation error when one is present.
 
 <a name="SavedFile"></a>
-## type [SavedFile](<https://github.com/shdeen/bildomat-dev/blob/main/internal/output/json.go#L40>)
+## type [SavedFile](<https://github.com/shdeen/bildomat/blob/main/internal/output/json.go#L40>)
 
 SavedFile is one file written by a generation, in the same user\-facing terms as the regular Saved line.
 

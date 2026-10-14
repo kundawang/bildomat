@@ -49,7 +49,7 @@ var declaredKeys = readSettingKeys()
 ```
 
 <a name="UnknownProviderFault"></a>
-## func [UnknownProviderFault](<https://github.com/shdeen/bildomat-dev/blob/main/internal/config/config.go#L86>)
+## func [UnknownProviderFault](<https://github.com/shdeen/bildomat/blob/main/internal/config/config.go#L86>)
 
 ```go
 func UnknownProviderFault(filePath, providerID string) error
@@ -58,7 +58,7 @@ func UnknownProviderFault(filePath, providerID string) error
 UnknownProviderFault describes an api\-keys provider absent from the catalog.
 
 <a name="decodeFault"></a>
-## func [decodeFault](<https://github.com/shdeen/bildomat-dev/blob/main/internal/config/config.go#L125>)
+## func [decodeFault](<https://github.com/shdeen/bildomat/blob/main/internal/config/config.go#L125>)
 
 ```go
 func decodeFault(filePath string, err error) error
@@ -67,7 +67,7 @@ func decodeFault(filePath string, err error) error
 decodeFault classifies one failed decode of the config file.
 
 <a name="readSettingKeys"></a>
-## func [readSettingKeys](<https://github.com/shdeen/bildomat-dev/blob/main/internal/config/config.go#L46>)
+## func [readSettingKeys](<https://github.com/shdeen/bildomat/blob/main/internal/config/config.go#L46>)
 
 ```go
 func readSettingKeys() []string
@@ -76,7 +76,7 @@ func readSettingKeys() []string
 readSettingKeys returns the top\-level configuration keys declared by Settings.
 
 <a name="Settings"></a>
-## type [Settings](<https://github.com/shdeen/bildomat-dev/blob/main/internal/config/config.go#L34-L38>)
+## type [Settings](<https://github.com/shdeen/bildomat/blob/main/internal/config/config.go#L34-L38>)
 
 Settings holds optional defaults and API keys. Empty values mean unset; Load removes empty API keys.
 
@@ -93,7 +93,7 @@ type Settings struct {
 ```
 
 <a name="Load"></a>
-### func [Load](<https://github.com/shdeen/bildomat-dev/blob/main/internal/config/config.go#L62>)
+### func [Load](<https://github.com/shdeen/bildomat/blob/main/internal/config/config.go#L62>)
 
 ```go
 func Load() (Settings, string, []error)
@@ -102,7 +102,7 @@ func Load() (Settings, string, []error)
 Load reads the optional configuration file and returns settings, its path, and classified faults. A missing file returns empty settings without a fault; an unresolved home returns an empty path.
 
 <a name="decode"></a>
-### func [decode](<https://github.com/shdeen/bildomat-dev/blob/main/internal/config/config.go#L92>)
+### func [decode](<https://github.com/shdeen/bildomat/blob/main/internal/config/config.go#L92>)
 
 ```go
 func decode(filePath string, content []byte) (Settings, []error)

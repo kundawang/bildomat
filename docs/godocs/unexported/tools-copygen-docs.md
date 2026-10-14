@@ -78,7 +78,7 @@ var identifierForm = regexp.MustCompile(`^[A-Z][A-Za-z0-9]*$`)
 ```
 
 <a name="generate"></a>
-## func [generate](<https://github.com/shdeen/bildomat-dev/blob/main/tools/copygen/copygen.go#L73>)
+## func [generate](<https://github.com/shdeen/bildomat/blob/main/tools/copygen/copygen.go#L73>)
 
 ```go
 func generate() error
@@ -87,7 +87,7 @@ func generate() error
 generate validates and renders the catalog before writing each package's constants. A write failure may leave earlier files updated.
 
 <a name="loadCatalog"></a>
-## func [loadCatalog](<https://github.com/shdeen/bildomat-dev/blob/main/tools/copygen/copygen.go#L117>)
+## func [loadCatalog](<https://github.com/shdeen/bildomat/blob/main/tools/copygen/copygen.go#L117>)
 
 ```go
 func loadCatalog(sourcePath, repositoryRoot string) (map[string]map[string]string, error)
@@ -96,7 +96,7 @@ func loadCatalog(sourcePath, repositoryRoot string) (map[string]map[string]strin
 loadCatalog decodes the catalog source into per\-package entry maps, validating the document shape, every table, and every entry.
 
 <a name="main"></a>
-## func [main](<https://github.com/shdeen/bildomat-dev/blob/main/tools/copygen/copygen.go#L64>)
+## func [main](<https://github.com/shdeen/bildomat/blob/main/tools/copygen/copygen.go#L64>)
 
 ```go
 func main()
@@ -105,7 +105,7 @@ func main()
 main runs copy generation and reports failures on stderr with a nonzero exit status.
 
 <a name="packageNameOf"></a>
-## func [packageNameOf](<https://github.com/shdeen/bildomat-dev/blob/main/tools/copygen/copygen.go#L202>)
+## func [packageNameOf](<https://github.com/shdeen/bildomat/blob/main/tools/copygen/copygen.go#L202>)
 
 ```go
 func packageNameOf(dir string) (string, error)
@@ -114,7 +114,7 @@ func packageNameOf(dir string) (string, error)
 packageNameOf returns the package clause of the first Go source file in a directory, skipping test files and the generated file itself.
 
 <a name="renderPackageSource"></a>
-## func [renderPackageSource](<https://github.com/shdeen/bildomat-dev/blob/main/tools/copygen/copygen.go#L168>)
+## func [renderPackageSource](<https://github.com/shdeen/bildomat/blob/main/tools/copygen/copygen.go#L168>)
 
 ```go
 func renderPackageSource(repositoryRoot, dir string, entries map[string]string) (string, error)

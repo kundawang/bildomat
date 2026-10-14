@@ -59,7 +59,7 @@ const dimensionsForm = "%dx%d"
 ```
 
 <a name="ConformInputMedia"></a>
-## func [ConformInputMedia](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/conform.go#L23>)
+## func [ConformInputMedia](<https://github.com/shdeen/bildomat/blob/main/internal/generation/conform.go#L23>)
 
 ```go
 func ConformInputMedia(model *catalog.Model, parameterValues params.Values, mediaInputs []media.Input) ([]params.Adjustment, error)
@@ -68,7 +68,7 @@ func ConformInputMedia(model *catalog.Model, parameterValues params.Values, medi
 ConformInputMedia updates the supplied parameters and media slice to satisfy image dimensions. It records actual changes, retaining completed changes if a later image fails. An unresolved first image defers size adoption until its bytes become available.
 
 <a name="DropFramePrefixes"></a>
-## func [DropFramePrefixes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frame.go#L13>)
+## func [DropFramePrefixes](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frame.go#L13>)
 
 ```go
 func DropFramePrefixes(mediaInputs []media.Input) []params.Adjustment
@@ -77,7 +77,7 @@ func DropFramePrefixes(mediaInputs []media.Input) []params.Adjustment
 DropFramePrefixes clears frame markers in the supplied media slice and records each removal. The underlying media and bare sources remain unchanged.
 
 <a name="ResolveFrameAnchors"></a>
-## func [ResolveFrameAnchors](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frame.go#L39>)
+## func [ResolveFrameAnchors](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frame.go#L39>)
 
 ```go
 func ResolveFrameAnchors(mediaInputs []media.Input, parameterValues params.Values) ([]params.Adjustment, error)
@@ -86,7 +86,7 @@ func ResolveFrameAnchors(mediaInputs []media.Input, parameterValues params.Value
 ResolveFrameAnchors replaces numeric frame times in the supplied media with first/last anchors and records actual snaps. It rejects frame markers on video, conflicting anchors or times, and requests exceeding the two available frames.
 
 <a name="SelectSources"></a>
-## func [SelectSources](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/paramchange.go#L35>)
+## func [SelectSources](<https://github.com/shdeen/bildomat/blob/main/internal/generation/paramchange.go#L35>)
 
 ```go
 func SelectSources(sources []string, model *catalog.Model) []string
@@ -95,7 +95,7 @@ func SelectSources(sources []string, model *catalog.Model) []string
 SelectSources returns only the arguments a model retains, before any source is opened.
 
 <a name="anchorNumericInput"></a>
-## func [anchorNumericInput](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frame.go#L162>)
+## func [anchorNumericInput](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frame.go#L162>)
 
 ```go
 func anchorNumericInput(mediaInput *media.Input, seconds float64, anchor string, durationSeconds float64, durationSet bool) []params.Adjustment
@@ -104,7 +104,7 @@ func anchorNumericInput(mediaInput *media.Input, seconds float64, anchor string,
 anchorNumericInput replaces one numeric frame time with its selected anchor. It returns a snap record unless the time exactly denotes the opening or known closing time.
 
 <a name="capInputMedia"></a>
-## func [capInputMedia](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/paramchange.go#L95>)
+## func [capInputMedia](<https://github.com/shdeen/bildomat/blob/main/internal/generation/paramchange.go#L95>)
 
 ```go
 func capInputMedia(mediaInputs []media.Input, model *catalog.Model) ([]media.Input, []params.Adjustment)
@@ -113,7 +113,7 @@ func capInputMedia(mediaInputs []media.Input, model *catalog.Model) ([]media.Inp
 capInputMedia copies the media accepted by the model and records any count limit. It returns no media when the model does not accept inputs.
 
 <a name="classifyFrameRequests"></a>
-## func [classifyFrameRequests](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frame.go#L61>)
+## func [classifyFrameRequests](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frame.go#L61>)
 
 ```go
 func classifyFrameRequests(mediaInputs []media.Input) (anchorOwners map[string]string, numericIndexes []int, err error)
@@ -122,7 +122,7 @@ func classifyFrameRequests(mediaInputs []media.Input) (anchorOwners map[string]s
 classifyFrameRequests returns the sources claiming each anchor and the indexes of numeric times. It rejects frame markers on video and duplicate anchor claims.
 
 <a name="conformImage"></a>
-## func [conformImage](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/conform.go#L84>)
+## func [conformImage](<https://github.com/shdeen/bildomat/blob/main/internal/generation/conform.go#L84>)
 
 ```go
 func conformImage(imageInput *media.Input, dimensions image.Config, requestedSize string) (bool, error)
@@ -131,7 +131,7 @@ func conformImage(imageInput *media.Input, dimensions image.Config, requestedSiz
 conformImage replaces an image's bytes and MIME type when its dimensions need adjustment. It reports whether the image changed.
 
 <a name="fillFreeFrames"></a>
-## func [fillFreeFrames](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frame.go#L109>)
+## func [fillFreeFrames](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frame.go#L109>)
 
 ```go
 func fillFreeFrames(mediaInputs []media.Input, numericIndexes []int, firstFree, lastFree bool, durationSeconds float64, durationSet bool) ([]params.Adjustment, error)
@@ -140,7 +140,7 @@ func fillFreeFrames(mediaInputs []media.Input, numericIndexes []int, firstFree, 
 fillFreeFrames assigns numeric times to unclaimed anchors in the supplied media slice. Two times sort chronologically; one takes the sole free anchor or snaps around half the duration. Equal times fail with both sources identified.
 
 <a name="freeFrames"></a>
-## func [freeFrames](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frame.go#L91>)
+## func [freeFrames](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frame.go#L91>)
 
 ```go
 func freeFrames(anchorOwners map[string]string) (firstFree, lastFree bool, freeCount int)
@@ -149,7 +149,7 @@ func freeFrames(anchorOwners map[string]string) (firstFree, lastFree bool, freeC
 freeFrames reports which first/last anchors remain unclaimed and how many are available.
 
 <a name="ignoredParamRecords"></a>
-## func [ignoredParamRecords](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/paramchange.go#L72>)
+## func [ignoredParamRecords](<https://github.com/shdeen/bildomat/blob/main/internal/generation/paramchange.go#L72>)
 
 ```go
 func ignoredParamRecords(inputs params.FlagInputs, model *catalog.Model) []params.Adjustment
@@ -158,7 +158,7 @@ func ignoredParamRecords(inputs params.FlagInputs, model *catalog.Model) []param
 ignoredParamRecords takes supplied parameter values and a model and returns one ignored record for each meaningful parameter that the model does not accept. Records are ordered by parameter name.
 
 <a name="inputCapRecord"></a>
-## func [inputCapRecord](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/paramchange.go#L26>)
+## func [inputCapRecord](<https://github.com/shdeen/bildomat/blob/main/internal/generation/paramchange.go#L26>)
 
 ```go
 func inputCapRecord(inputCount, limit int) params.Adjustment
@@ -167,7 +167,7 @@ func inputCapRecord(inputCount, limit int) params.Adjustment
 inputCapRecord describes the reduction from supplied source count to the model limit.
 
 <a name="limitMedia"></a>
-## func [limitMedia](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/paramchange.go#L15>)
+## func [limitMedia](<https://github.com/shdeen/bildomat/blob/main/internal/generation/paramchange.go#L15>)
 
 ```go
 func limitMedia(mediaInputs []media.Input, limit int) ([]media.Input, *params.Adjustment)
@@ -176,7 +176,7 @@ func limitMedia(mediaInputs []media.Input, limit int) ([]media.Input, *params.Ad
 limitMedia copies the retained prefix of input media and records any reduction. A nonpositive limit retains every input.
 
 <a name="numericSeconds"></a>
-## func [numericSeconds](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frametime.go#L4>)
+## func [numericSeconds](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frametime.go#L4>)
 
 ```go
 func numericSeconds(paramValue any) (float64, bool)
@@ -185,7 +185,7 @@ func numericSeconds(paramValue any) (float64, bool)
 numericSeconds converts int, int64, or float64 seconds, reporting false for other types.
 
 <a name="pastHalfDuration"></a>
-## func [pastHalfDuration](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/frame.go#L152>)
+## func [pastHalfDuration](<https://github.com/shdeen/bildomat/blob/main/internal/generation/frame.go#L152>)
 
 ```go
 func pastHalfDuration(seconds, durationSeconds float64, durationSet bool) bool
@@ -194,7 +194,7 @@ func pastHalfDuration(seconds, durationSeconds float64, durationSet bool) bool
 pastHalfDuration reports whether a frame time falls past half the duration. With no duration set, any time later than zero counts as past.
 
 <a name="Generation"></a>
-## type [Generation](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/generator.go#L64-L71>)
+## type [Generation](<https://github.com/shdeen/bildomat/blob/main/internal/generation/generator.go#L64-L71>)
 
 Generation contains the selected model and prepared inputs for one provider request.
 
@@ -216,7 +216,7 @@ type Generation struct {
 ```
 
 <a name="Generator"></a>
-## type [Generator](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/generator.go#L18-L21>)
+## type [Generator](<https://github.com/shdeen/bildomat/blob/main/internal/generation/generator.go#L18-L21>)
 
 Generator prepares a model's retained inputs and generates its artifacts.
 
@@ -231,7 +231,7 @@ type Generator interface {
 ```
 
 <a name="Preparation"></a>
-## type [Preparation](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/generator.go#L29-L34>)
+## type [Preparation](<https://github.com/shdeen/bildomat/blob/main/internal/generation/generator.go#L29-L34>)
 
 Preparation owns the values and media records to be submitted to a provider. Bytes and timestamps referenced by InputMedia remain immutable; transformations replace them.
 
@@ -250,7 +250,7 @@ type Preparation struct {
 ```
 
 <a name="AdjustGeneration"></a>
-### func [AdjustGeneration](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/paramchange.go#L50>)
+### func [AdjustGeneration](<https://github.com/shdeen/bildomat/blob/main/internal/generation/paramchange.go#L50>)
 
 ```go
 func AdjustGeneration(model *catalog.Model, inputs params.FlagInputs, mediaInputs []media.Input) (Preparation, error)
@@ -259,7 +259,7 @@ func AdjustGeneration(model *catalog.Model, inputs params.FlagInputs, mediaInput
 AdjustGeneration selects owned media records and applies common scalar adjustments once. Completed records survive any later scalar failure, in their established presentation order.
 
 <a name="Preparation.Clone"></a>
-### func \(\*Preparation\) [Clone](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/generator.go#L38>)
+### func \(\*Preparation\) [Clone](<https://github.com/shdeen/bildomat/blob/main/internal/generation/generator.go#L38>)
 
 ```go
 func (preparedGeneration *Preparation) Clone() Preparation
@@ -268,7 +268,7 @@ func (preparedGeneration *Preparation) Clone() Preparation
 Clone copies parameter values, media records, and adjustment records for independent mutation. Media bytes and timestamps remain shared and must stay immutable.
 
 <a name="Result"></a>
-## type [Result](<https://github.com/shdeen/bildomat-dev/blob/main/internal/generation/result.go#L9-L13>)
+## type [Result](<https://github.com/shdeen/bildomat/blob/main/internal/generation/result.go#L9-L13>)
 
 Result contains the outputs from one provider request.
 

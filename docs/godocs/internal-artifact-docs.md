@@ -43,7 +43,7 @@ const SidecarExt = ".md"
 ```
 
 <a name="Cleanup"></a>
-## func [Cleanup](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/media.go#L33>)
+## func [Cleanup](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/media.go#L33>)
 
 ```go
 func Cleanup(artifacts []Media) error
@@ -52,7 +52,7 @@ func Cleanup(artifacts []Media) error
 Cleanup attempts to remove every temporary source in the supplied artifacts. It clears their TmpPath fields even on failure and returns all removal errors.
 
 <a name="CreateDir"></a>
-## func [CreateDir](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/outpath.go#L146>)
+## func [CreateDir](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/outpath.go#L146>)
 
 ```go
 func CreateDir(path string) error
@@ -61,7 +61,7 @@ func CreateDir(path string) error
 CreateDir creates a directory and missing parents, accepting an existing directory.
 
 <a name="DefaultStem"></a>
-## func [DefaultStem](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/disk.go#L24>)
+## func [DefaultStem](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/disk.go#L24>)
 
 ```go
 func DefaultStem(mediaKind media.Kind) string
@@ -70,7 +70,7 @@ func DefaultStem(mediaKind media.Kind) string
 DefaultStem returns the default filename stem for an image or video run.
 
 <a name="ExpandHome"></a>
-## func [ExpandHome](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/outpath.go#L110>)
+## func [ExpandHome](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/outpath.go#L110>)
 
 ```go
 func ExpandHome(path string) (string, error)
@@ -79,7 +79,7 @@ func ExpandHome(path string) (string, error)
 ExpandHome replaces \~, or a leading \~ followed by a slash or the platform's separator, with the home directory, returning an error if it is unavailable. Other paths are unchanged.
 
 <a name="FormatExt"></a>
-## func [FormatExt](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/outpath.go#L95>)
+## func [FormatExt](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/outpath.go#L95>)
 
 ```go
 func FormatExt(format string) string
@@ -88,7 +88,7 @@ func FormatExt(format string) string
 FormatExt returns the canonical file extension for format, or an empty string when format is unsupported.
 
 <a name="Location"></a>
-## type [Location](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/outpath.go#L18-L23>)
+## type [Location](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/outpath.go#L18-L23>)
 
 Location contains the parsed components of an output path.
 
@@ -107,7 +107,7 @@ type Location struct {
 ```
 
 <a name="ParseOutPath"></a>
-### func [ParseOutPath](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/outpath.go#L27>)
+### func [ParseOutPath](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/outpath.go#L27>)
 
 ```go
 func ParseOutPath(outPath string) Location
@@ -116,7 +116,7 @@ func ParseOutPath(outPath string) Location
 ParseOutPath separates an output path into its directory, stem, and supported media extension. Unsupported extensions are discarded; only image extensions select an output format.
 
 <a name="Location.Resolve"></a>
-### func \(\*Location\) [Resolve](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/outpath.go#L157>)
+### func \(\*Location\) [Resolve](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/outpath.go#L157>)
 
 ```go
 func (location *Location) Resolve() error
@@ -125,7 +125,7 @@ func (location *Location) Resolve() error
 Resolve makes the location's directory absolute, creates it, and sanitizes its stem. It updates Dir only after successful directory creation and leaves an empty stem empty.
 
 <a name="Media"></a>
-## type [Media](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/media.go#L15-L19>)
+## type [Media](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/media.go#L15-L19>)
 
 Media contains generated media stored in memory or in a temporary file.
 
@@ -142,7 +142,7 @@ type Media struct {
 ```
 
 <a name="New"></a>
-### func [New](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/media.go#L23>)
+### func [New](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/media.go#L23>)
 
 ```go
 func New(data []byte, mime, fallbackExt string) (Media, error)
@@ -151,7 +151,7 @@ func New(data []byte, mime, fallbackExt string) (Media, error)
 New returns a bytes\-backed artifact with an extension inferred from its MIME type, data, or fallback extension.
 
 <a name="SavedFile"></a>
-## type [SavedFile](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/file.go#L16-L19>)
+## type [SavedFile](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/file.go#L16-L19>)
 
 SavedFile describes a successfully closed output file.
 
@@ -166,7 +166,7 @@ type SavedFile struct {
 ```
 
 <a name="Write"></a>
-### func [Write](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/file.go#L86>)
+### func [Write](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/file.go#L86>)
 
 ```go
 func Write(dir, name, ext string, data []byte) (SavedFile, error)
@@ -175,7 +175,7 @@ func Write(dir, name, ext string, data []byte) (SavedFile, error)
 Write exclusively creates and writes one file under the first free name.
 
 <a name="WriteMedia"></a>
-### func [WriteMedia](<https://github.com/shdeen/bildomat-dev/blob/main/internal/artifact/disk.go#L31>)
+### func [WriteMedia](<https://github.com/shdeen/bildomat/blob/main/internal/artifact/disk.go#L31>)
 
 ```go
 func WriteMedia(dir, requestedStem string, mediaKind media.Kind, artifacts []Media, writesSidecar bool) (finalStem string, completedFiles []SavedFile, writeErr error)

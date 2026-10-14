@@ -102,7 +102,7 @@ const mimeOctetStream = "application/octet-stream"
 ```
 
 <a name="DownloadInputMedia"></a>
-## func [DownloadInputMedia](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/inputmedia.go#L111>)
+## func [DownloadInputMedia](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/inputmedia.go#L111>)
 
 ```go
 func DownloadInputMedia(ctx context.Context, mediaInputs []media.Input) ([]media.Input, error)
@@ -111,7 +111,7 @@ func DownloadInputMedia(ctx context.Context, mediaInputs []media.Input) ([]media
 DownloadInputMedia downloads URL inputs without credentials into a copied media slice. It preserves source order and leaves format compatibility to the receiving provider. On failure it returns completed downloads and untouched remaining inputs without mutating the caller's slice.
 
 <a name="Fetch"></a>
-## func [Fetch](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/download.go#L19>)
+## func [Fetch](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/download.go#L19>)
 
 ```go
 func Fetch(ctx context.Context, endpoint string, credential AuthCredential, fallbackExt string, record *metadata.Record) (artifact.Media, error)
@@ -120,7 +120,7 @@ func Fetch(ctx context.Context, endpoint string, credential AuthCredential, fall
 Fetch streams generated media into a temporary file that the caller owns. On failure it removes that file and returns no media. A nonnil record retains received bytes.
 
 <a name="GetAuth"></a>
-## func [GetAuth](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L64>)
+## func [GetAuth](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L64>)
 
 ```go
 func GetAuth(ctx context.Context, endpoint string, credential AuthCredential, responseType string, record *metadata.Record) (status int, respBody []byte, err error)
@@ -129,7 +129,7 @@ func GetAuth(ctx context.Context, endpoint string, credential AuthCredential, re
 GetAuth retrieves an endpoint with the credential and returns its status and bounded body. A nonnil record captures the transaction; responseType labels the response as a poll or direct retrieval.
 
 <a name="Poll"></a>
-## func [Poll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/poll.go#L20>)
+## func [Poll](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/poll.go#L20>)
 
 ```go
 func Poll(ctx context.Context, pace, pollBudget time.Duration, poller jobPoll) error
@@ -138,7 +138,7 @@ func Poll(ctx context.Context, pace, pollBudget time.Duration, poller jobPoll) e
 Poll checks a job at fixed intervals until it completes, the context ends, or the polling budget expires. The caller may read its poller's completed result only after Poll succeeds.
 
 <a name="PostJSON"></a>
-## func [PostJSON](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L46>)
+## func [PostJSON](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L46>)
 
 ```go
 func PostJSON(ctx context.Context, endpoint string, credential AuthCredential, body any, record *metadata.Record) (status int, respBody []byte, err error)
@@ -147,7 +147,7 @@ func PostJSON(ctx context.Context, endpoint string, credential AuthCredential, b
 PostJSON sends body as JSON and returns the response status and body. When record is nonnil, it captures the actual request and full bounded response.
 
 <a name="ResolveInputMediaTypes"></a>
-## func [ResolveInputMediaTypes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/inputmedia.go#L30>)
+## func [ResolveInputMediaTypes](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/inputmedia.go#L30>)
 
 ```go
 func ResolveInputMediaTypes(ctx context.Context, mediaInputs []media.Input) ([]media.Input, error)
@@ -156,7 +156,7 @@ func ResolveInputMediaTypes(ctx context.Context, mediaInputs []media.Input) ([]m
 ResolveInputMediaTypes returns copies with unresolved remote media identified. It tries HTTP metadata, then a bounded content sample, without provider credentials. Source URLs, existing metadata, bytes, and frame information remain unchanged. A source that cannot be read or identified returns a classified input error.
 
 <a name="SendBody"></a>
-## func [SendBody](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L57>)
+## func [SendBody](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L57>)
 
 ```go
 func SendBody(ctx context.Context, endpoint string, credential AuthCredential, contentType string, body []byte, record *metadata.Record) (status int, respBody []byte, err error)
@@ -165,7 +165,7 @@ func SendBody(ctx context.Context, endpoint string, credential AuthCredential, c
 SendBody posts a prepared body and returns the response status and bounded body. A nonnil record captures the request, response, and any transfer failure.
 
 <a name="client"></a>
-## func [client](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L132>)
+## func [client](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L132>)
 
 ```go
 func client(credential AuthCredential, origin *url.URL) *http.Client
@@ -174,7 +174,7 @@ func client(credential AuthCredential, origin *url.URL) *http.Client
 client limits redirects and confines the supplied credential to the original origin.
 
 <a name="copyDownload"></a>
-## func [copyDownload](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/download.go#L69>)
+## func [copyDownload](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/download.go#L69>)
 
 ```go
 func copyDownload(file *os.File, body io.Reader) (signature []byte, written int64, copyErr error)
@@ -183,7 +183,7 @@ func copyDownload(file *os.File, body io.Reader) (signature []byte, written int6
 copyDownload streams the body into file, returning its leading signature and written byte count. It retains a partial initial read and stops on any read or write failure.
 
 <a name="getPollTimeout"></a>
-## func [getPollTimeout](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/poll.go#L89>)
+## func [getPollTimeout](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/poll.go#L89>)
 
 ```go
 func getPollTimeout(timeout time.Duration, last error) error
@@ -192,7 +192,7 @@ func getPollTimeout(timeout time.Duration, last error) error
 getPollTimeout returns a polling timeout error retaining the last failed observation, if any.
 
 <a name="readFirstBytes"></a>
-## func [readFirstBytes](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L151>)
+## func [readFirstBytes](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L151>)
 
 ```go
 func readFirstBytes(reader io.Reader, byteLimit int64) ([]byte, error)
@@ -201,7 +201,7 @@ func readFirstBytes(reader io.Reader, byteLimit int64) ([]byte, error)
 readFirstBytes returns at most byteLimit bytes and reports read or size errors. On failure it preserves the received prefix for optional response recording.
 
 <a name="request"></a>
-## func [request](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L94>)
+## func [request](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L94>)
 
 ```go
 func request(ctx context.Context, method, endpoint string, credential AuthCredential, headers http.Header, body []byte, record *metadata.Record) (*http.Response, int, error)
@@ -210,7 +210,7 @@ func request(ctx context.Context, method, endpoint string, credential AuthCreden
 request authenticates and sends an HTTP request, recording submitted requests and send failures. The caller must close a successful response body.
 
 <a name="requestFailure"></a>
-## func [requestFailure](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L123>)
+## func [requestFailure](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L123>)
 
 ```go
 func requestFailure(ctx context.Context, endpoint string, cause error) error
@@ -219,7 +219,7 @@ func requestFailure(ctx context.Context, endpoint string, cause error) error
 requestFailure preserves a failed request or body operation and classifies an explicit cancellation without losing the underlying transport or read cause.
 
 <a name="requestMediaType"></a>
-## func [requestMediaType](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/inputmedia.go#L67>)
+## func [requestMediaType](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/inputmedia.go#L67>)
 
 ```go
 func requestMediaType(ctx context.Context, sourceURL, method string) (string, error)
@@ -228,7 +228,7 @@ func requestMediaType(ctx context.Context, sourceURL, method string) (string, er
 requestMediaType inspects successful source metadata and, for GET, a bounded prefix. HEAD servers may omit metadata or reject the method; the caller decides whether to retry using GET. Even servers that ignore Range are read only to the limit.
 
 <a name="retryablePollError"></a>
-## func [retryablePollError](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/poll.go#L63>)
+## func [retryablePollError](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/poll.go#L63>)
 
 ```go
 func retryablePollError(err error) bool
@@ -237,7 +237,7 @@ func retryablePollError(err error) bool
 retryablePollError recognizes transport failures and temporary response statuses that can be retried. Permanent classifications take precedence over a simultaneous response\-body read failure.
 
 <a name="send"></a>
-## func [send](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/http.go#L70>)
+## func [send](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/http.go#L70>)
 
 ```go
 func send(ctx context.Context, httpMethod, endpoint string, credential AuthCredential, contentType string, body []byte, responseType string, record *metadata.Record) (status int, respBody []byte, err error)
@@ -246,7 +246,7 @@ func send(ctx context.Context, httpMethod, endpoint string, credential AuthCrede
 send performs a request and reads its bounded body before provider decoding. It captures the transaction in a nonnil record, including incomplete response bytes on failure.
 
 <a name="stream"></a>
-## func [stream](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/download.go#L41>)
+## func [stream](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/download.go#L41>)
 
 ```go
 func stream(ctx context.Context, response *http.Response, endpoint, fallbackExt string, record *metadata.Record, requestIndex int) (artifact.Media, error)
@@ -255,7 +255,7 @@ func stream(ctx context.Context, response *http.Response, endpoint, fallbackExt 
 stream writes a complete nonempty response to a temporary artifact file. A nonnil record retains the response before a failed download's temporary file is removed.
 
 <a name="usableMediaType"></a>
-## func [usableMediaType](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/inputmedia.go#L99>)
+## func [usableMediaType](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/inputmedia.go#L99>)
 
 ```go
 func usableMediaType(contentType string) string
@@ -264,7 +264,7 @@ func usableMediaType(contentType string) string
 usableMediaType returns the normalized image or video MIME type of a valid header.
 
 <a name="wait"></a>
-## func [wait](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/poll.go#L76>)
+## func [wait](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/poll.go#L76>)
 
 ```go
 func wait(ctx context.Context, d time.Duration) error
@@ -273,7 +273,7 @@ func wait(ctx context.Context, d time.Duration) error
 wait blocks for d or returns an error when ctx ends first.
 
 <a name="AuthCredential"></a>
-## type [AuthCredential](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/auth.go#L12>)
+## type [AuthCredential](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/auth.go#L12>)
 
 AuthCredential contains an HTTP header credential.
 
@@ -285,7 +285,7 @@ type AuthCredential struct{ HeaderName, Value string }
 ```
 
 <a name="Bearer"></a>
-### func [Bearer](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/auth.go#L15>)
+### func [Bearer](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/auth.go#L15>)
 
 ```go
 func Bearer(apiKey string) AuthCredential
@@ -294,7 +294,7 @@ func Bearer(apiKey string) AuthCredential
 Bearer returns an Authorization header credential containing an API key.
 
 <a name="CredentialForURL"></a>
-### func [CredentialForURL](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/auth.go#L33>)
+### func [CredentialForURL](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/auth.go#L33>)
 
 ```go
 func CredentialForURL(candidateURL, apiBase string, credential AuthCredential) AuthCredential
@@ -303,7 +303,7 @@ func CredentialForURL(candidateURL, apiBase string, credential AuthCredential) A
 CredentialForURL returns the credential only when the candidate and API base have the same origin. An invalid or nonabsolute candidate, or an origin mismatch, receives no credential.
 
 <a name="HeaderCred"></a>
-### func [HeaderCred](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/auth.go#L20>)
+### func [HeaderCred](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/auth.go#L20>)
 
 ```go
 func HeaderCred(header, apiKey string) AuthCredential
@@ -312,7 +312,7 @@ func HeaderCred(header, apiKey string) AuthCredential
 HeaderCred returns a credential containing a header name and API key.
 
 <a name="AuthCredential.set"></a>
-### func \(AuthCredential\) [set](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/auth.go#L25>)
+### func \(AuthCredential\) [set](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/auth.go#L25>)
 
 ```go
 func (c AuthCredential) set(h http.Header)
@@ -321,7 +321,7 @@ func (c AuthCredential) set(h http.Header)
 set adds the credential to h when its header name is present.
 
 <a name="jobPoll"></a>
-## type [jobPoll](<https://github.com/shdeen/bildomat-dev/blob/main/internal/httpapi/poll.go#L13-L16>)
+## type [jobPoll](<https://github.com/shdeen/bildomat/blob/main/internal/httpapi/poll.go#L13-L16>)
 
 jobPoll checks the state of an asynchronous job.
 

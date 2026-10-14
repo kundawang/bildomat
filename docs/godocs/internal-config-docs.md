@@ -16,7 +16,7 @@ Package config loads optional settings from \<home\>/.bildomat/config.yml. It re
 
 
 <a name="UnknownProviderFault"></a>
-## func [UnknownProviderFault](<https://github.com/shdeen/bildomat-dev/blob/main/internal/config/config.go#L86>)
+## func [UnknownProviderFault](<https://github.com/shdeen/bildomat/blob/main/internal/config/config.go#L86>)
 
 ```go
 func UnknownProviderFault(filePath, providerID string) error
@@ -25,7 +25,7 @@ func UnknownProviderFault(filePath, providerID string) error
 UnknownProviderFault describes an api\-keys provider absent from the catalog.
 
 <a name="Settings"></a>
-## type [Settings](<https://github.com/shdeen/bildomat-dev/blob/main/internal/config/config.go#L34-L38>)
+## type [Settings](<https://github.com/shdeen/bildomat/blob/main/internal/config/config.go#L34-L38>)
 
 Settings holds optional defaults and API keys. Empty values mean unset; Load removes empty API keys.
 
@@ -42,7 +42,7 @@ type Settings struct {
 ```
 
 <a name="Load"></a>
-### func [Load](<https://github.com/shdeen/bildomat-dev/blob/main/internal/config/config.go#L62>)
+### func [Load](<https://github.com/shdeen/bildomat/blob/main/internal/config/config.go#L62>)
 
 ```go
 func Load() (Settings, string, []error)
