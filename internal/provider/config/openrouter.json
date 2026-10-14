@@ -7,6 +7,110 @@
   "aggregator": true,
   "models": [
     {
+      "id": "meta/muse-image",
+      "name": "Meta: Muse Image",
+      "media": "image",
+      "params": [
+        {
+          "flagID": "input-media"
+        }
+      ]
+    },
+    {
+      "id": "tencent/hy-image-v3.5-preview",
+      "name": "Tencent: Hy Image 3.5 Preview",
+      "media": "image",
+      "params": [
+        {
+          "paramID": "resolution",
+          "flagID": "resolution",
+          "allowedValues": [
+            "1K",
+            "1.5K",
+            "2K",
+            "4K"
+          ]
+        },
+        {
+          "paramID": "aspect_ratio",
+          "flagID": "aspect-ratio",
+          "allowedValues": [
+            "1:1",
+            "1:2",
+            "1:4",
+            "2:1",
+            "2:3",
+            "3:2",
+            "3:4",
+            "4:1",
+            "4:3",
+            "4:5",
+            "5:4",
+            "9:16",
+            "16:9"
+          ]
+        },
+        {
+          "paramID": "size",
+          "flagID": "size"
+        },
+        {
+          "paramID": "seed",
+          "flagID": "seed"
+        },
+        {
+          "paramID": "n",
+          "flagID": "num-images",
+          "minValue": 1,
+          "maxValue": 1
+        },
+        {
+          "flagID": "input-media",
+          "maxMultiple": 20
+        }
+      ]
+    },
+    {
+      "id": "x-ai/grok-imagine-video-1.5-lite",
+      "name": "SpaceXAI: Grok Imagine Video 1.5 Lite",
+      "media": "video",
+      "params": [
+        {
+          "paramID": "resolution",
+          "flagID": "resolution",
+          "allowedValues": [
+            "480p",
+            "720p",
+            "1080p"
+          ]
+        },
+        {
+          "paramID": "aspect_ratio",
+          "flagID": "aspect-ratio",
+          "allowedValues": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "3:2",
+            "2:3"
+          ]
+        },
+        {
+          "paramID": "duration",
+          "flagID": "duration",
+          "minValue": 1,
+          "maxValue": 15
+        },
+        {
+          "flagID": "input-media",
+          "maxMultiple": 1,
+          "modelInfoComment": "Special usage: <[first:|last:]media-file>. For the media to be used for the opening or closing frame, add a 'first:' or 'last:' prefix (e.g., first:image.png). See online docs for details on specifying frames for input media: https://bildomat.com/docs."
+        }
+      ]
+    },
+    {
       "id": "openai/gpt-image-2.5-flare",
       "name": "OpenAI: GPT Image 2.5 Flare",
       "description": "Fast image generation and editing for everyday creative work.",
