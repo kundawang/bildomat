@@ -149,10 +149,12 @@ func nearestRes(height int, allowed []string) string {
 //   - labelSuffixK: the suffix of a K label such as 2k; the number before it counts K units
 //   - heightPerK: the representative height of one K unit, which the K rule multiplies by the
 //     label's count; for 4K and 8K it yields the published heights
+//   - nonDecimalChars: exponent, hexadecimal, and separator characters excluded from decimal K counts
 const (
-	labelSuffixP = "p"
-	labelSuffixK = "k"
-	heightPerK   = 540
+	labelSuffixP    = "p"
+	labelSuffixK    = "k"
+	heightPerK      = 540
+	nonDecimalChars = "eExXpP_"
 )
 
 // repHeight takes a resolution label, dimensions, or positive integer and returns its
@@ -168,6 +170,19 @@ func repHeight(size string) (int, bool) {
 		}
 
 		return n * heightPerK, true
+	}
+
+	if strings.HasSuffix(size, labelSuffixK) && strings.Contains(size, ".") {
+		decimalCount := strings.TrimSuffix(size, labelSuffixK)
+
+		kCount, parseErr := strconv.ParseFloat(decimalCount, 64)
+		if parseErr == nil && !strings.ContainsAny(decimalCount, nonDecimalChars) {
+			roundedHeight := math.Round(kCount * heightPerK)
+			// The exclusive int limit is exactly representable on both 32- and 64-bit systems.
+			if roundedHeight > 0 && roundedHeight < math.Ldexp(1, strconv.IntSize-1) {
+				return int(roundedHeight), true
+			}
+		}
 	}
 
 	if width, height, ok := ParseDimensions(size); ok {

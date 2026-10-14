@@ -17,6 +17,8 @@ package params
 //  7. Minimum edge enforcement: Given 1000x100, minimum edge 256, and increment eight, clampFree
 //     must return both edges at least 256 and divisible by eight.
 //  8. Numerical resolution selection: Given 1280x720 or 720x1280, repHeight must return 720.
+//  9. Fractional resolution comparison: Decimal K labels use 540 per K with positive halves
+//     rounded upward, including decimal whole numbers and underscore-suffixed labels.
 
 import (
 	"slices"
@@ -272,6 +274,45 @@ func TestResolutionNumericalSelection(t *testing.T) {
 
 	if !t.Failed() {
 		t.Log("✓ numerical selection uses only known short edges")
+	}
+}
+
+// TestFractionalResolutionHeights verifies invariant #9: Fractional resolution comparison.
+//
+// What is under test:
+// Decimal K labels use 540 per K and round positive halves upward. Decimal whole numbers,
+// leading decimal points, and labels after underscores use that same conversion.
+//
+// Test class: Expanded.
+// Test layer: Coverage.
+// Test kind: permanent.
+func TestFractionalResolutionHeights(t *testing.T) {
+	for _, resolutionCase := range []struct {
+		label  string
+		height int
+	}{
+		{"1.5k", 810},
+		{"1.6k", 864},
+		{"1.75k", 945},
+		{"0.025k", 14},
+		{"1.0k", 540},
+		{".5k", 270},
+		{"hd_1.5k", 810},
+	} {
+		t.Run(resolutionCase.label, func(t *testing.T) {
+			actualHeight, isRecognized := repHeight(resolutionCase.label)
+			if !isRecognized || actualHeight != resolutionCase.height {
+				t.Errorf("✗ %q returned (%d, %v), expected (%d, true)", resolutionCase.label, actualHeight, isRecognized, resolutionCase.height)
+			}
+
+			if !t.Failed() {
+				t.Log("✓ decimal label has the required comparison height")
+			}
+		})
+	}
+
+	if !t.Failed() {
+		t.Log("✓ fractional K labels share the integer K comparison scale")
 	}
 }
 

@@ -25,6 +25,9 @@ package params_test
 //     short edge and use the requested ratio to break a tie, returning the exact listed size.
 //  10. Nonnumerical resolution labels: Given allowed resolution labels HD and FHD, params.Adjust
 //      must normalize padded hd to HD without a record.
+//  11. Fractional tier selection: Exact declared tiers retain spelling without adjustment;
+//      other numeric resolutions select the nearest tier, retaining the first declared tie
+//      and reporting the supplied and selected values without suppressing aspect ratio.
 
 import (
 	"errors"
@@ -826,6 +829,78 @@ func TestResolutionUninterpretedLabels(t *testing.T) {
 
 	if !t.Failed() {
 		t.Log("✓ opaque labels require declared membership")
+	}
+}
+
+// TestAdjustFractionalResolution verifies invariant #11: Fractional tier selection.
+//
+// What is under test:
+// With 1K, 1.5K, 2K, and 4K in that order, 1.5k keeps the declared spelling without a notice;
+// 1.6K, 900p, 1.75K, and 1280x900 select 1.5K with one adjustment naming both values.
+// Decimal 2.0K selects 2K. Exact 4K stays unchanged. Reversing the declared tiers makes 2K
+// win the 1.75K tie. An independent aspect ratio remains present in every request.
+//
+// Test class: Expanded.
+// Test layer: Coverage.
+// Test kind: permanent.
+func TestAdjustFractionalResolution(t *testing.T) {
+	for _, resolutionCase := range []struct {
+		input        string
+		selected     string
+		isExact      bool
+		reverseTiers bool
+	}{
+		{"1.5k", "1.5K", true, false},
+		{"1.6K", "1.5K", false, false},
+		{"900p", "1.5K", false, false},
+		{"1.75K", "1.5K", false, false},
+		{"1280x900", "1.5K", false, false},
+		{"2.0K", "2K", false, false},
+		{"4K", "4K", true, false},
+		{"1.75K", "2K", false, true},
+	} {
+		t.Run(fmt.Sprintf("%s_reverse_%t", resolutionCase.input, resolutionCase.reverseTiers), func(t *testing.T) {
+			allowedTiers := []string{"1K", "1.5K", "2K", "4K"}
+			if resolutionCase.reverseTiers {
+				allowedTiers = []string{"4K", "2K", "1.5K", "1K"}
+			}
+
+			definitions := params.Definitions{
+				{FlagID: params.FlagTypeResolution, ParamID: "resolution", AllowedValues: allowedTiers},
+				{FlagID: params.FlagTypeAspect, ParamID: "aspect_ratio", AllowedValues: []string{"1:1", "3:2"}},
+				{FlagID: params.FlagTypeSize, ParamID: "size"},
+			}
+
+			adjustedValues, adjustments, adjustmentErr := params.Adjust(params.FlagInputs{
+				params.FlagTypeResolution: resolutionCase.input, params.FlagTypeAspect: "3:2",
+			}, definitions, "fractional-image")
+			if adjustmentErr != nil {
+				t.Errorf("✗ adjustment failed: %v", adjustmentErr)
+			}
+
+			if adjustedValues[params.FlagTypeResolution] != resolutionCase.selected || adjustedValues[params.FlagTypeAspect] != "3:2" || len(adjustedValues) != 2 {
+				t.Errorf("✗ adjusted values %v, expected resolution %s and aspect 3:2", adjustedValues, resolutionCase.selected)
+			}
+
+			if resolutionCase.isExact {
+				if len(adjustments) != 0 {
+					t.Errorf("✗ exact match emitted adjustments: %+v", adjustments)
+				}
+			} else {
+				requiredChanges := []params.Adjustment{{FlagID: params.FlagTypeResolution, Type: params.ChangeSnapped, InputVal: resolutionCase.input, WireVal: resolutionCase.selected}}
+				if !reflect.DeepEqual(adjustments, requiredChanges) {
+					t.Errorf("✗ adjustments %+v, expected %+v", adjustments, requiredChanges)
+				}
+			}
+
+			if !t.Failed() {
+				t.Log("✓ nearest tier, aspect ratio, and adjustment notice agree")
+			}
+		})
+	}
+
+	if !t.Failed() {
+		t.Log("✓ fractional tiers preserve exact matches and declared tie order")
 	}
 }
 
