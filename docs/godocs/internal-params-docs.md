@@ -123,7 +123,7 @@ func ParseValue(dataType DataType, rawValue string) (any, error)
 ParseValue parses parameter text according to the requested data type and returns its typed value.
 
 <a name="PickSize"></a>
-## func [PickSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L191>)
+## func [PickSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L206>)
 
 ```go
 func PickSize(sizes []string, landscape bool, tierH int, requestedRatio Nullable[float64]) string

@@ -5,6 +5,8 @@
 ### Added
 
 - Gemini Nano Banana 2.1 through Google (`google/gemini-nano-banana-2.1`) and OpenRouter (`openrouter/google/gemini-nano-banana-2.1`).
+- New OpenRouter models: Meta Muse Image (`openrouter/meta/muse-image`), Tencent HY Image 3.5 Preview (`openrouter/tencent/hy-image-v3.5-preview`), and Grok Imagine Video 1.5 Lite (`openrouter/x-ai/grok-imagine-video-1.5-lite`).
+- `--resolution` accepts decimal K values such as `1.5K`. On a model that lists its resolutions, Bildomat selects the nearest listed one.
 
 ## [0.0.7] - 2026-10-06
 
@@ -50,4 +52,4 @@ First public release. A `bild` command for generating and editing images and vid
 [0.0.6]: https://github.com/shdeen/bildomat/releases/tag/v0.0.6
 [0.0.5]: https://github.com/shdeen/bildomat/releases/tag/v0.0.5
 
-Revised 2026-10-07
+Revised 2026-10-13

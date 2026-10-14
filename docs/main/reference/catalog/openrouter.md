@@ -2,10 +2,13 @@
 
 Every model that `bild` offers from OpenRouter (provider ID `openrouter`, API key variable `OPENROUTER_API_KEY`), with every option each model accepts and the constraints the model declares. An option the provider requires opens with **Required.**; every other option is optional. `bild info openrouter/<model>` prints the same facts for the binary you run. What the constraints mean is described in [Parameter adjustment](../parameter-adjustment.md), the flags in [Generation flags](../generation-flags.md), and how to name a model in [Model specifiers](../model-specifiers.md).
 
-57 image models, 30 video models.
+59 image models, 31 video models.
 
 ## Contents
 
+- [Meta: Muse Image](#meta-muse-image)
+- [Tencent: Hy Image 3.5 Preview](#tencent-hy-image-35-preview)
+- [SpaceXAI: Grok Imagine Video 1.5 Lite](#spacexai-grok-imagine-video-15-lite)
 - [OpenAI: GPT Image 2.5 Flare](#openai-gpt-image-25-flare)
 - [OpenAI: GPT Image 2.5 Sunburst](#openai-gpt-image-25-sunburst)
 - [Black Forest Labs: FLUX.2 Flex](#black-forest-labs-flux2-flex)
@@ -93,6 +96,44 @@ Every model that `bild` offers from OpenRouter (provider ID `openrouter`, API ke
 - [InclusionAI: Ming Image 0.1 Design Layer](#inclusionai-ming-image-01-design-layer)
 - [Recraft: Recraft V4.1 Flash](#recraft-recraft-v41-flash)
 - [HeyGen: HeyGen Video 1](#heygen-heygen-video-1)
+
+## Meta: Muse Image
+
+Name | Medium | Aliases | Full ID
+-----|--------|---------|--------
+Meta: Muse Image | image | none | `openrouter/meta/muse-image`
+
+Option | Constraints
+-------|------------
+`--input-media` |
+
+## Tencent: Hy Image 3.5 Preview
+
+Name | Medium | Aliases | Full ID
+-----|--------|---------|--------
+Tencent: Hy Image 3.5 Preview | image | none | `openrouter/tencent/hy-image-v3.5-preview`
+
+Option | Constraints
+-------|------------
+`--size` | Examples: 1024x768, 1024x4096
+`--aspect-ratio` | Allowed values: 1:1, 1:2, 1:4, 2:1, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 9:16, 16:9
+`--resolution` | Allowed values: 1K, 1.5K, 2K, 4K
+`--num-images` | Allowed range: 1 to 1
+`--input-media` | Repeat maximum: 20
+`--seed` |
+
+## SpaceXAI: Grok Imagine Video 1.5 Lite
+
+Name | Medium | Aliases | Full ID
+-----|--------|---------|--------
+SpaceXAI: Grok Imagine Video 1.5 Lite | video | none | `openrouter/x-ai/grok-imagine-video-1.5-lite`
+
+Option | Constraints
+-------|------------
+`--aspect-ratio` | Allowed values: 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3
+`--resolution` | Allowed values: 480p, 720p, 1080p
+`--duration` | Allowed range: 1 to 15
+`--input-media` | Repeat maximum: 1; Special usage: <[first:\|last:]media-file>. For the media to be used for the opening or closing frame, add a 'first:' or 'last:' prefix (e.g., first:image.png). See online docs for details on specifying frames for input media: https://bildomat.com/docs.
 
 ## OpenAI: GPT Image 2.5 Flare
 
@@ -1604,4 +1645,4 @@ Option | Constraints
 `--input-media` | Repeat maximum: 9; Use up to nine image references, or one opening image with first:image.png. Do not combine an opening image with references. Closing frames, video references, and audio references are not supported by this configuration.
 `--seed` |
 
-Revised 2026-10-08
+Revised 2026-10-13

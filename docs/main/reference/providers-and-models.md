@@ -19,12 +19,12 @@ bild info google --json
 | [Recraft](catalog/recraft.md) | `recraft` | 21 | 0 | `RECRAFT_API_KEY` | `recraftv4_1` |
 | [Sourceful](catalog/sourceful.md) | `sourceful` | 4 | 0 | `SOURCEFUL_API_KEY` | `riverflow-2.5-fast` |
 | [xAI](catalog/xai.md) | `xai` | 4 | 3 | `XAI_API_KEY` | `grok-imagine-image` |
-| [OpenRouter](catalog/openrouter.md) | `openrouter` | 57 | 30 | `OPENROUTER_API_KEY` | `google/gemini-3.1-flash-image` |
-| **173 models** | | **124** | **49** | | |
+| [OpenRouter](catalog/openrouter.md) | `openrouter` | 59 | 31 | `OPENROUTER_API_KEY` | `google/gemini-3.1-flash-image` |
+| **176 models** | | **126** | **50** | | |
 
 A run without `--model`, and without `default-model` in the configuration file, uses the default model of the first provider in this table whose credential is available. The table's order is the listing order of `bild list`: alphabetical by provider name, with the aggregator last. Prefix the default model with its provider ID to name it explicitly.
 
-This set covers 173 models across eight providers: 124 image models and 49 video models. OpenRouter is an aggregator: in a full key such as `openrouter/google/veo-3.1`, the vendor name does not switch to that vendor’s direct service. Without the `openrouter/` prefix, a vendor name that is also a Bildomat provider ID can select the direct service instead; see [model specifiers](model-specifiers.md). Use the full key for stable selection and inspect the exact integration’s options.
+This set covers 176 models across eight providers: 126 image models and 50 video models. OpenRouter is an aggregator: in a full key such as `openrouter/google/veo-3.1`, the vendor name does not switch to that vendor’s direct service. Without the `openrouter/` prefix, a vendor name that is also a Bildomat provider ID can select the direct service instead; see [model specifiers](model-specifiers.md). Use the full key for stable selection and inspect the exact integration’s options.
 
 Nearly every model needs a prompt. A few do not require one, and a run on one of those needs no prompt argument; `bild info MODEL` marks such a model, and so does its entry in these pages.
 
@@ -32,4 +32,4 @@ Model option values are unset unless supplied or derived; provider defaults appl
 
 See [flag types and shorthands](generation-flags.md), [adjustment rules](parameter-adjustment.md), and [input-media behavior](input-media.md) for rules shared across the catalog.
 
-Revised 2026-10-07
+Revised 2026-10-13

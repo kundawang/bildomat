@@ -100,12 +100,14 @@ Package params owns generation parameter definitions, values, and adjustment.
 - labelSuffixP: the suffix of a height label such as 720p; the number before it is the height
 - labelSuffixK: the suffix of a K label such as 2k; the number before it counts K units
 - heightPerK: the representative height of one K unit, which the K rule multiplies by the label's count; for 4K and 8K it yields the published heights
+- nonDecimalChars: exponent, hexadecimal, and separator characters excluded from decimal K counts
 
 ```go
 const (
-    labelSuffixP = "p"
-    labelSuffixK = "k"
-    heightPerK   = 540
+    labelSuffixP    = "p"
+    labelSuffixK    = "k"
+    heightPerK      = 540
+    nonDecimalChars = "eExXpP_"
 )
 ```
 
@@ -195,7 +197,7 @@ func ParseValue(dataType DataType, rawValue string) (any, error)
 ParseValue parses parameter text according to the requested data type and returns its typed value.
 
 <a name="PickSize"></a>
-## func [PickSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L191>)
+## func [PickSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L206>)
 
 ```go
 func PickSize(sizes []string, landscape bool, tierH int, requestedRatio Nullable[float64]) string
@@ -222,7 +224,7 @@ func allowedIntValues(allowedVals []string) []int
 allowedIntValues takes text values and returns those that parse as integers.
 
 <a name="allowedMember"></a>
-## func [allowedMember](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L562>)
+## func [allowedMember](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L577>)
 
 ```go
 func allowedMember(input string, allowed []string) (string, bool)
@@ -240,7 +242,7 @@ func aspectNearest(input string, allowed []string) (string, bool)
 aspectNearest takes an aspect\-ratio value and allowed values and returns the exact member or nearest parseable ratio. Its boolean result reports whether the input was already a member.
 
 <a name="boundedInt"></a>
-## func [boundedInt](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L463>)
+## func [boundedInt](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L478>)
 
 ```go
 func boundedInt(value float64) int
@@ -249,7 +251,7 @@ func boundedInt(value float64) int
 boundedInt converts a nonnegative edge estimate without overflowing an int.
 
 <a name="capRatio"></a>
-## func [capRatio](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L505>)
+## func [capRatio](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L520>)
 
 ```go
 func capRatio(bounds SizeBounds, floatWidth, floatHeight float64) (adjustedWidth, adjustedHeight float64)
@@ -258,7 +260,7 @@ func capRatio(bounds SizeBounds, floatWidth, floatHeight float64) (adjustedWidth
 capRatio takes size bounds and floating\-point dimensions and returns dimensions whose long\-to\-short ratio does not exceed the configured maximum.
 
 <a name="ceilSquareRoot"></a>
-## func [ceilSquareRoot](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L494>)
+## func [ceilSquareRoot](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L509>)
 
 ```go
 func ceilSquareRoot(count int) int
@@ -267,7 +269,7 @@ func ceilSquareRoot(count int) int
 ceilSquareRoot returns the smallest edge whose square reaches the count.
 
 <a name="clampFree"></a>
-## func [clampFree](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L273>)
+## func [clampFree](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L288>)
 
 ```go
 func clampFree(bounds SizeBounds, width, height int) (adjustedWidth, adjustedHeight int)
@@ -276,7 +278,7 @@ func clampFree(bounds SizeBounds, width, height int) (adjustedWidth, adjustedHei
 clampFree takes size bounds and dimensions and returns dimensions adjusted to the configured ratio, edge, pixel\-count, and increment constraints.
 
 <a name="closerDimensions"></a>
-## func [closerDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L391>)
+## func [closerDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L406>)
 
 ```go
 func closerDimensions(requestedShort, requestedLong float64, shortEdge, longEdge, chosenShort, chosenLong int) bool
@@ -285,7 +287,7 @@ func closerDimensions(requestedShort, requestedLong float64, shortEdge, longEdge
 closerDimensions orders usable dimensions by distance, then a balanced shape, then preservation of the requested longer edge on an exact tie.
 
 <a name="deriveSize"></a>
-## func [deriveSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L253>)
+## func [deriveSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L268>)
 
 ```go
 func deriveSize(bounds SizeBounds, ratio float64) string
@@ -294,7 +296,7 @@ func deriveSize(bounds SizeBounds, ratio float64) string
 deriveSize takes size bounds and an aspect ratio and returns constrained dimensions based on the configured long edge. It returns an empty string when no long edge is configured.
 
 <a name="fixRounded"></a>
-## func [fixRounded](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L282>)
+## func [fixRounded](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L297>)
 
 ```go
 func fixRounded(bounds SizeBounds, width, height int) (adjustedWidth, adjustedHeight int)
@@ -303,7 +305,7 @@ func fixRounded(bounds SizeBounds, width, height int) (adjustedWidth, adjustedHe
 fixRounded chooses whole increments satisfying every constraint near the rounded request.
 
 <a name="floorSquareRoot"></a>
-## func [floorSquareRoot](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L476>)
+## func [floorSquareRoot](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L491>)
 
 ```go
 func floorSquareRoot(count int) int
@@ -348,7 +350,7 @@ func nearestRes(height int, allowed []string) string
 nearestRes takes a height and allowed resolution labels and returns the label with the nearest representative height.
 
 <a name="nearestSize"></a>
-## func [nearestSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L234>)
+## func [nearestSize](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L249>)
 
 ```go
 func nearestSize(sizes []string, ratio float64) string
@@ -366,7 +368,7 @@ func parseRatio(ratio string) (float64, bool)
 parseRatio takes an A:B aspect ratio and returns its positive finite quotient and whether parsing succeeded.
 
 <a name="ratioFromSpec"></a>
-## func [ratioFromSpec](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L573>)
+## func [ratioFromSpec](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L588>)
 
 ```go
 func ratioFromSpec(sizeInput string) (float64, bool)
@@ -375,7 +377,7 @@ func ratioFromSpec(sizeInput string) (float64, bool)
 ratioFromSpec returns the ratio represented by dimensions or an aspect ratio.
 
 <a name="repHeight"></a>
-## func [repHeight](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L160>)
+## func [repHeight](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L162>)
 
 ```go
 func repHeight(size string) (int, bool)
@@ -384,7 +386,7 @@ func repHeight(size string) (int, bool)
 repHeight takes a resolution label, dimensions, or positive integer and returns its representative height and whether the value is recognized.
 
 <a name="roundToIncrem"></a>
-## func [roundToIncrem](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L553>)
+## func [roundToIncrem](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L568>)
 
 ```go
 func roundToIncrem(value float64, step int) int
@@ -393,7 +395,7 @@ func roundToIncrem(value float64, step int) int
 roundToIncrem takes a value and increment and returns the nearest positive multiple of the increment. A non\-positive increment rounds to the nearest positive integer.
 
 <a name="scaleLongFactor"></a>
-## func [scaleLongFactor](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L523>)
+## func [scaleLongFactor](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L538>)
 
 ```go
 func scaleLongFactor(bounds SizeBounds, floatWidth, floatHeight float64) float64
@@ -402,7 +404,7 @@ func scaleLongFactor(bounds SizeBounds, floatWidth, floatHeight float64) float64
 scaleLongFactor takes size bounds and floating\-point dimensions and returns the scale that brings the longer edge within the configured maximum. It returns one when no reduction is needed.
 
 <a name="scalePxFactor"></a>
-## func [scalePxFactor](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L533>)
+## func [scalePxFactor](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L548>)
 
 ```go
 func scalePxFactor(bounds SizeBounds, pixelCount float64) float64
@@ -411,7 +413,7 @@ func scalePxFactor(bounds SizeBounds, pixelCount float64) float64
 scalePxFactor takes size bounds and a pixel count and returns the scale that brings the count within the configured range. It returns one when no scaling is needed.
 
 <a name="scaleTo"></a>
-## func [scaleTo](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L547>)
+## func [scaleTo](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L562>)
 
 ```go
 func scaleTo(floatWidth, floatHeight, scale float64) (scaledWidth, scaledHeight float64)
@@ -778,7 +780,7 @@ type SizeBounds struct {
 ```
 
 <a name="SizeBounds.incrementBounds"></a>
-### func \(SizeBounds\) [incrementBounds](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L308>)
+### func \(SizeBounds\) [incrementBounds](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L323>)
 
 ```go
 func (bounds SizeBounds) incrementBounds() (units SizeBounds, step int, usable bool)
@@ -787,7 +789,7 @@ func (bounds SizeBounds) incrementBounds() (units SizeBounds, step int, usable b
 incrementBounds expresses the constraints in whole edge increments. Pixel limits use division so neither the step square nor the area can overflow.
 
 <a name="SizeBounds.longForShort"></a>
-### func \(SizeBounds\) [longForShort](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L411>)
+### func \(SizeBounds\) [longForShort](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L426>)
 
 ```go
 func (bounds SizeBounds) longForShort(shortEdge int, requestedLong float64) int
@@ -796,7 +798,7 @@ func (bounds SizeBounds) longForShort(shortEdge int, requestedLong float64) int
 longForShort returns the nearest supported longer edge in increment units.
 
 <a name="SizeBounds.probeInitialDimensions"></a>
-### func \(SizeBounds\) [probeInitialDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L370>)
+### func \(SizeBounds\) [probeInitialDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L385>)
 
 ```go
 func (bounds SizeBounds) probeInitialDimensions(requestedShort, requestedLong float64, shortMaximum int) (shortEdge, longEdge int, distance float64)
@@ -805,7 +807,7 @@ func (bounds SizeBounds) probeInitialDimensions(requestedShort, requestedLong fl
 probeInitialDimensions compares the requested shorter edge with the two search limits.
 
 <a name="SizeBounds.searchNearestDimensions"></a>
-### func \(SizeBounds\) [searchNearestDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L334>)
+### func \(SizeBounds\) [searchNearestDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L349>)
 
 ```go
 func (bounds SizeBounds) searchNearestDimensions(requestedShort, requestedLong float64) (shortEdge, longEdge int)
@@ -814,7 +816,7 @@ func (bounds SizeBounds) searchNearestDimensions(requestedShort, requestedLong f
 searchNearestDimensions searches a finite interval of shorter edges. A nearby supported pair narrows that interval; longForShort provides the complete admissible longer range.
 
 <a name="SizeBounds.validDimensions"></a>
-### func \(SizeBounds\) [validDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L438>)
+### func \(SizeBounds\) [validDimensions](<https://github.com/shdeen/bildomat-dev/blob/main/internal/params/sizing.go#L453>)
 
 ```go
 func (bounds SizeBounds) validDimensions(width, height int) bool

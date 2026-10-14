@@ -44,14 +44,15 @@ With a height, Bildomat chooses the fixed size whose shorter edge is nearest, pr
 
 ## Independent ratio and resolution
 
-On models without a size option, ratio and resolution remain separate parameters. Exact allowed values match without regard to case and surrounding whitespace. An unlisted ratio becomes the nearest numerical allowed ratio; an unlisted resolution becomes the allowed value with the nearest representative height. A value that cannot be interpreted is omitted. An unlisted resolution is also omitted when none of the model's allowed values has a representative height, as with allowed values `hd` and `fhd`. If the model declares no allowed values, its text is passed through.
+On a model without a size option, ratio and resolution remain separate parameters. The same applies when no size is selected on a model whose size option declares neither custom bounds nor fixed sizes. Exact allowed values match without regard to case and surrounding whitespace. An unlisted ratio becomes the nearest numerical allowed ratio; an unlisted resolution becomes the allowed value with the nearest representative height. A value that cannot be interpreted is omitted. An unlisted resolution is also omitted when none of the model's allowed values has a representative height, as with allowed values `hd` and `fhd`. If the model declares no allowed values, its text is passed through.
 
 | Resolution text | Representative height |
 | --- | --- |
 | `4K` | 2160 |
 | `8K` | 4320 |
 | `720p`, or another number followed by `p` | That number |
-| `1K`, `2K`, or another number followed by `k` | Number × 540 |
+| `1K`, `2K`, or another whole number followed by `k` | Number × 540 |
+| `1.5K`, or another decimal number followed by `k` | Number × 540, rounded to the nearest whole number; halves round up |
 | `WxH` | The shorter edge |
 | A whole number | That number |
 | A value ending in `_<class>` | The final class, interpreted by these rules |
@@ -76,4 +77,4 @@ Direct OpenAI Sora fits an input image to the requested dimensions. An image of 
 
 Direct Kling converts the audio Boolean to the provider’s audio choice. Kling 2.6’s provider requires `1080p` for generated audio or frame input; Bildomat does not automatically raise the resolution for that combination.
 
-Revised 2026-10-06
+Revised 2026-10-13

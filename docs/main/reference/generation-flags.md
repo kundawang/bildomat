@@ -71,22 +71,22 @@ Each provider link lists the exact model options, allowed values, ranges, requir
 
 | Flag | Provider coverage |
 | --- | --- |
-| `--size` | [OpenAI](catalog/openai.md): all; [Black Forest Labs](catalog/bfl.md): 10 of 25 models; [Recraft](catalog/recraft.md): 11 of 21 models |
-| `--aspect-ratio` | [OpenAI](catalog/openai.md): all; [xAI](catalog/xai.md): all; [OpenRouter](catalog/openrouter.md): 83 of 87 models; [Google](catalog/google.md): all; [Black Forest Labs](catalog/bfl.md): 15 of 25 models; [Sourceful](catalog/sourceful.md): all; [Recraft](catalog/recraft.md): all; [Kling](catalog/kling.md): all |
-| `--resolution` | [OpenAI](catalog/openai.md): all; [xAI](catalog/xai.md): all; [OpenRouter](catalog/openrouter.md): 73 of 87 models; [Google](catalog/google.md): 8 of 10 models; [Black Forest Labs](catalog/bfl.md): 11 of 25 models; [Sourceful](catalog/sourceful.md): all; [Recraft](catalog/recraft.md): 11 of 21 models; [Kling](catalog/kling.md): all |
-| `--duration` | [OpenAI](catalog/openai.md): 2 of 9 models; [xAI](catalog/xai.md): 3 of 7 models; [OpenRouter](catalog/openrouter.md): 26 of 87 models; [Google](catalog/google.md): 3 of 10 models; [Black Forest Labs](catalog/bfl.md): 1 of 25 models; [Kling](catalog/kling.md): 6 of 10 models |
-| `--quality` | [OpenAI](catalog/openai.md): 7 of 9 models; [xAI](catalog/xai.md): 1 of 7 models; [OpenRouter](catalog/openrouter.md): 44 of 87 models |
-| `--output-format` | [OpenAI](catalog/openai.md): 7 of 9 models; [OpenRouter](catalog/openrouter.md): 46 of 87 models; [Black Forest Labs](catalog/bfl.md): 21 of 25 models; [Sourceful](catalog/sourceful.md): 2 of 4 models; [Recraft](catalog/recraft.md): 1 of 21 models |
-| `--num-images` | [OpenAI](catalog/openai.md): 7 of 9 models; [xAI](catalog/xai.md): 4 of 7 models; [OpenRouter](catalog/openrouter.md): 54 of 87 models; [Recraft](catalog/recraft.md): all; [Kling](catalog/kling.md): 4 of 10 models |
+| `--size` | [OpenAI](catalog/openai.md): all; [OpenRouter](catalog/openrouter.md): 1 of 90 models; [Black Forest Labs](catalog/bfl.md): 10 of 25 models; [Recraft](catalog/recraft.md): 11 of 21 models |
+| `--aspect-ratio` | [OpenAI](catalog/openai.md): all; [xAI](catalog/xai.md): all; [OpenRouter](catalog/openrouter.md): 85 of 90 models; [Google](catalog/google.md): all; [Black Forest Labs](catalog/bfl.md): 15 of 25 models; [Sourceful](catalog/sourceful.md): all; [Recraft](catalog/recraft.md): all; [Kling](catalog/kling.md): all |
+| `--resolution` | [OpenAI](catalog/openai.md): all; [xAI](catalog/xai.md): all; [OpenRouter](catalog/openrouter.md): 75 of 90 models; [Google](catalog/google.md): 8 of 10 models; [Black Forest Labs](catalog/bfl.md): 11 of 25 models; [Sourceful](catalog/sourceful.md): all; [Recraft](catalog/recraft.md): 11 of 21 models; [Kling](catalog/kling.md): all |
+| `--duration` | [OpenAI](catalog/openai.md): 2 of 9 models; [xAI](catalog/xai.md): 3 of 7 models; [OpenRouter](catalog/openrouter.md): 27 of 90 models; [Google](catalog/google.md): 3 of 10 models; [Black Forest Labs](catalog/bfl.md): 1 of 25 models; [Kling](catalog/kling.md): 6 of 10 models |
+| `--quality` | [OpenAI](catalog/openai.md): 7 of 9 models; [xAI](catalog/xai.md): 1 of 7 models; [OpenRouter](catalog/openrouter.md): 44 of 90 models |
+| `--output-format` | [OpenAI](catalog/openai.md): 7 of 9 models; [OpenRouter](catalog/openrouter.md): 46 of 90 models; [Black Forest Labs](catalog/bfl.md): 21 of 25 models; [Sourceful](catalog/sourceful.md): 2 of 4 models; [Recraft](catalog/recraft.md): 1 of 21 models |
+| `--num-images` | [OpenAI](catalog/openai.md): 7 of 9 models; [xAI](catalog/xai.md): 4 of 7 models; [OpenRouter](catalog/openrouter.md): 55 of 90 models; [Recraft](catalog/recraft.md): all; [Kling](catalog/kling.md): 4 of 10 models |
 | `--thinking-level` | [Google](catalog/google.md): 4 of 10 models; [Sourceful](catalog/sourceful.md): 2 of 4 models |
 | `--include-thoughts` | [Google](catalog/google.md): 4 of 10 models |
-| `--input-media` | [OpenAI](catalog/openai.md): all; [xAI](catalog/xai.md): all; [OpenRouter](catalog/openrouter.md): 84 of 87 models; [Google](catalog/google.md): all; [Black Forest Labs](catalog/bfl.md): 22 of 25 models; [Sourceful](catalog/sourceful.md): all; [Recraft](catalog/recraft.md): 14 of 21 models; [Kling](catalog/kling.md): all |
+| `--input-media` | [OpenAI](catalog/openai.md): all; [xAI](catalog/xai.md): all; [OpenRouter](catalog/openrouter.md): 87 of 90 models; [Google](catalog/google.md): all; [Black Forest Labs](catalog/bfl.md): 22 of 25 models; [Sourceful](catalog/sourceful.md): all; [Recraft](catalog/recraft.md): 14 of 21 models; [Kling](catalog/kling.md): all |
 | `--strength` | [Black Forest Labs](catalog/bfl.md): 1 of 25 models; [Recraft](catalog/recraft.md): 14 of 21 models |
-| `--seed` | [OpenRouter](catalog/openrouter.md): 30 of 87 models; [Google](catalog/google.md): 3 of 10 models; [Black Forest Labs](catalog/bfl.md): 20 of 25 models; [Recraft](catalog/recraft.md): all |
-| `--background` | [OpenAI](catalog/openai.md): 7 of 9 models; [OpenRouter](catalog/openrouter.md): 44 of 87 models; [Sourceful](catalog/sourceful.md): 2 of 4 models |
-| `--output-compression` | [OpenAI](catalog/openai.md): 7 of 9 models; [OpenRouter](catalog/openrouter.md): 44 of 87 models |
-| `--safety-tolerance` | [OpenRouter](catalog/openrouter.md): 3 of 87 models; [Black Forest Labs](catalog/bfl.md): all |
-| `--generate-audio` | [OpenRouter](catalog/openrouter.md): 18 of 87 models; [Black Forest Labs](catalog/bfl.md): 1 of 25 models; [Kling](catalog/kling.md): 3 of 10 models |
+| `--seed` | [OpenRouter](catalog/openrouter.md): 31 of 90 models; [Google](catalog/google.md): 3 of 10 models; [Black Forest Labs](catalog/bfl.md): 20 of 25 models; [Recraft](catalog/recraft.md): all |
+| `--background` | [OpenAI](catalog/openai.md): 7 of 9 models; [OpenRouter](catalog/openrouter.md): 44 of 90 models; [Sourceful](catalog/sourceful.md): 2 of 4 models |
+| `--output-compression` | [OpenAI](catalog/openai.md): 7 of 9 models; [OpenRouter](catalog/openrouter.md): 44 of 90 models |
+| `--safety-tolerance` | [OpenRouter](catalog/openrouter.md): 3 of 90 models; [Black Forest Labs](catalog/bfl.md): all |
+| `--generate-audio` | [OpenRouter](catalog/openrouter.md): 18 of 90 models; [Black Forest Labs](catalog/bfl.md): 1 of 25 models; [Kling](catalog/kling.md): 3 of 10 models |
 | `--prompt-upsampling` | [Black Forest Labs](catalog/bfl.md): 10 of 25 models; [Sourceful](catalog/sourceful.md): all |
 | `--disable-prompt-upsampling` | [Black Forest Labs](catalog/bfl.md): 4 of 25 models |
 | `--moderation-level` | [OpenAI](catalog/openai.md): 7 of 9 models |
@@ -105,19 +105,19 @@ Each provider link lists the exact model options, allowed values, ranges, requir
 | `--garment-url` | [Black Forest Labs](catalog/bfl.md): 2 of 25 models |
 | `--style-id` | [Recraft](catalog/recraft.md): 4 of 21 models |
 | `--style-match` | [Recraft](catalog/recraft.md): 4 of 21 models |
-| `--watermark` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
-| `--upscale-factor` | [OpenRouter](catalog/openrouter.md): 1 of 87 models; [Black Forest Labs](catalog/bfl.md): 1 of 25 models |
-| `--creativity` | [OpenRouter](catalog/openrouter.md): 1 of 87 models; [Black Forest Labs](catalog/bfl.md): 1 of 25 models |
-| `--voice-id` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
-| `--motion-prompt` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
-| `--expressiveness` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
-| `--image-fit` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
-| `--remove-background` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
-| `--voice-speed` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
-| `--voice-pitch` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
-| `--voice-volume` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
-| `--voice-locale` | [OpenRouter](catalog/openrouter.md): 1 of 87 models |
+| `--watermark` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
+| `--upscale-factor` | [OpenRouter](catalog/openrouter.md): 1 of 90 models; [Black Forest Labs](catalog/bfl.md): 1 of 25 models |
+| `--creativity` | [OpenRouter](catalog/openrouter.md): 1 of 90 models; [Black Forest Labs](catalog/bfl.md): 1 of 25 models |
+| `--voice-id` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
+| `--motion-prompt` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
+| `--expressiveness` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
+| `--image-fit` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
+| `--remove-background` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
+| `--voice-speed` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
+| `--voice-pitch` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
+| `--voice-volume` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
+| `--voice-locale` | [OpenRouter](catalog/openrouter.md): 1 of 90 models |
 
 For a machine-readable answer for a selected model, use `bild info PROVIDER/MODEL --json`. Every accepted flag appears in that model's `params`; general definitions appear in `flags`.
 
-Revised 2026-10-07
+Revised 2026-10-13

@@ -11,7 +11,7 @@
 
 # Image and video generation for agents and scripts. One command, 170+ models
 
-[Overview](#overview) | [Quickstart](#quickstart) | [Basic Usage](#basic-usage) | [Agentic Use](#agentic-use) | [Scripting](#scripting) | [Providers and API Keys](#providers-and-api-keys) | [Configuration](#configuration)
+[Overview](#overview) | [Quickstart](#quickstart) | [Basic Usage](#basic-usage) | [Agentic Use](#agentic-use) | [Scripting](#scripting) | [Providers and API Keys](#providers-and-api-keys) | [Configuration](#configuration) | [Full Docs](https://bildomat.com/docs)
 
 ## Overview
 
@@ -28,7 +28,7 @@ Bildomat provides a single unified interface to multiple image and video generat
 - **Sourceful**: 4 models (4 image models)
 - **Recraft**: 21 models (21 image models)
 - **Kling**: 10 models (4 image models · 6 video models)
-- **OpenRouter** (multi-provider aggregator): 87 models (57 image models · 30 video models)
+- **OpenRouter** (multi-provider aggregator): 90 models (59 image models · 31 video models)
 
 See [Providers and API Keys](#providers-and-api-keys) for setting up API keys and configuring them in your environment.
 
