@@ -1,12 +1,21 @@
 # Configuration, Environment, and Network Limits
 
-Bildomat reads `~/.bildomat/config.yml`. The file is optional and has three supported top-level keys:
+Bildomat reads `~/.bildomat/config.yml`. The file is optional and has four supported top-level keys:
 
 ```yaml
 default-model: google/gemini-3.1-flash-image
 output-dir: ~/Pictures/bild
 api-keys:
   google: your-google-api-key
+export-variants:
+  - width: 1280
+    height: 720
+    fit: contain
+    format: png
+  - width: 300
+    height: 300
+    fit: cover
+    format: jpg
 ```
 
 | Key | Type | Default and effect |
@@ -14,6 +23,7 @@ api-keys:
 | `default-model` | String | Unset; without it, a run without `--model` uses the default model of the first keyed provider. `bild help` shows the model in effect under `-m, --model`. Accepts the same identifiers as `--model`. The value is not checked when the file is read: `bild help` shows an unknown value as the default, and a run without `--model` then fails as an unknown model, exit code 1. |
 | `output-dir` | String | Unset; output otherwise goes to the working directory. Applies only when `--output-path` is omitted. |
 | `api-keys` | Mapping from provider ID to string | Unset; nonempty API keys override the corresponding environment variable. |
+| `export-variants` | List of variant entries | Unset; when present, each saved image is additionally re-exported in every listed size and format. See [export variants](output-files.md#export-variants). An invalid entry warns once and disables variant export for the run; every other setting still applies. |
 
 An explicit `--model` wins over configuration. With neither, the model is the declared default of the first provider, in the order `bild list` uses, whose API key is available; generation exits 2 when no provider's API key is available. See [model names and aliases](model-specifiers.md#defaults).
 
@@ -70,4 +80,4 @@ On Unix systems, `HOME` determines the home directory used for configuration and
 
 Downloaded results first occupy temporary files in that directory, using names beginning `bild-dl-`. Bildomat copies each downloaded result into its output file and then removes the temporary file, so both the temporary directory and the destination need free space. A failed run also removes its temporary downloads. If a removal fails, the run fails with exit code 1 and names the file; media already saved are kept and reported. An abrupt process termination can leave files behind.
 
-Revised 2026-10-06
+Revised 2026-11-21

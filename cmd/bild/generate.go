@@ -14,6 +14,7 @@ import (
 	"github.com/shdeen/bildomat/internal/metadata"
 	"github.com/shdeen/bildomat/internal/output"
 	"github.com/shdeen/bildomat/internal/params"
+	"github.com/shdeen/bildomat/internal/variant"
 )
 
 // adjustRequest prepares provider inputs and appends their changes to outcome. It also updates
@@ -57,11 +58,13 @@ func recordPreparation(preparedGeneration *generation.Preparation, record *metad
 }
 
 // writeRunResults creates the output directory if missing and saves media and any requested
-// thoughts sidecar. It adds every saved file to outcome but returns only media files for record
-// persistence.
+// thoughts sidecar. When export variants are configured, each saved image artifact is additionally
+// decoded and re-exported in every requested size/format; all completed files, originals and
+// variants, are added to outcome. A variant failure joins the returned error while the completed
+// files stay reported. It returns only media files for record persistence.
 //
 //nolint:nilaway // Callers pass the address of an owned Result value, which cannot be nil.
-func writeRunResults(result *generation.Result, outDir, stem, extOverride string, run *generation.Generation, paramFlags []params.Flag, outcome *output.GenerationOutcome) (finalStem string, completedFiles []output.SavedFile, resultErr error) {
+func writeRunResults(result *generation.Result, outDir, stem, extOverride string, run *generation.Generation, paramFlags []params.Flag, specs []variant.Spec, outcome *output.GenerationOutcome) (finalStem string, completedFiles []output.SavedFile, resultErr error) {
 	if err := artifact.CreateDir(outDir); err != nil {
 		return stem, nil, err
 	}
@@ -80,7 +83,12 @@ func writeRunResults(result *generation.Result, outDir, stem, extOverride string
 	// artifact.
 	outcome.Artifacts = append(outcome.Artifacts, savedFiles...)
 
-	if len(savedFiles) != len(result.Artifacts) || !thoughtsRequested {
+	variantFiles, variantErr := artifact.WriteVariants(outDir, resolvedStem, result.Artifacts, specs)
+	outcome.Artifacts = append(outcome.Artifacts, variantFiles...)
+	outcome.Notices = append(outcome.Notices, variantNotices(run.Model.Media, len(result.Artifacts), len(variantFiles), specs)...)
+	err = errors.Join(err, variantErr)
+
+	if len(savedFiles) != len(result.Artifacts) || !thoughtsRequested || err != nil {
 		return resolvedStem, savedFiles, err
 	}
 
@@ -88,12 +96,30 @@ func writeRunResults(result *generation.Result, outDir, stem, extOverride string
 
 	sidecar, sidecarErr := artifact.Write(outDir, resolvedStem, artifact.SidecarExt, content)
 	if sidecarErr != nil {
-		return resolvedStem, savedFiles, errors.Join(err, sidecarErr)
+		return resolvedStem, savedFiles, sidecarErr
 	}
 
 	outcome.Artifacts = append(outcome.Artifacts, sidecar)
 
 	return resolvedStem, savedFiles, err
+}
+
+// variantNotices explains the variant export outcome. Image runs with configured variants report
+// how many variant files landed; a video or other non-image run reports that variants do not apply.
+func variantNotices(mediaKind media.Kind, artifactCount, variantCount int, specs []variant.Spec) []string {
+	if len(specs) == 0 {
+		return nil
+	}
+
+	if mediaKind != media.Image {
+		return []string{ExportVariantsSkippedNotice}
+	}
+
+	if variantCount == 0 {
+		return nil
+	}
+
+	return []string{fmt.Sprintf(ExportVariantsSavedNotice, variantCount, artifactCount*len(specs))}
 }
 
 // cleanupGeneration removes owned temporary artifacts and joins failures into generationErr.

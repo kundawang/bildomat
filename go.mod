@@ -17,3 +17,5 @@ require (
 )
 
 require golang.org/x/sys v0.48.0
+
+require github.com/HugoSmits86/nativewebp v1.3.0

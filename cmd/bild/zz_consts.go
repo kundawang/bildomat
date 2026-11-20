@@ -6,6 +6,8 @@ package main
 const (
 	AliasesFlagHelp              = "Include model aliases in text and JSON output"
 	ArgCountForm                 = "%q, %w, %d received"
+	ExportVariantsSavedNotice    = "Exported %d of %d configured image variants"
+	ExportVariantsSkippedNotice  = "Export variants apply only to image output; no variants were written"
 	FlagDefaultSuffix            = "(default: %s)"
 	FlagsBeforeCommandForm       = "Can't place flags before the %s command."
 	HelpFlagCombinedForm         = "Can't combine %s flag with other flags or positional arguments."

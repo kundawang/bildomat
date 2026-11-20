@@ -25,16 +25,30 @@ const fileName = "config.yml"
 // yamlTagKey is the struct tag key that carries each setting's document key.
 const yamlTagKey = "yaml"
 
+// RawVariant is the YAML shape of one export-variants entry. The config layer validates no image
+// semantics; the variant package parses and canonicalizes these values after the file is loaded.
+//   - Width, Height: the requested target frame in pixels
+//   - Fit: contain (default) or cover
+//   - Format: png, jpg, jpeg, or webp
+type RawVariant struct {
+	Width  int    `yaml:"width"`
+	Height int    `yaml:"height"`
+	Fit    string `yaml:"fit"`
+	Format string `yaml:"format"`
+}
+
 // Settings holds optional defaults and API keys. Empty values mean unset; Load removes empty API
 // keys.
 //   - DefaultModel: the model used when --model is omitted; anything the --model flag accepts
 //   - DefaultOutputDir: the directory used when no output location is given; anything the directory
 //     portion of --output-path accepts
 //   - APIKeys: API keys by provider ID, which outrank the providers' environment variables
+//   - ExportVariants: raw export-variant entries, validated by the variant package after loading
 type Settings struct {
 	DefaultModel     string            `yaml:"default-model"`
 	DefaultOutputDir string            `yaml:"output-dir"`
 	APIKeys          map[string]string `yaml:"api-keys"`
+	ExportVariants   []RawVariant      `yaml:"export-variants"`
 }
 
 // declaredKeys holds the schema's top-level keys.

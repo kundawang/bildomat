@@ -185,6 +185,8 @@ var (
 //   - ErrInputMediaSize marks a reference-image size that is not a WxH value.
 //   - ErrInputMediaDecode marks a failed reference-image decode.
 //   - ErrInputMediaEncode marks a failed reference-image encode.
+//   - ErrInputMediaFit marks an unknown image fit strategy.
+//   - ErrInputMediaFormat marks an unsupported export image format.
 var (
 	ErrInputMediaNotFound = fmt.Errorf("%w: not found", ErrInputMedia)
 	ErrInputMediaRead     = fmt.Errorf("%w: read failed", ErrInputMedia)
@@ -195,6 +197,8 @@ var (
 	ErrInputMediaSize     = fmt.Errorf("%w: invalid size", ErrInputMedia)
 	ErrInputMediaDecode   = fmt.Errorf("%w: decode failed", ErrInputMedia)
 	ErrInputMediaEncode   = fmt.Errorf("%w: encode failed", ErrInputMedia)
+	ErrInputMediaFit      = fmt.Errorf("%w: fit strategy invalid", ErrInputMedia)
+	ErrInputMediaFormat   = fmt.Errorf("%w: export format invalid", ErrInputMedia)
 )
 
 // ErrInputMediaUnsendable marks input that the selected provider route cannot carry.
@@ -341,10 +345,13 @@ var (
 //     settings still apply.
 //   - ErrUserConfigUnknownProvider marks a non-empty api-keys entry naming a provider the catalog
 //     does not hold; the remaining entries still apply.
+//   - ErrUserConfigInvalidVariant marks an export-variants entry that fails validation; no variants
+//     are applied.
 var (
 	ErrUserConfigRead            = fmt.Errorf("%w: file read failed", ErrUserConfig)
 	ErrUserConfigDecode          = fmt.Errorf("%w: decode failed", ErrUserConfig)
 	ErrUserConfigLocate          = fmt.Errorf("%w: location lookup failed", ErrUserConfig)
 	ErrUserConfigUnknownSetting  = fmt.Errorf("%w: unknown setting", ErrUserConfig)
 	ErrUserConfigUnknownProvider = fmt.Errorf("%w: unknown provider under api-keys", ErrUserConfig)
+	ErrUserConfigInvalidVariant  = fmt.Errorf("%w: invalid export variant", ErrUserConfig)
 )

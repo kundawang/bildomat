@@ -52,6 +52,7 @@ func TestWriteRunResultsSkipsIgnoredThoughtsSidecar(t *testing.T) {
 			"",
 			&generation.Generation{ProvModelPair: catalog.ProvModelPair{Model: catalog.Model{ID: "fixture-model"}}, Prompt: params.GetSetIf(true, "a prompt").ValOr(""), Preparation: generation.Preparation{Params: params.Values{}}},
 			app.catalog.Flags,
+			nil,
 			&output.GenerationOutcome{},
 		)
 	})

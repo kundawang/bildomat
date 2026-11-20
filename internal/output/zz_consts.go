@@ -17,6 +17,7 @@ const (
 	CatalogCountFormOne        = "%d %s model"
 	CatalogSeparator           = "·"
 	ConfigFileUnreadable       = "The config file %s could not be read and was ignored."
+	ConfigInvalidVariant       = "The config file %s carries an invalid export-variants entry, which was ignored: %s"
 	ConfigLocationUnresolved   = "The config file location could not be resolved, and no config file was read."
 	ConfigUnknownProvider      = "The config file %s names an unknown provider %q under api-keys, which was ignored."
 	ConfigUnknownSetting       = "The config file %s names an unknown setting %q, which was ignored."

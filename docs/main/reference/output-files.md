@@ -45,6 +45,42 @@ On models accepting `--output-format`, an image extension in `--output-path` set
 
 After generation, a requested extension is used only when it agrees with the returned format, and it is then kept as typed: `-o hero.PNG` saves `hero.PNG`. Otherwise the actual format’s extension is used with a notice. JPEG uses `.jpg` unless `.jpeg` was requested. When `--output-path` names a file without an extension, or with an extension that Bildomat discards, an accepted output-format value supplies the preferred extension, subject to the same check. Bildomat does not transcode generated media to satisfy an extension request.
 
+## Export variants
+
+The optional `export-variants` list in the [configuration file](configuration.md) re-exports each saved image in additional sizes and formats, so one generation can serve both a web page and mobile clients without manual resizing. The generation service still returns only the original image; Bildomat derives every variant locally after the original artifact has been saved. Local images and images downloaded from a remote result go through the same processing.
+
+```yaml
+export-variants:
+  - width: 1280
+    height: 720
+    fit: contain
+    format: png
+  - width: 300
+    height: 300
+    fit: cover
+    format: jpg
+  - width: 80
+    height: 80
+    format: webp
+```
+
+Each entry has four fields:
+
+| Field | Required | Meaning |
+| --- | --- | --- |
+| `width`, `height` | Yes | The exact target frame in pixels. Both must be positive integers. |
+| `fit` | No | `contain` (the default) or `cover`. Both preserve the source aspect ratio. |
+| `format` | Yes | `png`, `jpg`, `jpeg`, or `webp`. `jpeg` is stored with the canonical `.jpg` extension. |
+
+- **contain** scales the image to the largest size that fits inside the frame and centers it, padding the remaining margins. A PNG keeps the padding transparent; JPEG and WebP have no alpha channel, so padding and any source transparency flatten onto white.
+- **cover** scales the image to fill the whole frame and center-crops the overflow, so the output is never letterboxed.
+
+A variant filename appends the frame and fit to the artifact stem before the extension: `hero-1280x720-contain.png`, `hero-300x300-cover.jpg`, and for a multi-image batch `hero-0-80x80-contain.webp`. Variants follow the same never-overwrite collision policy as ordinary artifacts, so an occupied destination moves to a numbered suffix such as `hero-300x300-cover-02.jpg`.
+
+Every successfully written variant is a saved file in its own right: it appears in the regular saved reports, in the JSON `artifacts` list with its path and byte count, and in `--print-filename` output, alongside the original. The original artifact is always saved first with its returned bytes unchanged. Video and other non-image runs do not produce variants; the run reports that image variants were skipped and keeps the single original file.
+
+Variant export is all-or-nothing within a run. An image that cannot be decoded, a frame that cannot be encoded, or a destination that cannot be written ends the run with exit code 1 and a classified error. Files already completed remain on disk and are reported; no failed or half-written file enters the saved list, so a reported path always names a real, complete file. A malformed `export-variants` entry is caught when the configuration file is read: Bildomat prints one warning naming the entry (numbered from one), applies no variants, and continues with the rest of the configuration.
+
 ## Thoughts sidecar
 
 `--include-thoughts` writes one `<stem>.md` file beside the media on supported Gemini image models. The catalog identifies those models; Gemini 2.5 Flash Image does not support this option in Bildomat. Unsupported use is omitted with a notice.
@@ -74,4 +110,4 @@ Regular saved-file reports include an absolute path and byte count. When standar
 
 Normal notices and errors use standard error. With `--json`, adjustments and failures go into the JSON document instead; configuration warnings and output-destination failures can still appear on standard error. The one-word confirmation, the list of candidates for an ambiguous model, and the request for a replacement model also use standard error. [Commands](commands.md#generation) gives the conditions for the confirmation, and [model names and aliases](model-specifiers.md#ambiguous-names) gives them for the other two. See [JSON output](json-output.md) and [exit codes](exit-codes-and-errors.md).
 
-Revised 2026-10-06
+Revised 2026-11-21

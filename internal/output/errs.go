@@ -110,6 +110,8 @@ func configWarningMessage(fault error) string {
 	switch {
 	case errors.Is(fault, errs.ErrUserConfigLocate):
 		return ConfigLocationUnresolved
+	case errors.Is(fault, errs.ErrUserConfigInvalidVariant):
+		return fmt.Sprintf(ConfigInvalidVariant, escapeForTerminal(detail.Path), escapeForTerminal(detail.Problem))
 	case errors.Is(fault, errs.ErrUserConfigUnknownSetting):
 		return fmt.Sprintf(ConfigUnknownSetting, escapeForTerminal(detail.Path), escapeForTerminal(detail.Setting))
 	case errors.Is(fault, errs.ErrUserConfigUnknownProvider):

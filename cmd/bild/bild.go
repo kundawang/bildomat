@@ -26,6 +26,7 @@ import (
 	"github.com/shdeen/bildomat/internal/params"
 	tmpl "github.com/shdeen/bildomat/internal/templates"
 	"github.com/shdeen/bildomat/internal/terminal"
+	"github.com/shdeen/bildomat/internal/variant"
 	"github.com/urfave/cli/v3"
 )
 
@@ -38,18 +39,27 @@ import (
 //     config names none, in which case the catalog's provider default applies
 //   - defaultOutDir: the directory used when no output location is given; empty for the working
 //     directory
+//   - exportVariants: the configured image variants exported beside each generated image; empty
+//     disables variant export
 type bildApp struct {
-	invocation    commandInvocation
-	catalog       *catalog.Catalog
-	apiKeys       map[string]string
-	defaultModel  string
-	defaultOutDir string
+	invocation     commandInvocation
+	catalog        *catalog.Catalog
+	apiKeys        map[string]string
+	defaultModel   string
+	defaultOutDir  string
+	exportVariants []variant.Spec
 }
 
 // load reads user settings and the provider catalog and applies configured API keys. It prints
 // configuration faults as warnings and returns any warning-write or catalog-load error.
 func (bild *bildApp) load() error {
 	settings, configPath, configFaults := userconfig.Load()
+
+	parsedVariants, variantFaults := parseExportVariants(settings.ExportVariants, configPath)
+	bild.exportVariants = parsedVariants
+
+	configFaults = append(configFaults, variantFaults...)
+
 	for _, fault := range configFaults {
 		if err := output.PrintUserConfigWarning(bild.invocation.stderr, fault, bild.invocation.diagnosticStyled); err != nil {
 			return err
@@ -58,6 +68,7 @@ func (bild *bildApp) load() error {
 
 	bild.defaultModel = settings.DefaultModel
 	bild.defaultOutDir = settings.DefaultOutputDir
+
 	registrations := providerRegistrations()
 
 	sources := make([]catalog.Source, 0, len(registrations))
@@ -576,7 +587,7 @@ func (bild *bildApp) executeGeneration(ctx context.Context, generator generation
 		return outPath.Stem, nil, err
 	}
 
-	finalStem, completedFiles, resultErr = writeRunResults(&result, outPath.Dir, outPath.Stem, extension, &run, bild.catalog.Flags, bild.invocation.outcome)
+	finalStem, completedFiles, resultErr = writeRunResults(&result, outPath.Dir, outPath.Stem, extension, &run, bild.catalog.Flags, bild.exportVariants, bild.invocation.outcome)
 	cleanupGeneration(result.Artifacts, &resultErr)
 
 	return finalStem, completedFiles, resultErr

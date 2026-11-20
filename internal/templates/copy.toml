@@ -10,6 +10,8 @@
 # The command surface's copy: the flag descriptions, command summaries,
 # and usage forms, plus the change-notice reasons the command layer creates.
 #   - ArgCountForm: usage.go - argCountError: the chain form carrying the command, the classification, and the count received
+#   - ExportVariantsSavedNotice: generate.go - variantNotices: the count of variant files exported for one image run
+#   - ExportVariantsSkippedNotice: generate.go - variantNotices: shown when configured variants cannot apply to a non-image run
 #   - FlagDefaultSuffix: bild.go - renderFlagEntry: appended to a flag entry that shows a default
 #   - FlagsBeforeCommandForm: cli.go - the usage error for a flag placed before a command word
 #   - HelpFlagCombinedForm: usage.go - the usage error for a help or version flag beside a positional argument
@@ -51,6 +53,8 @@
 ["cmd/bild"]
 AliasesFlagHelp              = "Include model aliases in text and JSON output"
 ArgCountForm                 = "%q, %w, %d received"
+ExportVariantsSavedNotice    = "Exported %d of %d configured image variants"
+ExportVariantsSkippedNotice  = "Export variants apply only to image output; no variants were written"
 FlagDefaultSuffix            = "(default: %s)"
 FlagsBeforeCommandForm       = "Can't place flags before the %s command."
 HelpFlagCombinedForm         = "Can't combine %s flag with other flags or positional arguments."
@@ -105,6 +109,7 @@ VersionReport                = "%s version %s"
 #   - CatalogCountFormOne: info.go catalogMediaCounts: a medium's model count of one
 #   - CatalogSeparator: info.go catalogMediaCounts: between the per-medium counts
 #   - ConfigFileUnreadable: errs.go configWarningMessage: a user config file that cannot be read or decoded
+#   - ConfigInvalidVariant: errs.go configWarningMessage: an export-variants entry that fails validation
 #   - ConfigLocationUnresolved: errs.go configWarningMessage: a failed home lookup, so no config file was read
 #   - ConfigUnknownProvider: errs.go configWarningMessage: a non-empty api-keys entry naming an unknown provider
 #   - ConfigUnknownSetting: errs.go configWarningMessage: a top-level key the config schema does not declare
@@ -208,6 +213,7 @@ CatalogCountForm           = "%d %s models"
 CatalogCountFormOne        = "%d %s model"
 CatalogSeparator           = "·"
 ConfigFileUnreadable       = "The config file %s could not be read and was ignored."
+ConfigInvalidVariant       = "The config file %s carries an invalid export-variants entry, which was ignored: %s"
 ConfigLocationUnresolved   = "The config file location could not be resolved, and no config file was read."
 ConfigUnknownProvider      = "The config file %s names an unknown provider %q under api-keys, which was ignored."
 ConfigUnknownSetting       = "The config file %s names an unknown setting %q, which was ignored."

@@ -4,6 +4,7 @@
 
 ### Added
 
+- Configurable export variants (`export-variants` in `~/.bildomat/config.yml`): after each image generation, Bildomat now re-exports the original in every configured size and format, with explicit `contain` (padded, aspect-ratio preserving) and `cover` (center-cropped) fit strategies and full PNG, JPEG, and WebP output. Every variant path is recorded in the saved reports, JSON output, and `--print-filename`; local images and remote downloads share one processing path, and the original single-artifact command is unchanged.
 - Gemini Nano Banana 2.1 through Google (`google/gemini-nano-banana-2.1`) and OpenRouter (`openrouter/google/gemini-nano-banana-2.1`).
 - New OpenRouter models: Meta Muse Image (`openrouter/meta/muse-image`), Tencent HY Image 3.5 Preview (`openrouter/tencent/hy-image-v3.5-preview`), and Grok Imagine Video 1.5 Lite (`openrouter/x-ai/grok-imagine-video-1.5-lite`).
 - `--resolution` accepts decimal K values such as `1.5K`. On a model that lists its resolutions, Bildomat selects the nearest listed one.

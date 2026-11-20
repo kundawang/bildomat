@@ -157,6 +157,62 @@ func TestUnknownProviderFault(t *testing.T) {
 	}
 }
 
+// TestLoadExportVariants verifies invariant #3: Export variants.
+//
+// What is being tested:
+// Load must retain the raw export-variants entries exactly as written, including an unset fit. The
+// config layer performs no image-semantic validation, so even a zero-width entry decodes without a
+// config fault; the variant parser validates it after loading.
+//
+// Test class: Expanded.
+// Test layer: Coverage.
+func TestLoadExportVariants(t *testing.T) {
+	home := t.TempDir()
+	setHomeDirectory(t, home)
+
+	validConfig := "export-variants:\n" +
+		"  - width: 1280\n    height: 720\n    format: png\n" +
+		"  - width: 300\n    height: 300\n    fit: COVER\n    format: JPEG\n"
+	writeConfigFile(t, home, validConfig)
+
+	settings, _, faults := Load()
+	if len(faults) != 0 {
+		t.Fatalf("💣 variant entries produced config faults: %v", faults)
+	}
+
+	wantVariants := []RawVariant{
+		{Width: 1280, Height: 720, Fit: "", Format: "png"},
+		{Width: 300, Height: 300, Fit: "COVER", Format: "JPEG"},
+	}
+	if len(settings.ExportVariants) != len(wantVariants) {
+		t.Fatalf("✗ loaded %d raw variants, want %d", len(settings.ExportVariants), len(wantVariants))
+	}
+
+	for index, want := range wantVariants {
+		if settings.ExportVariants[index] != want {
+			t.Errorf("✗ raw variant %d = %+v, want %+v", index, settings.ExportVariants[index], want)
+		}
+	}
+
+	// Semantically invalid entries still decode at the config layer; validation happens later.
+	home = t.TempDir()
+	setHomeDirectory(t, home)
+	writeConfigFile(t, home, "export-variants:\n  - width: 0\n    height: 720\n    format: png\n")
+
+	invalidSettings, _, invalidFaults := Load()
+	if len(invalidFaults) != 0 {
+		t.Errorf("✗ raw decoding produced faults %v, want validation deferred to the variant parser", invalidFaults)
+	}
+
+	if len(invalidSettings.ExportVariants) != 1 || invalidSettings.ExportVariants[0].Width != 0 {
+		t.Errorf("✗ invalid raw entry was not retained: %+v", invalidSettings.ExportVariants)
+	}
+
+	if !t.Failed() {
+		t.Log("✓ the config layer decodes export-variants verbatim and leaves semantic validation to the variant package")
+	}
+}
+
 // writeConfigFile writes a config file under the given home directory's .bildomat directory.
 func writeConfigFile(t *testing.T, home, content string) {
 	t.Helper()

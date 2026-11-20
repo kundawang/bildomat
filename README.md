@@ -237,6 +237,8 @@ api-keys:
 
 A key in the configuration file takes precedence over the environment variable for the same provider.
 
+The same file accepts `default-model`, `output-dir`, and `export-variants` settings. `export-variants` re-exports each generated image in additional sizes and formats (PNG, JPEG, or WebP) with `contain` or `cover` fitting; see the [output files documentation](https://bildomat.com/docs/reference/output-files#export-variants) for the full syntax.
+
 #### A shell environment variable
 
 To set up an API key in your shell environment, export the environment variable for each provider you use, and omit the providers you don't use. The [Providers and API Keys](#providers-and-api-keys) section below lists each provider's variable.
